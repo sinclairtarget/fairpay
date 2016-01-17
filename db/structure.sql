@@ -46,6 +46,7 @@ CREATE TABLE `salaries` (
   `annual_pay` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `hours_per_week` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_rails_127539cef3` (`user_id`),
   KEY `fk_rails_7004ae9984` (`group_id`),
@@ -94,10 +95,12 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-17 11:56:35
+-- Dump completed on 2016-01-17 18:36:26
 INSERT INTO schema_migrations (version) VALUES ('20160112030644');
 
 INSERT INTO schema_migrations (version) VALUES ('20160117154300');
 
 INSERT INTO schema_migrations (version) VALUES ('20160117163615');
+
+INSERT INTO schema_migrations (version) VALUES ('20160117232219');
 
