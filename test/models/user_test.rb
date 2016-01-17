@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProductTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase
   test "user must have an email" do
     user = User.new
     assert user.invalid?
