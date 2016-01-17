@@ -2,11 +2,10 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :email
-      t.string :password_hash
-      t.string :password_salt
+      t.string :password_digest
       t.timestamps null: false
 
-      t.index :email
+      t.index :email, unique: true
     end
   end
 end
