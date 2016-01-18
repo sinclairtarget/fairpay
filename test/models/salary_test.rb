@@ -36,4 +36,40 @@ class SalaryTest < ActiveSupport::TestCase
     assert salary.invalid?
     assert salary.errors[:group_id].any?
   end
+
+  test "salary must have default hours per week" do
+    salary = Salary.new
+    assert_not_nil salary.hours_per_week
+  end
+
+  test "hourly wage must equal annual pay over hours per year" do
+    salary = Salary.new(title: "Engineer", 
+                        annual_pay: 110000, 
+                        hours_per_week: 40)
+    assert_in_delta salary.hourly_wage, 52.885
+  end
+
+  test "salary must equal hourly wage times hours per year" do
+    salary = Salary.new(title: "Engineer",
+                        hourly_wage: 52.885,
+                        hours_per_week: 40)
+    assert_in_delta salary.annual_pay, 110000, 0.1
+  end
+
+  test "hours per week cannot be changed on a persisted salary" do
+    user = User.new(email: "test@gmail.com", password: "test")
+    group = Group.new(name: "test group")
+    user.save!
+    group.save!
+
+    salary = Salary.new(title: "Engineer", hourly_wage: 50)
+    salary.user = user
+    salary.group = group
+
+    salary.save!
+    salary.hours_per_week = 45
+
+    assert salary.invalid?
+    assert salary.errors[:base].any?
+  end
 end
