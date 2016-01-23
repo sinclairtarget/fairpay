@@ -6,4 +6,17 @@
         line-height: 26px;
         height: $nav-bar-height; 
     }
+
+    .nav {
+        .dropdown {
+            a {
+                padding-top: 18px;
+                height: $nav-bar-height;
+
+                .caret {
+                    margin-left: 4px;
+                }
+            }
+        }
+    }
 }
