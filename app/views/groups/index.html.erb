@@ -1,1 +1,4 @@
-<p>This page lists your groups.</p>
+<h3>Your Groups</h3>
+<% @groups.each do |group| %>
+  <p><%= group.name %></p>
+<% end %>
