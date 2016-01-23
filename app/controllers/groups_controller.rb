@@ -9,6 +9,10 @@ class GroupsController < ApplicationController
   end
 
   def create
+    group = Group.new(name: params[:group_name])
+    group.save!
+
+    redirect_to groups_path
   end
 
   def destroy

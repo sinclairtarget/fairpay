@@ -1,5 +1,5 @@
-<%= form_tag do %>
+<%= form_tag controller: "groups", action: "create" do %>
   <%= label_tag :name_label, "Group Name" %>
-  <%= text_field_tag :name_field %>
+  <%= text_field_tag :group_name %>
   <%= submit_tag "Continue" %>
 <% end %>
