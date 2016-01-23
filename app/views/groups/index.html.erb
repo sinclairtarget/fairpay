@@ -1,9 +1,11 @@
 <h3>Your Groups</h3>
-<% if @user.groups.count > 0 %>
-  <% @user.groups.each do |group| %>
-    <p><%= group.name %></p>
+<div id="groups-list">
+  <% if @user.groups.count > 0 %>
+    <% @user.groups.each do |group| %>
+      <%= link_to group.name, group_path(group.id) %>
+    <% end %>
+  <% else %>
+    <p>You have no groups.</p>
   <% end %>
-<% else %>
-  <p>You have no groups.</p>
-<% end %>
+</div>
 <%= link_to "Create a New Group", new_group_path %>

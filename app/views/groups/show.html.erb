@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Salary</th>
+  </tr>
+  <% @group.salaries.each do |salary| %>
+    <tr>
+      <td><%= salary.title %></td>
+      <td><%= salary.annual_pay %></td>
+    </tr>
+  <% end %>
+</table>
