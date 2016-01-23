@@ -12,7 +12,8 @@ class GroupsController < ApplicationController
     group = Group.new(name: params[:group_name])
     group.save!
 
-    redirect_to groups_path
+    flash[:group_id] = group.id
+    redirect_to new_salary_path
   end
 
   def destroy
