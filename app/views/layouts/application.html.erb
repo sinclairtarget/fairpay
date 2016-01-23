@@ -3,13 +3,15 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Salar.ly</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag "controllers/#{controller_name}", media: 'all', 
+      'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <%= render "partials/nav_bar" %> 
-    <div class="container-fluid">
+    <div id="main-container" class="container-fluid">
       <%= yield %>
     </div>
   </body>
