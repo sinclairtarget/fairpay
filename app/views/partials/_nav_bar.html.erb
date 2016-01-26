@@ -11,7 +11,9 @@
               <%= @user.email %><span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Logout</a></li>
+              <li>
+                <%= link_to "Log Out", logout_path, method: :delete %>
+              </li>
             </ul>
           </li>
         </ul>

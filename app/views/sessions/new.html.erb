@@ -1,3 +1,9 @@
+<% if flash[:alert].present? %>
+  <div class="alert alert-danger" role="alert">
+    <p><%= flash[:alert] %></p>
+  </div>
+<% end %>
+
 <%= form_tag controller: "sessions", action: "create" do %>
   <%= label_tag :email_label, "Email" %>
   <%= email_field_tag :email %>
