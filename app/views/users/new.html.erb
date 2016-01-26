@@ -4,12 +4,12 @@
   </div>
 <% end %>
 
-<%= form_tag controller: "sessions", action: "create" do %>
+<%= form_tag controller: "users", action: "create" do %>
   <%= label_tag :email_label, "Email" %>
   <%= email_field_tag :email %>
   <%= label_tag :password_label, "Password" %>
   <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
+  <%= label_tag :password_confirm_label, "Password Confirmation" %>
+  <%= password_field_tag :password_confirm %>
+  <%= submit_tag "Create Account" %>
 <% end %>
-
-<p>Don't have an account? <%= link_to "Sign up here.", new_user_path %></p>

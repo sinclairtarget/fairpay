@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "welcome#welcome"
   resources :groups, except: [:edit, :update]
   resources :salaries, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create]
 
   controller :sessions do
     get 'login' => :new
