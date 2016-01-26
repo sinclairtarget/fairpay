@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
   def authorize
     unless @user = User.find_by_id(session[:user_id])
-      @user = User.find(1)
+      redirect_to new_session_path
     end
   end
 end

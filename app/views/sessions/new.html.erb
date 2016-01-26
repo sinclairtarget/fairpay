@@ -1,0 +1,7 @@
+<%= form_tag controller: "sessions", action: "create" do %>
+  <%= label_tag :email_label, "Email" %>
+  <%= email_field_tag :email %>
+  <%= label_tag :password_label, "Password" %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Login" %>
+<% end %>
