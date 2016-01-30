@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
-  def hello_email(user)
+  def verification_email(user)
     @user = user
-    mail(to: @user.email, subject: "Hello, World!")
+    mail(to: @user.email, subject: "Verify Your Email Address")
   end
 end

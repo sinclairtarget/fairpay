@@ -1,0 +1,5 @@
+<p>We've sent an email to "<%= @user.email %>" with a link you need to verify
+ your address.</p>
+
+<%= link_to 'Resend Email', 
+ verify_notice_user_path(id: @user.id, send_verify: true) %>

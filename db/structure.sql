@@ -81,6 +81,8 @@ CREATE TABLE `users` (
   `password_digest` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `verified` tinyint(1) DEFAULT '0',
+  `verification_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -95,7 +97,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-17 18:36:26
+-- Dump completed on 2016-01-30 12:01:51
 INSERT INTO schema_migrations (version) VALUES ('20160112030644');
 
 INSERT INTO schema_migrations (version) VALUES ('20160117154300');
@@ -103,4 +105,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160117154300');
 INSERT INTO schema_migrations (version) VALUES ('20160117163615');
 
 INSERT INTO schema_migrations (version) VALUES ('20160117232219');
+
+INSERT INTO schema_migrations (version) VALUES ('20160130161726');
 
