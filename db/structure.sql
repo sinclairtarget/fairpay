@@ -27,6 +27,7 @@ CREATE TABLE `groups` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `invitations_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -97,7 +98,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-30 12:01:51
+-- Dump completed on 2016-01-30 15:35:52
 INSERT INTO schema_migrations (version) VALUES ('20160112030644');
 
 INSERT INTO schema_migrations (version) VALUES ('20160117154300');
@@ -107,4 +108,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160117163615');
 INSERT INTO schema_migrations (version) VALUES ('20160117232219');
 
 INSERT INTO schema_migrations (version) VALUES ('20160130161726');
+
+INSERT INTO schema_migrations (version) VALUES ('20160130203450');
 
