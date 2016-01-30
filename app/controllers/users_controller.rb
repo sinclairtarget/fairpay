@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     begin
       if user.save
         session[:user_id] = user.id
+        UserMailer.hello_email(user).deliver_later
       else
         redirect_to new_user_path, alert: user.alert_message
       end
