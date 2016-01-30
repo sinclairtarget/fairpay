@@ -2,6 +2,8 @@ require 'securerandom'
 
 class UsersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
+  skip_before_action :verification_check, 
+    only: [:verification, :resend_verification, :verify]
 
   def new
   end
