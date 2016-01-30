@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create] do
     member do
-      get 'verify_notice'
+      get 'verification'
+      get 'resend_verification'
       get 'verify'
     end
   end

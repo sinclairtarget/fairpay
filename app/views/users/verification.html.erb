@@ -1,0 +1,5 @@
+<h3>Great! Your account is almost ready.</h3>
+<p>We've sent an email to "<%= @user.email %>" with the link you need to verify
+ your email address. Clicking on that link will take you to the next step.</p>
+
+<%= link_to 'Resend Email', resend_verification_user_path(@user) %>

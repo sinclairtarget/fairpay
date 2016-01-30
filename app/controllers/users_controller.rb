@@ -18,7 +18,8 @@ class UsersController < ApplicationController
     begin
       if user.save
         session[:user_id] = user.id
-        redirect_to verify_notice_user_path(id: user.id, send_verify: true)
+        send_verification_email_to user
+        redirect_to verification_user_path(user)
       else
         redirect_to new_user_path, alert: user.alert_message
       end
@@ -28,15 +29,25 @@ class UsersController < ApplicationController
     end
   end
 
-  def verify_notice
-    if params[:send_verify] and !@user.verified
-      str = SecureRandom.hex(12)
-      @user.verification_code = str
-      @user.save!
-      UserMailer.verification_email(@user).deliver_later
-    end
+  # email verificiation
+  def verification
+  end
+
+  def resend_verification
+    send_verification_email_to @user
+
+    notice = "Email sent. Please be sure to check your spam folder."
+    redirect_to verification_user_path(@user), notice: notice
   end
 
   def verify
+  end
+
+  protected
+  def send_verification_email_to(user)
+    str = SecureRandom.hex(12)
+    user.verification_code = str
+    user.save!
+    UserMailer.verification_email(user).deliver_later
   end
 end
