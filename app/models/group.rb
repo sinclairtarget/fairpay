@@ -8,6 +8,6 @@ class Group < ActiveRecord::Base
   end
 
   def fresh?
-    invitations_count <= 1
+    invitations_count <= 0
   end
 end
