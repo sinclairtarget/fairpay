@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+  skip_before_action :authorize, only: [:join]
+  skip_before_action :verification_check, only: [:join]
+
   def index
   end
   
@@ -13,8 +16,7 @@ class GroupsController < ApplicationController
     group = Group.new(name: params[:group_name])
     group.save!
 
-    flash[:group_id] = group.id
-    redirect_to new_salary_path
+    add_user group.id
   end
 
   def destroy
@@ -40,5 +42,15 @@ class GroupsController < ApplicationController
         " people have now been invited to this group."
       redirect_to group_path(@group), notice: notice
     end
+  end
+
+  def join
+    add_user params[:id]
+  end
+
+  protected
+  def add_user(group_id)
+    session[:group_to_join_id] = group_id
+    redirect_to new_salary_path
   end
 end

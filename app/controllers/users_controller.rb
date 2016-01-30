@@ -46,7 +46,10 @@ class UsersController < ApplicationController
     if params[:code] and params[:code] == @user.verification_code
       @user.verified = true
       @user.save!
-      redirect_to new_group_path
+
+      if session[:group_to_join_id].present?
+        @group = Group.find(session[:group_to_join_id])
+      end
     end
   end
 
