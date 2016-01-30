@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root "welcome#welcome"
-  resources :groups, except: [:edit, :update]
+  resources :groups, except: [:edit, :update] do
+    member do
+      get 'invite'
+      post 'invite', to: 'groups#send_invites'
+    end
+  end
+
   resources :salaries, only: [:new, :create, :destroy]
 
   resources :users, only: [:new, :create] do
