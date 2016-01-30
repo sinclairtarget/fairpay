@@ -41,6 +41,11 @@ class UsersController < ApplicationController
   end
 
   def verify
+    if params[:code] and params[:code] == @user.verification_code
+      @user.verified = true
+      @user.save!
+      redirect_to new_group_path
+    end
   end
 
   protected
