@@ -12,7 +12,7 @@ class SalariesController < ApplicationController
                         group_id: @group.id)
     salary.save!
 
-    if @group.invitations_count == 0
+    if @group.fresh?
       redirect_to invite_group_path(@group)
     else
       redirect_to groups_path

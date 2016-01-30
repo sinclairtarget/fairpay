@@ -6,4 +6,8 @@ class Group < ActiveRecord::Base
   def titles
     Salary.where(group_id: id).distinct.pluck(:title)
   end
+
+  def fresh?
+    invitations_count <= 1
+  end
 end

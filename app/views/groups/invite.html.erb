@@ -1,5 +1,5 @@
 <h3>Invite Coworkers</h3>
-<% if @group.invitations_count == 0 %>
+<% if @group.fresh? %>
   <p>Who would you like to invite to be a part of your group?</p>
   <p>Enter their email addresses below:</p>
 <% end %>
@@ -7,7 +7,7 @@
 <%= form_tag controller: "groups", action: "send_invites" do %>
   <%= label_tag :emails_label, "Emails" %>
   <%= text_area_tag :emails, "", size: "24x6" %>
-  <% if @group.invitations_count == 0 %>
+  <% if @group.fresh? %>
     <%= submit_tag "Create Group" %>
   <% else %>
     <%= submit_tag "Invite" %>

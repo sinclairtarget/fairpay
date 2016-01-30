@@ -35,4 +35,14 @@ class GroupTest < ActiveSupport::TestCase
     assert_includes @group.titles, "Engineer"
     assert_includes @group.titles, "Office Manager"
   end
+
+  test "group with 1 invitation or fewer is fresh?" do
+    assert @group.fresh?
+  end
+
+  test "group with more than 1 invitation is not fresh?" do
+    group = Group.new(name: "Populated Group")
+    group.invitations_count = 20
+    refute group.fresh?
+  end
 end
