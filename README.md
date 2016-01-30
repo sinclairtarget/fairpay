@@ -1,4 +1,4 @@
-# fairpay
+# PaySymmetry
 A secret project.
 
 ## Running Locally
