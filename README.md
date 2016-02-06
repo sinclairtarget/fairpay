@@ -33,4 +33,4 @@ The file sets environment variables that the app needs to run.
 2. Run `rake assets:precompile` to precompile all static assets.
 3. Start the server with:
 
-       $ RAILS_ENV=production bundle exec rails server 
+        $ RAILS_ENV=production bundle exec rails server 
