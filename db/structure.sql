@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.10, for osx10.10 (x86_64)
 --
--- Host: localhost    Database: fairpay_development
+-- Host: localhost    Database: paysymmetry_development
 -- ------------------------------------------------------
 -- Server version	5.7.10
 
@@ -98,7 +98,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-30 15:35:52
+-- Dump completed on 2016-02-04 19:44:22
 INSERT INTO schema_migrations (version) VALUES ('20160112030644');
 
 INSERT INTO schema_migrations (version) VALUES ('20160117154300');
