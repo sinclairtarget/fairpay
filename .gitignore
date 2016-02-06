@@ -15,3 +15,5 @@
 notes.txt
 server.sh
 .rbenv-vars
+
+public/assets/*
