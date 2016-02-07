@@ -17,3 +17,8 @@ server.sh
 .rbenv-vars
 
 public/assets/*
+
+/shared/*/*
+!/shared/log/.keep
+!/shared/pids/.keep
+!/shared/sockets/.keep
