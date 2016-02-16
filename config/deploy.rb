@@ -33,7 +33,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log',
                                                'tmp/cache', 
                                                'tmp/sockets',
                                                'vendor/bundle',
-                                               'public/system')
+                                               'public/system',
+                                               'shared')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -42,6 +43,9 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log',
 # set :keep_releases, 5
 
 set :rbenv_ruby, File.read('.ruby-version').strip
+set :unicorn_config_path, "config/unicorn.rb"
+
+before 'deploy:starting', 'config:upload'
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
