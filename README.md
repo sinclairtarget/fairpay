@@ -34,3 +34,13 @@ The file sets environment variables that the app needs to run.
 3. Start the server with:
 
         $ RAILS_ENV=production bundle exec rails server 
+
+## Deployment
+Again, you will need to have a `.rbenv-vars` file in the root folder. During deployment
+the file will get copied up to the production server(s).
+
+You will also need the SSH access to the production server(s).
+
+```
+$ bundle exec cap production deploy
+```
