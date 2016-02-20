@@ -1,6 +1,5 @@
 class GroupsController < ApplicationController
   skip_before_action :authorize, only: [:join]
-  skip_before_action :verification_check, only: [:join]
 
   def index
   end
