@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
     group = Group.new(name: params[:group_name])
     group.save!
 
-    add_user group.id
+    onboard_user_to_group group.id
   end
 
   def destroy
@@ -48,11 +48,11 @@ class GroupsController < ApplicationController
   end
 
   def join
-    add_user params[:id]
+    onboard_user_to_group params[:id]
   end
 
   protected
-  def add_user(group_id)
+  def onboard_user_to_group(group_id)
     session[:group_to_join_id] = group_id
     redirect_to new_salary_path
   end
