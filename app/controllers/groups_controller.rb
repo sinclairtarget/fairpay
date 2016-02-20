@@ -33,15 +33,18 @@ class GroupsController < ApplicationController
     if params[:emails]
       emails = params[:emails].split(',').map { |email| email.strip }
 
-      @group.invitations_count += emails.count
-      @group.save!
+      if emails.count > 0
+        @group.invitations_count += emails.count
+        @group.save!
 
-      UserMailer.invite_email(@group, emails).deliver_later
+        UserMailer.invite_email(@group, emails).deliver_later
 
-      notice = "#{emails.count} invitations sent. #{@group.invitations_count}" +
-        " people have now been invited to this group."
-      redirect_to group_path(@group), notice: notice
+        notice = "#{emails.count} invitations sent. #{@group.invitations_count}" +
+          " people have now been invited to this group."
+      end
     end
+
+    redirect_to group_path(@group), notice: notice
   end
 
   def join
