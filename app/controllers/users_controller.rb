@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
     user = User.new(email: @email,
                     password: password,
-                    password_confirmation: password_confirm)
+                    password_confirmation: password_confirm,
+                    verification_code: random_verification_code)
     
     begin
       if user.save
@@ -36,6 +37,11 @@ class UsersController < ApplicationController
   end
 
   def resend_verification
+    unless @user.verification_code
+      @user.verification_code = random_verification_code 
+      @user.save!
+    end
+
     send_verification_email_to @user
 
     notice = "Email sent. Please be sure to check your spam folder."
@@ -54,10 +60,11 @@ class UsersController < ApplicationController
   end
 
   protected
+  def random_verification_code
+    SecureRandom.hex(12)
+  end
+
   def send_verification_email_to(user)
-    str = SecureRandom.hex(12)
-    user.verification_code = str
-    user.save!
     UserMailer.verification_email(user).deliver_later
   end
 end
