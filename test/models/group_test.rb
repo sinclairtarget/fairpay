@@ -36,16 +36,18 @@ class GroupTest < ActiveSupport::TestCase
     assert_includes @group.titles, "Office Manager"
   end
 
-  test "group with 0 invitations is fresh?" do
-    assert @group.fresh?
+  test "group with 0 users is empty?" do
+    assert @group.empty?
   end
 
-  test "group with at least 1 invitation is not fresh?" do
-    group = Group.new(name: "Not Fresh Group")
-    group.invitations_count = 1
-    refute group.fresh?
+  test "group with at least 1 user is not empty?" do
+    s = Salary.new(title: "Engineer", annual_pay: 110000)
 
-    group.invitations_count = 20
-    refute group.fresh?
+    s.user = @user
+    s.group = @group
+
+    s.save!
+
+    refute @group.empty?
   end
 end

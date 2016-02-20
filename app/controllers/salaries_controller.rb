@@ -4,7 +4,7 @@ class SalariesController < ApplicationController
 
   def create
     @group = Group.find(session[:group_to_join_id])
-    session[:group_to_join_id] = nil
+    was_empty = @group.empty?
 
     salary = Salary.new(title: params[:title],
                         annual_pay: params[:salary][:annual_pay],
@@ -12,7 +12,9 @@ class SalariesController < ApplicationController
                         group_id: @group.id)
     salary.save!
 
-    if @group.fresh?
+    session[:group_to_join_id] = nil
+
+    if was_empty
       redirect_to invite_group_path(@group)
     else
       redirect_to group_path(@group)

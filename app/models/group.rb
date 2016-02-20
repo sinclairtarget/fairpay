@@ -7,7 +7,7 @@ class Group < ActiveRecord::Base
     Salary.where(group_id: id).distinct.pluck(:title)
   end
 
-  def fresh?
-    invitations_count <= 0
+  def empty?
+    users.count == 0
   end
 end
