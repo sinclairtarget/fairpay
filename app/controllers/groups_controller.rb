@@ -18,9 +18,6 @@ class GroupsController < ApplicationController
     onboard_user_to_group group.id
   end
 
-  def destroy
-  end
-
   # invitations
   def invite
     @group = Group.find(params[:id])
