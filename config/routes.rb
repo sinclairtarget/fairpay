@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "welcome#welcome"
+  root "groups#index"
+
   resources :groups, except: [:edit, :update] do
     member do
       get 'invite'
