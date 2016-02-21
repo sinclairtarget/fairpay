@@ -1,25 +1,32 @@
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Salary</th>
-  </tr>
-  <% @group.salaries.each do |salary| %>
+<% if @group.salaries.count <= 2 %>
+  <p>Salaries will not be displayed until there are at least 3 members
+    in this group.</p>
+<% else %>
+  <table>
     <tr>
-      <td><%= salary.title %></td>
-      <td><%= salary.annual_pay %></td>
+      <th>Title</th>
+      <th>Salary</th>
     </tr>
-  <% end %>
-</table>
-<hr/>
-<div>
-  <p>Average Salary: <%= @group.average_annual_pay %></p>
-  <p>Median Salary: <%= @group.median_annual_pay %></p>
-</div>
+    <% @group.salaries.each do |salary| %>
+      <tr>
+        <td><%= salary.title %></td>
+        <td><%= number_to_currency(salary.annual_pay) %></td>
+      </tr>
+    <% end %>
+  </table>
+  <hr/>
+  <div>
+    <p>Average Salary: <%= number_to_currency(@group.average_annual_pay) %></p>
+    <p>Median Salary: <%= number_to_currency(@group.median_annual_pay) %></p>
+  </div>
 
-<div>
-  <p>Average <%= @title %> Salary: <%= @group.average_annual_pay(title: @title) %></p>
-  <p>Median <%= @title %> Salary: <%= @group.median_annual_pay(title: @title) %></p>
-</div>
+  <% title_avg = @group.average_annual_pay(title: @title) %>
+  <% med_avg = @group.median_annual_pay(title: @title) %>
+  <div>
+    <p>Average <%= @title %> Salary: <%= number_to_currency(title_avg) %></p>
+    <p>Median <%= @title %> Salary: <%= number_to_currency(med_avg) %></p>
+  </div>
+<% end %>
 <hr/>
 <div>
   <%= link_to "Invite", invite_group_path(@group) %>
