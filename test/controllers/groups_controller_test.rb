@@ -7,6 +7,11 @@ class GroupsControllerTest < ActionController::TestCase
     @session = { user_id: @user.id }
 
     @group = Group.find_by(name: 'Test Group')
+
+    @salary = Salary.new(title: 'Engineer', annual_pay: 110000)
+    @salary.user = @user
+    @salary.group = @group
+    @salary.save!
   end
 
   test "can get index" do
@@ -17,6 +22,8 @@ class GroupsControllerTest < ActionController::TestCase
   test "can get show" do
     get :show, { id: @group.id }, @session
     assert_response :success
+
+    assert_equal "Engineer", assigns(:title)
   end
 
   test "can get new" do 
