@@ -46,6 +46,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log',
 
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :unicorn_config_path, "config/unicorn.rb"
+set :unicorn_pid, "#{fetch :deploy_to}/shared/shared/pids/unicorn.pid"
 
 before 'deploy:starting', 'config:upload'
 
