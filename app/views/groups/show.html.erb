@@ -6,19 +6,21 @@
   <% @group.salaries.each do |salary| %>
     <tr>
       <td><%= salary.title %></td>
-      <td><%= salary.annual_pay %></td>
+      <td><%= number_to_currency(salary.annual_pay) %></td>
     </tr>
   <% end %>
 </table>
 <hr/>
 <div>
-  <p>Average Salary: <%= @group.average_annual_pay %></p>
-  <p>Median Salary: <%= @group.median_annual_pay %></p>
+  <p>Average Salary: <%= number_to_currency(@group.average_annual_pay) %></p>
+  <p>Median Salary: <%= number_to_currency(@group.median_annual_pay) %></p>
 </div>
 
+<% title_avg = @group.average_annual_pay(title: @title) %>
+<% med_avg = @group.median_annual_pay(title: @title) %>
 <div>
-  <p>Average <%= @title %> Salary: <%= @group.average_annual_pay(title: @title) %></p>
-  <p>Median <%= @title %> Salary: <%= @group.median_annual_pay(title: @title) %></p>
+  <p>Average <%= @title %> Salary: <%= number_to_currency(title_avg) %></p>
+  <p>Median <%= @title %> Salary: <%= number_to_currency(med_avg) %></p>
 </div>
 <hr/>
 <div>
