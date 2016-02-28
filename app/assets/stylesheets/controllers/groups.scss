@@ -4,18 +4,31 @@
     padding: 20px 0px;
 
     .group-listing {
-        .group-listing-header {
-            border-bottom: 1px solid $p-dark-navy;
+        padding: 10px;
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0px;
         }
 
         &:hover {
             background-color: $p-light-gray;
+        }
+
+        .group-listing-header {
+            padding-bottom: 4px;
+            border-bottom: 1px solid $p-dark-navy;
+        }
+
+        .group-listing-body {
+            padding: 5px;
         }
     }
 }
 
 table {
     td {
-        padding: 5px;
+        padding-right: 20px;
+        padding-bottom: 2px;
     }
 }
