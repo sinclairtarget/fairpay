@@ -15,7 +15,7 @@
         font-size: 1.65em;
         height: $nav-bar-height; 
         text-transform: uppercase;
-        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: $header-font-family;
         font-weight: 700;
     }
 
@@ -38,9 +38,12 @@
 }
 
 .btn-default {
+    color: white;
     background-color: $p-gray;
+    padding: 8px;
 
     &:hover {
+        color: white;
         background-color: $p-navy;
     }
 }
