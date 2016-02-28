@@ -31,3 +31,16 @@
         }
     }
 }
+
+.btn {
+    border: none;
+    border-radius: 0px;
+}
+
+.btn-default {
+    background-color: $p-gray;
+
+    &:hover {
+        background-color: $p-navy;
+    }
+}
