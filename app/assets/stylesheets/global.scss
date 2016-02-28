@@ -6,7 +6,7 @@ body {
 }
 
 #page-container {
-    padding: 50px 40px;
+    padding: 40px;
 
     .main-panel {
         background-color: white;
@@ -23,17 +23,27 @@ body {
 
 // fonts
 h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+
+h1, h2, h3, h4 {
     font-family: $header-font-family;
     letter-spacing: -1px;
-    margin: 0px;
+    color: $p-dark-navy;
 }
 
 h1, h2 {
     font-weight: 700;
 }
 
-a, p, td {
+a, p, td, h5, h6 {
     font-family: $body-font-family;
+    font-size: $font-size;
+    color: $p-dark-navy;
+}
+
+h5, h6 {
+    font-weight: 700;
 }
 
 //a {

@@ -5,12 +5,12 @@
   <div class="group-listing-body">
     <table>
       <tr>
-        <td>Your Title</td>
+        <td><h5>Your Title:</h5></td>
         <td><%= salary.title %></td>
       </tr>
       <tr>
-        <td>Your Salary</td>
-        <td><%= salary.annual_pay %></td>
+        <td><h5>Your Salary:</h5></td>
+        <td><%= number_to_currency(salary.annual_pay) %></td>
       </tr>
     </table>
   </div>
