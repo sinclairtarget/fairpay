@@ -13,27 +13,16 @@ h3 {
 #page-container {
     padding: 50px 40px;
 
-    .main-bar {
+    .main-panel {
         background-color: white;
+        padding: 20px;
     }
 
-    .left-bar {
-        padding-left: $outside-bar-padding;
-    }
-
-    .right-bar {
-        padding-right: $outside-bar-padding;
-    }
-
-    .left-bar, .right-bar {
+    .sidebar {
         .btn {
             display: block;
             margin-bottom: 16px;
         }
-    }
-
-    .main-bar {
-        padding: 20px;
     }
 
     a, p {
