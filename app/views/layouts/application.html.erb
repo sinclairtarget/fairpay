@@ -8,12 +8,35 @@
       'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
+    <!-- custom fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" 
+          rel="stylesheet" 
+          type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" 
+          rel="stylesheet" 
+          type="text/css">
   </head>
   <body>
     <%= render "partials/nav_bar" %> 
-    <div id="main-container" class="container-fluid">
-      <%= render "partials/flash_messages" %>
-      <%= yield %>
-    </div>
+
+    <div id="page-container" class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2 left-bar">
+          <%= yield :left_bar %>
+        </div>
+
+        <div class="col-sm-8 main-bar">
+          <%= render "partials/flash_messages" %>
+          <%= yield %>
+        </div>
+
+        <div class="col-sm-2 right-bar">
+          <%= yield :right_bar %>
+        </div>
+
+      </div> <!-- .row -->
+    </div> <!-- .container-fluid -->
+
   </body>
 </html>
