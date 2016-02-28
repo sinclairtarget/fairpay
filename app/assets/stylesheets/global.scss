@@ -24,11 +24,28 @@ body {
 // fonts
 h1, h2, h3, h4, h5, h6 {
     font-family: $header-font-family;
-    font-weight: 700;
     letter-spacing: -1px;
     margin: 0px;
 }
 
-a, p {
+h1, h2 {
+    font-weight: 700;
+}
+
+a, p, td {
     font-family: $body-font-family;
 }
+
+//a {
+//    color: $p-navy;
+//
+//    &:hover {
+//        color: $p-dark-navy;
+//        text-decoration: none;
+//    }
+//
+//    &:visited {
+//        color: $p-navy;
+//        text-decoration: none;
+//    }
+//}

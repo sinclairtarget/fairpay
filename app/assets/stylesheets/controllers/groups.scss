@@ -1,6 +1,17 @@
+@import "partials/constants";
+
 #groups-list {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding: 20px 0px;
+
+    .group-listing {
+        .group-listing-header {
+            border-bottom: 1px solid $p-dark-navy;
+        }
+
+        &:hover {
+            background-color: $p-light-gray;
+        }
+    }
 }
 
 table {
