@@ -15,5 +15,4 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "framework_overrides";
-@import "global";
+@import "global/*";
