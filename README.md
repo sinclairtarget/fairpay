@@ -1,5 +1,5 @@
 # PaySymmetry
-A secret project.
+Web app portion of [paysymmetry.com](http://paysymmetry.com).
 
 ## Running Locally
 1. Make sure you have `gem` installed. `gem` is a package manager for Ruby. If it's not already on your computer,
