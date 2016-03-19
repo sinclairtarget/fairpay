@@ -1,8 +1,8 @@
 @import "partials/constants";
 
 .navbar-default {
-    border-bottom: none;
-    background-color: $p-dark-navy;
+    border-bottom: solid 1px $p-color-medium;
+    background-color: $p-color-lightest;
 
     .container-fluid {
         margin-left: 130px;
@@ -11,7 +11,7 @@
 
     .navbar-brand {
         padding-top: 30px;
-        color: white;
+        color: $p-color-onlight;
         font-size: 1.65em;
         height: $nav-bar-height; 
         text-transform: uppercase;
@@ -23,7 +23,7 @@
         .dropdown-toggle {
             padding-top: 30px;
             height: $nav-bar-height;
-            color: white;
+            color: $p-color-onlight;
 
             .caret {
                 margin-left: 4px;
@@ -38,12 +38,12 @@
 }
 
 .btn-default {
-    color: white;
-    background-color: $p-gray;
+    color: $p-color-ondark;
+    background-color: $p-color-dark;
     padding: 8px;
 
     &:hover {
-        color: white;
-        background-color: $p-navy;
+        color: $p-color-onlight;
+        background-color: $p-color-medium;
     }
 }

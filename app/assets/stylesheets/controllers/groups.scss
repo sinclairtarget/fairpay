@@ -12,12 +12,12 @@
         }
 
         &:hover {
-            background-color: $p-light-gray;
+            background-color: $p-color-light;
         }
 
         .group-listing-header {
             padding-bottom: 4px;
-            border-bottom: 1px solid $p-dark-navy;
+            border-bottom: 1px solid $p-color-darkest;
         }
 
         .group-listing-body {

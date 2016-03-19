@@ -2,24 +2,27 @@
 
 body {
     padding-top: $nav-bar-height;
-    background-color: $p-green;
+    background-color: $p-color-green;
 }
 
 #page-container {
     padding: 40px;
 
     .main-panel {
-        background-color: $p-light-gray;
+        background-color: $p-color-light;
+        border: 1px solid $p-color-medium;
 
         .main-content {
             padding: 20px;
-            background-color: white;
+            background-color: $p-color-lightest;
+            border-left: 1px solid $p-color-medium;
         }
     }
 }
 
 .sidebar {
     padding: 20px;
+
     .btn {
         display: block;
         margin-bottom: 16px;
@@ -33,7 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3, h4 {
     font-family: $header-font-family;
-    color: $p-dark-navy;
+    color: $p-color-onlight;
 }
 
 h1, h2 {
@@ -43,7 +46,7 @@ h1, h2 {
 a, p, td, h5, h6 {
     font-family: $body-font-family;
     font-size: $font-size;
-    color: $p-dark-navy;
+    color: $p-color-onlight;
 }
 
 h5, h6 {
