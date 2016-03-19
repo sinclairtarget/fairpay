@@ -10,7 +10,7 @@ you can get it [here](https://rubygems.org/pages/download). An alternative is to
 3. Run `bundle install` in the root folder of the project. This will install all the gems the project depends on.
 4. Ensure that you've installed MySQL and have the daemon process running. Then enter:
         
-        $ rake db:create db:migrate
+        $ rake db:setup
 This will set up a local database for the app to use.
 
 5. To start the server, run:
