@@ -1,7 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to("PaySymmetry", root_path, class: "navbar-brand") %>
+      <%= link_to("PaySymmetry", ApplicationHelper::LANDING_URL, 
+                  class: "navbar-brand") %>
     </div>
     <% if @user.present? %>
       <div class="collapse navbar-collapse">
