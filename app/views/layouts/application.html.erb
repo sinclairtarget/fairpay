@@ -20,32 +20,44 @@
 
     <div id="page-container" class="container-fluid">
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-1">
         </div>
 
         <!-- Main Panel -->
-        <div class="col-sm-8 main-panel">
+        <div class="col-sm-10 main-panel">
           <!-- Messages -->
-          <div class="row">
-            <div class="col-sm-12">
-              <%= render "partials/flash_messages" %>
-            </div>
-          </div>
 
           <div class="row">
-            <!-- Main Content -->
-            <div class="col-sm-9">
-              <%= yield %>
-            </div>
+            <% if content_for?(:sidebar) %>
+              <!-- Sidebar -->
+              <div class="col-sm-3 sidebar">
+                <%= yield :sidebar %>
+              </div>
 
-            <!-- Sidebar -->
-            <div class="col-sm-3 sidebar">
-              <%= yield :sidebar %>
-            </div>
+              <!-- Main Content -->
+              <div class="col-sm-9 main-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <%= render "partials/flash_messages" %>
+                  </div>
+                </div>
+                <%= yield %>
+              </div>
+            <% else %>
+              <!-- Main Content -->
+              <div class="col-sm-12 main-content">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <%= render "partials/flash_messages" %>
+                  </div>
+                </div>
+                <%= yield %>
+              </div>
+            <% end %>
           </div>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-1">
         </div>
       </div> <!-- .row -->
     </div> <!-- .container-fluid -->

@@ -9,15 +9,20 @@ body {
     padding: 40px;
 
     .main-panel {
-        background-color: white;
-        padding: 24px;
-    }
+        background-color: $p-light-gray;
 
-    .sidebar {
-        .btn {
-            display: block;
-            margin-bottom: 16px;
+        .main-content {
+            padding: 20px;
+            background-color: white;
         }
+    }
+}
+
+.sidebar {
+    padding: 20px;
+    .btn {
+        display: block;
+        margin-bottom: 16px;
     }
 }
 
