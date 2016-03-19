@@ -1,6 +1,6 @@
-<% if @group.salaries.count <= 2 %>
-  <p>Salaries will not be displayed until there are at least 3 members
-    in this group.</p>
+<% if @group.salaries.count < ApplicationHelper::MIN_GROUP_MEMBERS %>
+  <p>Salaries will not be displayed until there are at least
+  <%= ApplicationHelper::MIN_GROUP_MEMBERS %> members in this group.</p>
 <% else %>
   <table>
     <tr>
@@ -10,7 +10,7 @@
     <% @group.salaries.each do |salary| %>
       <tr>
         <td><%= salary.title %></td>
-        <td><%= number_to_currency(salary.annual_pay) %></td>
+        <td><%= fudged_salary(salary, 1) %></td>
       </tr>
     <% end %>
   </table>
