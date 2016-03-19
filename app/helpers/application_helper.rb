@@ -7,7 +7,8 @@ module ApplicationHelper
   def fudged_salary(salary, members)
     return number_to_currency(salary.annual_pay) if members > 3
 
-    min, max = Util.fudge(salary.annual_pay, members)
+    salt = salary.updated_at.to_i
+    min, max = Util.fudge(salary.annual_pay, members, salt)
     number_to_currency(min) + " – " + number_to_currency(max)
   end
 end
