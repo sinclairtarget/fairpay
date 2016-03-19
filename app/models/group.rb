@@ -32,6 +32,10 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def title_count(title)
+    salaries_with_title(title).count
+  end
+
   protected
   def salaries_with_title(title = nil)
     if title

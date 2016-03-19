@@ -103,6 +103,13 @@ class GroupTest < ActiveSupport::TestCase
     assert_equal expected_median, median
   end
 
+  test "title count returns correct count" do
+    populate_with_salaries
+
+    expected_count = 2
+    assert_equal expected_count, @group.title_count("Engineer")
+  end
+
   private
   def populate_with_salaries
     s = Salary.new(title: "Engineer", annual_pay: 100000)
