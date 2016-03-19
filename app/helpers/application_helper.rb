@@ -1,6 +1,7 @@
 require_relative "../../lib/util/util.rb"
 
 module ApplicationHelper
+  LANDING_URL = "http://paysymmetry.com".freeze
   MIN_GROUP_MEMBERS = 3
 
   def fudged_salary(salary, members)
