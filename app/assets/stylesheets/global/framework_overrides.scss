@@ -9,21 +9,27 @@
         margin-right: 130px;
     }
 
-    .navbar-brand {
-        padding-top: 30px;
-        color: $p-color-onlight;
-        font-size: 1.65em;
-        height: $nav-bar-height; 
-        text-transform: uppercase;
-        font-family: $header-font-family;
-        font-weight: 700;
+    .navbar-header {
+        text-align: center;
+
+        .navbar-brand {
+            padding: 0px;
+            color: $p-color-onlight;
+            font-size: 1.65em;
+            height: $nav-bar-height; 
+            line-height: $nav-bar-height;
+            text-transform: uppercase;
+            font-family: $header-font-family;
+            font-weight: 700;
+        }
     }
 
     .nav {
         .dropdown-toggle {
-            padding-top: 30px;
-            height: $nav-bar-height;
             color: $p-color-onlight;
+            padding: 0px;
+            height: $nav-bar-height;
+            line-height: $nav-bar-height;
 
             .caret {
                 margin-left: 4px;
