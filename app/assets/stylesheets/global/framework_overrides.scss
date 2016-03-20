@@ -25,11 +25,44 @@
     }
 
     .nav {
+        height: $nav-bar-height;
+
+        li {
+            height: 100%;
+            text-align: center;
+            padding: 0px 12px;
+
+            u {
+                border-bottom: 3px hidden white;
+                text-decoration: none;
+
+                &:hover a {
+                    color: $p-color-highlight;
+                }
+            }
+
+            u.underline {
+                border-bottom: 3px solid $p-color-onlight;
+
+                &:hover {
+                    border-bottom: 3px solid $p-color-highlight;
+
+                    a {
+                        color: $p-color-highlight;
+                    }
+                }
+            }
+
+            a {
+                line-height: $nav-bar-height;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                color: $p-color-onlight;
+            }
+        }
+
         .dropdown-toggle {
             color: $p-color-onlight;
-            padding: 0px;
-            height: $nav-bar-height;
-            line-height: $nav-bar-height;
 
             .caret {
                 margin-left: 4px;
@@ -38,6 +71,7 @@
     }
 
     a {
+        color: $p-color-onlight;
         text-decoration: none;
     }
 }
