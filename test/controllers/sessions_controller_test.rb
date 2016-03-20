@@ -5,14 +5,14 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "can login" do
-    post :create, { email: 'tester@gmail.com', password: 'p@sswrd123' }
+    post :create, { email: "anne@test.com", password: "p@sswrd" }
 
     assert_response :redirect
     assert_redirected_to groups_path
   end
 
   test "can fail login" do
-    post :create, { email: 'foo@gmail.com', password: 'foo' }
+    post :create, { email: "foo@test.com", password: "p@sswrd" }
 
     assert_response :redirect
     assert_redirected_to login_path

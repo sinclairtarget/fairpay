@@ -1,6 +1,8 @@
 class UsersControllerTest < ActionController::TestCase
   setup do
-    @user = User.find_by(email: 'tester@gmail.com')
+    @user = User.create(email: "tester@test.com",
+                        password: "p@sswrd",
+                        verification_code: "12345abc")
     @session = { user_id: @user.id }
   end
 
@@ -10,12 +12,12 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "can create user and send verification email" do
-    email_address = 'new@gmail.com'
+    email_address = "new@gmail.com"
 
-    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+    assert_difference "ActionMailer::Base.deliveries.size", 1 do
       post :create, { email: email_address, 
-                      password: 'p@sswrd123',
-                      password_confirm: 'p@sswrd123' }
+                      password: "p@sswrd",
+                      password_confirm: "p@sswrd" }
     end
 
     assert_response :redirect
@@ -35,8 +37,8 @@ class UsersControllerTest < ActionController::TestCase
 
   test "redirects on duplicate user" do
     post :create, { email: @user.email,
-                    password: 'p@sswrd123',
-                    password_confirm: 'p@sswrd123' }
+                    password: "p@sswrd",
+                    password_confirm: "p@sswrd" }
 
     assert_response :redirect
     assert_redirected_to new_user_path
@@ -45,8 +47,8 @@ class UsersControllerTest < ActionController::TestCase
 
   test "redirects on misentered password" do
     post :create, { email: @user.email,
-                    password: 'p@sswrd123',
-                    password_confirm: 'no_match' }
+                    password: "p@sswrd",
+                    password_confirm: "no_match" }
 
     assert_response :redirect
     assert_redirected_to new_user_path
@@ -59,7 +61,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "resends user verification email" do
-    assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+    assert_difference "ActionMailer::Base.deliveries.size", 1 do
       get :resend_verification, { id: @user.id }, @session
     end
     

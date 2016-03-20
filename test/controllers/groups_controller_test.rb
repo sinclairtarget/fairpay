@@ -1,17 +1,17 @@
 class GroupsControllerTest < ActionController::TestCase
   setup do
-    @user = User.find_by(email: 'tester@gmail.com')
-    @user.verified = true
-    @user.save!
+    @user = User.create(email: "tester@test.com",
+                        password: "p@sswrd",
+                        verified: true)
 
     @session = { user_id: @user.id }
 
-    @group = Group.find_by(name: 'Test Group')
+    @group = Group.find_by(name: "Existing")
 
-    @salary = Salary.new(title: 'Engineer', annual_pay: 110000)
-    @salary.user = @user
-    @salary.group = @group
-    @salary.save!
+    @salary = Salary.create(user: @user,
+                            group: @group,
+                            title: "Engineer", 
+                            annual_pay: 110000)
   end
 
   test "can get index" do
