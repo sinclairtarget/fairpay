@@ -41,3 +41,9 @@ table {
     border-top: 1px solid $p-color-medium;
     border-bottom: 1px solid $p-color-medium;
 }
+
+.sidebar {
+    .btn {
+        margin-top: 14px;
+    }
+}
