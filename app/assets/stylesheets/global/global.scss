@@ -49,20 +49,14 @@ a, p, td, h5, h6 {
     color: $p-color-onlight;
 }
 
+a {
+    text-decoration: underline;
+
+    &:hover {
+        color: $p-color-highlight;
+    }
+}
+
 h5, h6 {
     font-weight: 700;
 }
-
-//a {
-//    color: $p-navy;
-//
-//    &:hover {
-//        color: $p-dark-navy;
-//        text-decoration: none;
-//    }
-//
-//    &:visited {
-//        color: $p-navy;
-//        text-decoration: none;
-//    }
-//}

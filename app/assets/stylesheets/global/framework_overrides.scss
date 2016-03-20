@@ -36,11 +36,16 @@
             }
         }
     }
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .btn {
     border: none;
     border-radius: 0px;
+    text-decoration: none;
 }
 
 .btn-default {
