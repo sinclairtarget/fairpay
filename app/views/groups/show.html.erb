@@ -2,18 +2,23 @@
   <p>Salaries will not be displayed until there are at least
   <%= ApplicationHelper::MIN_GROUP_MEMBERS %> members in this group.</p>
 <% else %>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Salary</th>
-    </tr>
-    <% @group.salaries.each do |salary| %>
+  <div class="group-header">
+    <h2><%= @group.name %></h2>
+  </div>
+  <div class="spaced">
+    <table>
       <tr>
-        <td><%= salary.title %></td>
-        <td><%= fudged_salary(salary, @group.title_count(salary.title)) %></td>
+        <th>Title</th>
+        <th>Salary</th>
       </tr>
-    <% end %>
-  </table>
+      <% @group.salaries.each do |salary| %>
+        <tr>
+          <td><%= salary.title %></td>
+          <td><%= fudged_salary(salary, @group.title_count(salary.title)) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
   <hr/>
   <div>
     <p>Average Salary: <%= number_to_currency(@group.average_annual_pay) %></p>

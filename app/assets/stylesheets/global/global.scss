@@ -37,24 +37,24 @@ body {
     .btn {
         display: block;
     }
+}
 
-    .spaced {
-        margin-top: 14px;
-    }
+.spaced {
+    margin-top: 14px;
+}
 
-    .double-spaced {
-        margin-top: 28px;
-    }
+.double-spaced {
+    margin-top: 28px;
+}
 
-    .half-spaced {
-        margin-top: 7px;
-    }
+.half-spaced {
+    margin-top: 7px;
+}
 
-    .delimited {
-        padding: 14px 0px;
-        border-top: 1px solid $p-color-medium;
-        border-bottom: 1px solid $p-color-medium;
-    }
+.delimited {
+    padding: 14px 0px;
+    border-top: 1px solid $p-color-medium;
+    border-bottom: 1px solid $p-color-medium;
 }
 
 // fonts
