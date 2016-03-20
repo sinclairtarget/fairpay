@@ -21,15 +21,15 @@
   </div>
   <hr/>
   <div>
-    <p>Average Salary: <%= number_to_currency(@group.average_annual_pay) %></p>
-    <p>Median Salary: <%= number_to_currency(@group.median_annual_pay) %></p>
+    <p>Average Salary: <%= dollar(@group.average_annual_pay) %></p>
+    <p>Median Salary: <%= dollar(@group.median_annual_pay) %></p>
   </div>
 
   <% title_avg = @group.average_annual_pay(title: @title) %>
   <% med_avg = @group.median_annual_pay(title: @title) %>
   <div>
-    <p>Average <%= @salary.title %> Salary: <%= number_to_currency(title_avg) %></p>
-    <p>Median <%= @salary.title %> Salary: <%= number_to_currency(med_avg) %></p>
+    <p>Average <%= @salary.title %> Salary: <%= dollar(title_avg) %></p>
+    <p>Median <%= @salary.title %> Salary: <%= dollar(med_avg) %></p>
   </div>
 <% end %>
 <hr/>

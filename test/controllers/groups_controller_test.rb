@@ -22,8 +22,6 @@ class GroupsControllerTest < ActionController::TestCase
   test "can get show" do
     get :show, { id: @group.id }, @session
     assert_response :success
-
-    assert_equal "Engineer", assigns(:title)
   end
 
   test "can get new" do 
