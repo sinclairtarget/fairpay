@@ -11,9 +11,15 @@ body {
     .main-panel {
         background-color: $p-color-light;
         border: 1px solid $p-color-medium;
+        overflow: hidden;
 
         .main-content {
-            padding: 20px;
+            padding-bottom: 30000px;
+            margin-bottom: -29980px;
+
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
             background-color: $p-color-lightest;
             border-left: 1px solid $p-color-medium;
         }
@@ -21,7 +27,12 @@ body {
 }
 
 .sidebar {
-    padding: 20px;
+    padding-bottom: 30000px;
+    margin-bottom: -29980px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
 
     .btn {
         display: block;
