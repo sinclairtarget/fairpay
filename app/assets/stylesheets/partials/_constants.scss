@@ -1,14 +1,17 @@
 // layout
-$nav-bar-height: 86px;
+$nav-bar-height: 68px;
 $outside-bar-padding: 60px;
 
 // colors
-$p-dark-navy: #304251;
-$p-navy: #3e5363;
-$p-green: #25b275;
-$p-gray: #6a7483;
-$p-light-gray: #D1D1D1;
-$p-silver: #b8cee0;
+$p-color-green: #72996b;
+$p-color-lightest: white;
+$p-color-light: #f0f7f2;
+$p-color-medium: #bcbcbc;
+$p-color-dark: #8e8e8e;
+$p-color-darkest: #636363;
+$p-color-highlight: #d8822e;
+$p-color-onlight: $p-color-darkest;
+$p-color-ondark: $p-color-lightest;
 
 // fonts
 $header-font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;

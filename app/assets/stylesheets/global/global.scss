@@ -2,23 +2,59 @@
 
 body {
     padding-top: $nav-bar-height;
-    background-color: $p-green;
+    background-color: $p-color-green;
 }
 
 #page-container {
     padding: 40px;
 
     .main-panel {
-        background-color: white;
-        padding: 24px;
-    }
+        background-color: $p-color-light;
+        border: 1px solid $p-color-medium;
+        overflow: hidden;
 
-    .sidebar {
-        .btn {
-            display: block;
-            margin-bottom: 16px;
+        .main-content {
+            padding-bottom: 30000px;
+            margin-bottom: -29980px;
+
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            background-color: $p-color-lightest;
+            border-left: 1px solid $p-color-medium;
         }
     }
+}
+
+.sidebar {
+    padding-bottom: 30000px;
+    margin-bottom: -29980px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+
+    .btn {
+        display: block;
+    }
+}
+
+.spaced {
+    margin-top: 14px;
+}
+
+.double-spaced {
+    margin-top: 28px;
+}
+
+.half-spaced {
+    margin-top: 7px;
+}
+
+.delimited {
+    padding: 14px 0px;
+    border-top: 1px solid $p-color-medium;
+    border-bottom: 1px solid $p-color-medium;
 }
 
 // fonts
@@ -28,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3, h4 {
     font-family: $header-font-family;
-    color: $p-dark-navy;
+    color: $p-color-onlight;
 }
 
 h1, h2 {
@@ -38,23 +74,21 @@ h1, h2 {
 a, p, td, h5, h6 {
     font-family: $body-font-family;
     font-size: $font-size;
-    color: $p-dark-navy;
+    color: $p-color-onlight;
+}
+
+a {
+    text-decoration: underline;
+
+    &:hover {
+        color: $p-color-highlight;
+    }
 }
 
 h5, h6 {
     font-weight: 700;
 }
 
-//a {
-//    color: $p-navy;
-//
-//    &:hover {
-//        color: $p-dark-navy;
-//        text-decoration: none;
-//    }
-//
-//    &:visited {
-//        color: $p-navy;
-//        text-decoration: none;
-//    }
-//}
+.faded {
+    color: $p-color-dark;
+}

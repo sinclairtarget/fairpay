@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find(params[:id])
-    @title = @group.salaries.where(user_id: @user.id).first.title
+    @salary = @group.salaries.where(user_id: @user.id).first
   end
 
   def new

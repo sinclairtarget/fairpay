@@ -1,0 +1,40 @@
+<div>
+  <h3>You</h3>
+  <div class="delimited spaced">
+    <div>
+      <h5>Title</h5>
+      <p><%= @salary.title %></p>
+    </div>
+    <div>
+      <h5>Salary</h5>
+      <p><%= number_to_currency(@salary.annual_pay) %>
+    </div>
+    <div>
+      <h5>Last Bonus</h5>
+      <p>None</p>
+    </div>
+    <div>
+      <h5>Equity</h5>
+      <p>None</p>
+    </div>
+    <a href="">Edit</a>
+  </div>
+</div>
+<div class="double-spaced">
+  <h3>Your Groups</h3>
+  <div class="delimited spaced">
+    <% @user.groups.each do |group| %>
+      <% if group == @group %>
+        <div class="half-spaced">
+          <%= link_to group.name, group_url(group) %>
+        </div>
+      <% else %>
+        <div class="half-spaced">
+        <%= link_to group.name, group_url(group), class: ["faded"] %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= link_to "Invite New Members", new_group_path, 
+      class: ["btn", "btn-default", "double-spaced"] %>
