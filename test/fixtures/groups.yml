@@ -1,2 +1,5 @@
-test:
-    name: 'Test Group'
+empty:
+    name: "Empty"
+
+existing:
+    name: "Existing"

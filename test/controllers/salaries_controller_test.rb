@@ -1,17 +1,11 @@
 class SalariesControllerTest < ActionController::TestCase
   setup do
-    @user = User.find_by(email: 'tester@gmail.com')
-    @user.verified = true
-    @user.save!
+    @user = User.create(email: "tester@test.com",
+                        password: "p@sswrd",
+                        verified: true)
 
-    @group = Group.find_by(name: 'Test Group')
-
-    @create_params = {
-      title: "Engineer",
-      salary: { annual_pay: 110000 },
-      user_id: @user.id,
-      group_id: @group.id
-    }
+    @empty_group = Group.find_by(name: "Empty")
+    @existing_group = Group.find_by(name: "Existing")
   end
 
   test "can get new" do
@@ -20,37 +14,42 @@ class SalariesControllerTest < ActionController::TestCase
   end
 
   test "can create salary in empty group" do
-    salaries_count_before = @group.salaries.count
+    salaries_count_before = @empty_group.salaries.count
 
-    post :create, @create_params, 
-      { user_id: @user.id, group_to_join_id: @group.id }
+    create_params = {
+      title: "Engineer",
+      salary: { annual_pay: 110000 },
+      user_id: @user.id,
+      group_id: @empty_group.id
+    }
+
+    post :create, create_params, 
+      { user_id: @user.id, group_to_join_id: @empty_group.id }
 
     assert_response :redirect
-    assert_redirected_to invite_group_path(@group)
+    assert_redirected_to invite_group_path(@empty_group)
 
-    @group.reload
-    assert_equal salaries_count_before + 1, @group.salaries.count
+    @empty_group.reload
+    assert_equal salaries_count_before + 1, @empty_group.salaries.count
   end
 
   test "can create salary in non-empty group" do
-    some_user = User.new(email: "tester2@gmail.com", password: "p@sswrd123")
-    some_user.save!
+    salaries_count_before = @existing_group.salaries.count
 
-    existing_salary = Salary.new(title: "Engineer",
-                                 annual_pay: 140000,
-                                 user_id: some_user.id,
-                                 group_id: @group.id)
-    existing_salary.save!
+    create_params = {
+      title: "Engineer",
+      salary: { annual_pay: 110000 },
+      user_id: @user.id,
+      group_id: @existing_group.id
+    }
 
-    salaries_count_before = @group.salaries.count
-
-    post :create, @create_params, 
-      { user_id: @user.id, group_to_join_id: @group.id }
+    post :create, create_params, 
+      { user_id: @user.id, group_to_join_id: @existing_group.id }
 
     assert_response :redirect
-    assert_redirected_to group_path(@group)
+    assert_redirected_to group_path(@existing_group)
 
-    @group.reload
-    assert_equal salaries_count_before + 1, @group.salaries.count
+    @existing_group.reload
+    assert_equal salaries_count_before + 1, @existing_group.salaries.count
   end
 end
