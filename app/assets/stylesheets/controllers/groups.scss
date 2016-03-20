@@ -28,9 +28,15 @@
     }
 }
 
-table {
+#summary-table {
+    width: 100%;
+
+    th {
+        text-align: center;
+    }
+
     td {
-        padding-right: 20px;
-        padding-bottom: 2px;
+        text-align: center;
+        font-size: 56px;
     }
 }
