@@ -110,17 +110,29 @@ class GroupTest < ActiveSupport::TestCase
     assert_equal expected_count, @group.title_count("Engineer")
   end
 
+  test "rank_of returns correct rank" do
+    populate_with_salaries
+
+    salary = Salary.create(user: @user,
+                           group: @group,
+                           title: "Engineer", 
+                           annual_pay: 97000)
+
+    expected_rank = 2
+    assert_equal expected_rank, @group.rank_of(salary)
+  end
+
   private
   def populate_with_salaries
     s = Salary.new(title: "Engineer", annual_pay: 100000)
     s2 = Salary.new(title: "Engineer", annual_pay: 95000)
     s3 = Salary.new(title: "Office Manager", annual_pay: 65000)
 
-    s.user = @user
+    s.user = User.create(email: "user1@test.com", password: "p@sswrd")
     s.group = @group
-    s2.user = @user
+    s2.user = User.create(email: "user2@test.com", password: "p@sswrd")
     s2.group = @group
-    s3.user = @user
+    s3.user = User.create(email: "user3@test.com", password: "p@sswrd")
     s3.group = @group
 
     s.save!

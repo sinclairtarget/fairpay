@@ -36,6 +36,17 @@ class Group < ActiveRecord::Base
     salaries_with_title(title).count
   end
 
+  def rank_of(salary)
+    all = salaries_with_title(salary.title).order(:annual_pay)
+
+    rank = 0
+    all.each_with_index do |s, index|
+      rank = index + 1 if s == salary
+    end
+
+    rank
+  end
+
   protected
   def salaries_with_title(title = nil)
     if title
