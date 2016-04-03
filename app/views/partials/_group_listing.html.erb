@@ -1,6 +1,11 @@
 <div class="group-listing" data-id="<%= group.id %>">
   <div class="group-listing-header">
-    <h3><%= group.name %></h3>
+    <div class="group-listing-name">
+      <h3><%= group.name %></h3>
+    </div>
+    <div class="member-count">
+      <span class="glyphicon glyphicon-user"></span> <%= group.users.count %>
+    </div>
   </div>
   <div class="group-listing-body">
     <table>
