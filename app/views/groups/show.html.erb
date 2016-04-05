@@ -1,5 +1,5 @@
-<% title_avg = @group.average_annual_pay(title: @salary.title) %>
-<% med_avg = @group.median_annual_pay(title: @salary.title) %>
+<% title_avg = @salaries_by_title[@salary.title].average_annual_pay %>
+<% med_avg = @salaries_by_title[@salary.title].median_annual_pay %>
 
 <% if @group.salaries.count < ApplicationHelper::MIN_GROUP_MEMBERS %>
   <p>Salaries will not be displayed until there are at least
@@ -16,9 +16,9 @@
         <th>Your Rank</br>for Your Title</th>
       </tr>
       <tr>
-        <td><%= @group.title_count(@salary.title) %></td>
+        <td><%= @salaries_by_title[@salary.title].count %></td>
         <td><%= dollar(title_avg, short: true) %></td>
-        <td><%= @group.rank_of(@salary) %></td>
+        <td><%= @salaries_by_title[@salary.title].rank_of(@salary) %></td>
     </table>
   </div>
   <div class="spaced">
@@ -30,7 +30,7 @@
       <% @group.salaries.each do |salary| %>
         <tr>
           <td><%= salary.title %></td>
-          <td><%= fudged_salary(salary, @group.title_count(salary.title)) %></td>
+          <td><%= fudged_salary(salary, @salaries_by_title[salary.title].count) %></td>
         </tr>
       <% end %>
     </table>
