@@ -60,6 +60,11 @@ body {
 // fonts
 h1, h2, h3, h4, h5, h6 {
     margin: 0px;
+    font-weight: 700;
+}
+
+th {
+    font-weight: 700;
 }
 
 h1, h2, h3, h4 {
@@ -67,11 +72,7 @@ h1, h2, h3, h4 {
     color: $p-color-onlight;
 }
 
-h1, h2 {
-    font-weight: 700;
-}
-
-a, p, td, h5, h6 {
+a, p, td, th, h5, h6 {
     font-family: $body-font-family;
     font-size: $font-size;
     color: $p-color-onlight;
@@ -83,10 +84,6 @@ a {
     &:hover {
         color: $p-color-highlight;
     }
-}
-
-h5, h6 {
-    font-weight: 700;
 }
 
 .faded {
