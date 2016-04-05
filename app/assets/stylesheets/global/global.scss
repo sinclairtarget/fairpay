@@ -41,9 +41,11 @@ body {
 
 .spaced {
     margin-top: 14px;
+    min-height: 1px;
 }
 
 .double-spaced {
+    min-height: 1px;
     margin-top: 28px;
 }
 
@@ -88,4 +90,13 @@ a {
 
 .faded {
     color: $p-color-dark;
+}
+
+hr {
+    margin: 26px;
+    border-color: $p-color-medium;
+}
+
+.section-heading {
+    text-align: center;
 }
