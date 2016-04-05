@@ -10,6 +10,7 @@ class TitleGrouping
     end
 
     @salaries = salaries
+    @salaries = sorted_salaries(:annual_pay, desc: true)
   end
 
   def salaries
@@ -19,9 +20,9 @@ class TitleGrouping
   protected
   def sorted_salaries(key, desc = false)
     if desc
-      @salaries.sort(&key).reverse!
+      @salaries = sorted_salaries(key).reverse
     else
-      @salaries.sort(&key)
+      @salaries.sort { |a, b| a[key] <=> b[key] }
     end
   end
 end

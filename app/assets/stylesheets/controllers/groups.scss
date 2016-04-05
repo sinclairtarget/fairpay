@@ -55,3 +55,37 @@
         font-size: 56px;
     }
 }
+
+#salaries-table {
+    width: 100%;
+
+    th {
+        text-align: center;
+        padding: 6px 12px;
+        width: 50%;
+    }
+
+    tbody {
+        border: solid 2px $p-color-medium;
+    }
+
+    td:first-child {
+        border-right: solid 1px $p-color-medium;
+    }
+
+    td {
+        text-align: center;
+        padding: 4px 12px;
+        width: 50%;
+    }
+
+    tr.grouping-header {
+        background-color: $p-color-lightest;
+        border-top: solid 2px $p-color-dark;
+        border-bottom: solid 2px $p-color-dark;
+    }
+
+    tr.even {
+        background-color: $p-color-light;
+    }
+}
