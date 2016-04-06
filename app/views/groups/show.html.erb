@@ -6,7 +6,12 @@
   <%= ApplicationHelper::MIN_GROUP_MEMBERS %> members in this group.</p>
 <% else %>
   <div class="group-header">
-    <h2><%= @group.name %></h2>
+    <div class="inline">
+      <h2><%= @group.name %></h2>
+    </div>
+    <div class="inline member-count">
+      <span class="glyphicon glyphicon-user"></span> <%= @group.users.count %>
+    </div>
   </div>
   <div class="group-body">
     <div class="double-spaced">

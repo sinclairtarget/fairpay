@@ -22,17 +22,6 @@
             border-bottom: 1px solid $p-color-darkest;
         }
 
-        .group-listing-name {
-            display: inline-block;
-        }
-
-        .member-count {
-            display: inline-block;
-            float: right;
-            line-height: 2em;
-            color: $p-color-onlight;
-        }
-
         .group-listing-body {
             padding: 5px;
         }
@@ -41,6 +30,16 @@
     td {
         padding-right: 12px;
     }
+}
+
+.inline {
+    display: inline-block;
+}
+
+.member-count {
+    font-size: 18px;
+    float: right;
+    color: $p-color-onlight;
 }
 
 #summary-table {
