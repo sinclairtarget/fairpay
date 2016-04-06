@@ -42,6 +42,10 @@
     color: $p-color-onlight;
 }
 
+.group-body {
+    margin: 0px 12px;
+}
+
 #summary-table {
     width: 100%;
 
@@ -64,13 +68,13 @@
         width: 50%;
     }
 
-    tbody {
-        border: solid 2px $p-color-medium;
-    }
+//    tbody {
+//        border: solid 2px $p-color-medium;
+//    }
 
-    td:first-child {
-        border-right: solid 1px $p-color-medium;
-    }
+//    td:first-child {
+//        border-right: solid 1px $p-color-medium;
+//    }
 
     td {
         text-align: center;
@@ -82,6 +86,14 @@
         background-color: $p-color-lightest;
         border-top: solid 2px $p-color-dark;
         border-bottom: solid 2px $p-color-dark;
+
+        td {
+            text-align: left;
+        }
+
+        td:last-child {
+            text-align: right;
+        }
     }
 
     tr.even {

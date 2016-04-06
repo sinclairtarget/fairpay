@@ -40,7 +40,8 @@
           </tr>
         </thead>
         <tbody>
-        <% @salaries_by_title.each do |title, grouping| %>
+        <% @salaries_by_title.keys.sort.each do |title| %>
+          <% grouping = @salaries_by_title[title] %>
           <tr class="grouping-header">
             <td><%= title %></td>
             <td>Average: <%= dollar(grouping.average_annual_pay, short: true) %></td>
@@ -52,7 +53,7 @@
             <% else %>
             <tr>
             <% end %>
-              <td><%= i + 1 %></td>
+              <td><%= title %></td>
               <td><%= fudged_salary(salary, title_count) %></td>
             </tr>
           <% end %>
