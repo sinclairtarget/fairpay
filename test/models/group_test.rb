@@ -63,51 +63,12 @@ class GroupTest < ActiveSupport::TestCase
     assert_equal expected_avg, avg
   end
 
-  test "group has an accurate average for a title" do
-    populate_with_salaries
-
-    expected_avg = 97500
-    avg = @group.average_annual_pay(title: "Engineer")
-    assert_equal expected_avg, avg
-  end
-
-  test "average for title does not depend on casing" do
-    populate_with_salaries
-
-    expected_avg = 97500
-    avg = @group.average_annual_pay(title: "engineer")
-    assert_equal expected_avg, avg
-  end
-
   test "group has an accurate median overall" do
     populate_with_salaries
 
     expected_median = 95000
     median = @group.median_annual_pay
     assert_equal expected_median, median
-  end
-
-  test "group has an accurate median for a title" do
-    populate_with_salaries
-
-    expected_median = 97500
-    median = @group.median_annual_pay(title: "Engineer")
-    assert_equal expected_median, median
-  end
-
-  test "median for title does not depend on casing" do
-    populate_with_salaries
-
-    expected_median = 97500
-    median = @group.median_annual_pay(title: "engineer")
-    assert_equal expected_median, median
-  end
-
-  test "title count returns correct count" do
-    populate_with_salaries
-
-    expected_count = 2
-    assert_equal expected_count, @group.title_count("Engineer")
   end
 
   test "rank_of returns correct rank" do
@@ -120,6 +81,19 @@ class GroupTest < ActiveSupport::TestCase
 
     expected_rank = 2
     assert_equal expected_rank, @group.rank_of(salary)
+  end
+
+  test "salaries_by_title returns correct hash" do
+    populate_with_salaries
+
+    hash = @group.salaries_by_title
+    assert_equal 2, hash.keys.count
+
+    assert hash.has_key?("Engineer")
+    assert hash.has_key?("Office Manager")
+
+    assert_equal 2, hash["Engineer"].count
+    assert_equal 1, hash["Office Manager"].count
   end
 
   private

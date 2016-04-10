@@ -1,49 +1,78 @@
-<% title_avg = @group.average_annual_pay(title: @salary.title) %>
-<% med_avg = @group.median_annual_pay(title: @salary.title) %>
+<% title_avg = @salaries_by_title[@salary.title].average_annual_pay %>
+<% med_avg = @salaries_by_title[@salary.title].median_annual_pay %>
 
 <% if @group.salaries.count < ApplicationHelper::MIN_GROUP_MEMBERS %>
   <p>Salaries will not be displayed until there are at least
   <%= ApplicationHelper::MIN_GROUP_MEMBERS %> members in this group.</p>
 <% else %>
   <div class="group-header">
-    <h2><%= @group.name %></h2>
+    <div class="inline">
+      <h2><%= @group.name %></h2>
+    </div>
+    <div class="inline member-count">
+      <span class="glyphicon glyphicon-user"></span> <%= @group.users.count %>
+    </div>
   </div>
-  <div class="double-spaced">
-    <table id="summary-table">
-      <tr>
-        <th>People</br>with Your Title</th>
-        <th>Average Salary</br>for Your Title</th>
-        <th>Your Rank</br>for Your Title</th>
-      </tr>
-      <tr>
-        <td><%= @group.title_count(@salary.title) %></td>
-        <td><%= dollar(title_avg, short: true) %></td>
-        <td><%= @group.rank_of(@salary) %></td>
-    </table>
-  </div>
-  <div class="spaced">
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Salary</th>
-      </tr>
-      <% @group.salaries.each do |salary| %>
+  <div class="group-body">
+    <div class="double-spaced">
+      <table id="summary-table">
         <tr>
-          <td><%= salary.title %></td>
-          <td><%= fudged_salary(salary, @group.title_count(salary.title)) %></td>
+          <th>People</br>with Your Title</th>
+          <th>Average Salary</br>for Your Title</th>
+          <th>Your Rank</br>for Your Title</th>
         </tr>
-      <% end %>
-    </table>
-  </div>
-  <hr/>
-  <div>
-    <p>Average Salary: <%= dollar(@group.average_annual_pay) %></p>
-    <p>Median Salary: <%= dollar(@group.median_annual_pay) %></p>
-  </div>
+        <tr>
+          <td><%= @salaries_by_title[@salary.title].count %></td>
+          <td><%= dollar(title_avg, short: true) %></td>
+          <td><%= @salaries_by_title[@salary.title].rank_of(@salary) %></td>
+      </table>
+    </div>
+    <hr/>
+    <div class="spaced">
+      <div class="section-heading">
+        <h3>Salaries</h3>
+      </div>
+      <table id="salaries-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @salaries_by_title.keys.sort.each do |title| %>
+          <% grouping = @salaries_by_title[title] %>
+          <tr class="grouping-header">
+            <td><%= title %></td>
+            <td>Average: <%= dollar(grouping.average_annual_pay, short: true) %></td>
+          </tr>
+          <% grouping.salaries.each_with_index do |salary, i| %>
+            <% title_count = @salaries_by_title[salary.title].count %>
+            <% if i % 2 == 0 %>
+            <tr class="even">
+            <% else %>
+            <tr>
+            <% end %>
+              <td><%= title %></td>
+              <td><%= fudged_salary(salary, title_count) %></td>
+            </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="spaced">
+    </div>
+    <hr/>
+    <div>
+      <p>Average Salary: <%= dollar(@group.average_annual_pay) %></p>
+      <p>Median Salary: <%= dollar(@group.median_annual_pay) %></p>
+    </div>
 
-  <div>
-    <p>Average <%= @salary.title %> Salary: <%= dollar(title_avg) %></p>
-    <p>Median <%= @salary.title %> Salary: <%= dollar(med_avg) %></p>
+    <div>
+      <p>Average <%= @salary.title %> Salary: <%= dollar(title_avg) %></p>
+      <p>Median <%= @salary.title %> Salary: <%= dollar(med_avg) %></p>
+    </div>
   </div>
 <% end %>
 <hr/>
