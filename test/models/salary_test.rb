@@ -72,4 +72,22 @@ class SalaryTest < ActiveSupport::TestCase
     assert salary.invalid?
     assert salary.errors[:base].any?
   end
+
+  test "no group can have to salaries for the same user" do
+    user = User.create!(email: "test@gmail.com", password: "p@sswrd")
+    group = Group.create!(name: "Test Group")
+
+    salary = Salary.create!(title: "Engineer",
+                           annual_pay: 110000,
+                           user: user,
+                           group: group)
+
+    assert_raise ActiveRecord::RecordNotUnique do
+      salary2 = Salary.create!(title: "Manager",
+                               annual_pay: 110000,
+                               user: user,
+                               group: group)
+
+    end
+  end
 end
