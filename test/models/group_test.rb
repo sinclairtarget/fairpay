@@ -23,23 +23,6 @@ class GroupTest < ActiveSupport::TestCase
     assert_includes @group.titles, "Office Manager"
   end
 
-  test "titles do not depend on casing" do
-    populate_with_salaries
-
-    u = User.new(email: "foo@gmail.com", password: "p@sswrd123")
-    u.save!
-
-    s = Salary.new(title: "engineer", annual_pay: 150000)
-    s.user = @user
-    s.group = @group
-
-    s.save!
-
-    assert_equal @group.titles.count, 2
-    assert_includes @group.titles, "Engineer"
-    assert_includes @group.titles, "Office Manager"
-  end
-
   test "group with 0 users is empty?" do
     assert @group.empty?
   end
