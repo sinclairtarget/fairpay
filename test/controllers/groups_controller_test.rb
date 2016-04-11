@@ -1,6 +1,6 @@
 class GroupsControllerTest < ActionController::TestCase
   setup do
-    @user = User.create(email: "tester@test.com",
+    @user = User.create!(email: "tester@test.com",
                         password: "p@sswrd",
                         verified: true)
 
@@ -8,7 +8,7 @@ class GroupsControllerTest < ActionController::TestCase
 
     @group = Group.find_by(name: "Existing")
 
-    @salary = Salary.create(user: @user,
+    @salary = Salary.create!(user: @user,
                             group: @group,
                             title: "Engineer", 
                             annual_pay: 110000)
@@ -22,6 +22,13 @@ class GroupsControllerTest < ActionController::TestCase
   test "can get show" do
     get :show, { id: @group.id }, @session
     assert_response :success
+  end
+
+  test "cannot get show if not member" do
+    imposter = User.find_by(email: "imposter@test.com")
+    get :show, { id: @group.id }, { user_id: imposter.id }
+
+    assert_response :forbidden
   end
 
   test "can get new" do 
@@ -45,6 +52,13 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "cannot get invite if not member" do
+    imposter = User.find_by(email: "imposter@test.com")
+    get :invite, { id: @group.id }, { user_id: imposter.id} 
+
+    assert_response :forbidden
+  end
+
   test "can send invites" do
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       post :send_invites, 
@@ -55,6 +69,14 @@ class GroupsControllerTest < ActionController::TestCase
 
     assert_response :redirect
     assert_redirected_to group_path(@group.id)
+  end
+
+  test "cannot send invites if not member" do
+    imposter = User.find_by(email: "imposter@test.com")
+    post :send_invites, { id: @group.id, emails: "invitee@gmail.com" },
+      { user_id: imposter.id }
+
+    assert_response :forbidden
   end
 
   test "can get join" do
