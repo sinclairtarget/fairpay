@@ -1,5 +1,9 @@
 class GroupsController < ApplicationController
   skip_before_action :authorize, only: [:join]
+  before_action :authorize_group, except: [:index,
+                                           :new,
+                                           :create,
+                                           :join]
 
   def index
   end
@@ -51,6 +55,11 @@ class GroupsController < ApplicationController
   end
 
   protected
+  def authorize_group
+    @group = Group.find(params[:id])
+    head :forbidden unless @group.salaries.where(user: @user).exists?
+  end
+
   def onboard_user_to_group(group_id)
     session[:group_to_join_id] = group_id
     redirect_to new_salary_path
