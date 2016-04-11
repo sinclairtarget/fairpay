@@ -22,3 +22,8 @@ dave:
     verification_code: '123456abc'
     verified: true
 
+imposter:
+    email: 'imposter@test.com'
+    password_digest: <%= BCrypt::Password.create("p@sswrd", cost: 4) %>
+    verification_code: '123456abc'
+    verified: true
