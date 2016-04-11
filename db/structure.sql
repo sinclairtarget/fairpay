@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.10, for osx10.10 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.11, for osx10.11 (x86_64)
 --
 -- Host: localhost    Database: paysymmetry_development
 -- ------------------------------------------------------
--- Server version	5.7.10
+-- Server version	5.7.11
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -49,8 +49,8 @@ CREATE TABLE `salaries` (
   `updated_at` datetime NOT NULL,
   `hours_per_week` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `index_salaries_on_group_id_and_user_id` (`group_id`,`user_id`),
   KEY `fk_rails_127539cef3` (`user_id`),
-  KEY `fk_rails_7004ae9984` (`group_id`),
   CONSTRAINT `fk_rails_127539cef3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_rails_7004ae9984` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -98,7 +98,7 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-04 19:44:22
+-- Dump completed on 2016-04-10 19:56:26
 INSERT INTO schema_migrations (version) VALUES ('20160112030644');
 
 INSERT INTO schema_migrations (version) VALUES ('20160117154300');
@@ -110,4 +110,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160117232219');
 INSERT INTO schema_migrations (version) VALUES ('20160130161726');
 
 INSERT INTO schema_migrations (version) VALUES ('20160130203450');
+
+INSERT INTO schema_migrations (version) VALUES ('20160410234009');
 
