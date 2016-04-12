@@ -74,7 +74,7 @@ h1, h2, h3, h4 {
     color: $p-color-onlight;
 }
 
-a, p, td, th, h5, h6 {
+body, a, p, td, th, h5, h6 {
     font-family: $body-font-family;
     font-size: $font-size;
     color: $p-color-onlight;
@@ -99,4 +99,18 @@ hr {
 
 .section-heading {
     text-align: center;
+}
+
+input {
+    padding: 12px;
+    border: solid 1px $p-color-medium;
+}
+
+.input-block {
+    display: block;
+    border-bottom: none;
+    
+    &:last-child {
+        border-bottom: solid 1px $p-color-medium;
+    }
 }

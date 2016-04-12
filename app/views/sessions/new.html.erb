@@ -1,9 +1,17 @@
-<%= form_tag controller: "sessions", action: "create" do %>
-  <%= label_tag :email_label, "Email" %>
-  <%= email_field_tag :email %>
-  <%= label_tag :password_label, "Password" %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
-<% end %>
-
-<p>Don't have an account? <%= link_to "Sign up here.", new_user_path %></p>
+<div id="login-div">
+  <h1>Log In</h1>
+  <div class="double-spaced">
+    <%= form_tag controller: "sessions", action: "create" do %>
+      <div>
+        <%= email_field_tag :email, nil, class: "input-block", placeholder: "Email" %>
+        <%= password_field_tag :password, nil, class: "input-block", placeholder: "Password" %>
+      </div>
+      <div class="half-spaced">
+        <p>Don't have an account? <%= link_to "Sign up here.", new_user_path %></p>
+      </div>
+      <div class="double-spaced">
+        <%= submit_tag "Login", class: "btn btn-default btn-padded" %>
+      </div>
+    <% end %>
+  </div>
+</div>
