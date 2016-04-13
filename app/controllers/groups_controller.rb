@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
         UserMailer.invite_email(@group, emails).deliver_later
       end
 
-      notice = "#{emails.count} invitations sent."
+      notice = "Invitations sent."
       redirect_to group_path(@group), notice: notice
     else
       head 400
