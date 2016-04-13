@@ -9,7 +9,6 @@ class GroupsController < ApplicationController
   end
   
   def show
-    @group = Group.find(params[:id])
     @salary = @group.salaries.where(user_id: @user.id).first
 
     @salaries_by_title = @group.salaries_by_title
@@ -27,27 +26,28 @@ class GroupsController < ApplicationController
 
   # invitations
   def invite
-    @group = Group.find(params[:id])
   end
 
   def send_invites
-    @group = Group.find(params[:id])
-
     if params[:emails]
       emails = params[:emails].split(',').map { |email| email.strip }
+
+      existing_members = @group.users.where("email in (?)", emails)
+                                     .pluck(:email)
+      emails -= existing_members
 
       if emails.count > 0
         @group.invitations_count += emails.count
         @group.save!
 
         UserMailer.invite_email(@group, emails).deliver_later
-
-        notice = "#{emails.count} invitations sent. #{@group.invitations_count}" +
-          " people have now been invited to this group."
       end
-    end
 
-    redirect_to group_path(@group), notice: notice
+      notice = "Invitations sent."
+      redirect_to group_path(@group), notice: notice
+    else
+      head 400
+    end
   end
 
   def join
