@@ -1,0 +1,20 @@
+@import "partials/constants";
+
+.main-content {
+    background-color: $p-color-light !important;
+}
+
+#login-div {
+    text-align: center;
+
+    & > div {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    input {
+        width: 100%;
+    }
+}
