@@ -37,13 +37,13 @@ class GroupsController < ApplicationController
         @group.save!
 
         UserMailer.invite_email(@group, emails).deliver_later
-
-        notice = "#{emails.count} invitations sent. #{@group.invitations_count}" +
-          " people have now been invited to this group."
       end
-    end
 
-    redirect_to group_path(@group), notice: notice
+      notice = "#{emails.count} invitations sent."
+      redirect_to group_path(@group), notice: notice
+    else
+      head 400
+    end
   end
 
   def join
