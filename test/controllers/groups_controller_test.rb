@@ -79,6 +79,21 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "do not send invites to existing members" do
+    assert_difference "ActionMailer::Base.deliveries.size", 1 do
+      data = { 
+        id: @group.id, 
+        emails: "invitee@gmail.com, tester@test.com" 
+      }
+
+      post :send_invites, data, @session
+    end
+
+    invite_email = ActionMailer::Base.deliveries.last
+    assert_equal 1, invite_email.to.count
+    assert_equal "invitee@gmail.com", invite_email.to[0]
+  end
+
   test "can get join" do
     get :join, { id: @group.id }
     
