@@ -9,7 +9,6 @@ class GroupsController < ApplicationController
   end
   
   def show
-    @group = Group.find(params[:id])
     @salary = @group.salaries.where(user_id: @user.id).first
 
     @salaries_by_title = @group.salaries_by_title
@@ -27,12 +26,9 @@ class GroupsController < ApplicationController
 
   # invitations
   def invite
-    @group = Group.find(params[:id])
   end
 
   def send_invites
-    @group = Group.find(params[:id])
-
     if params[:emails]
       emails = params[:emails].split(',').map { |email| email.strip }
 
