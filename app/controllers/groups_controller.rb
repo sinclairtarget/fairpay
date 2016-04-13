@@ -32,6 +32,10 @@ class GroupsController < ApplicationController
     if params[:emails]
       emails = params[:emails].split(',').map { |email| email.strip }
 
+      existing_members = @group.users.where("email in (?)", emails)
+                                     .pluck(:email)
+      emails -= existing_members
+
       if emails.count > 0
         @group.invitations_count += emails.count
         @group.save!
