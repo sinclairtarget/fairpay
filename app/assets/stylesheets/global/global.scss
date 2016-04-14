@@ -65,8 +65,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-th {
-    font-weight: 700;
+th, b {
+    font-weight: 900;
+    color: $p-color-bold;
 }
 
 h1, h2, h3, h4 {
@@ -78,6 +79,10 @@ body, a, p, td, th, h5, h6 {
     font-family: $body-font-family;
     font-size: $font-size;
     color: $p-color-onlight;
+}
+
+p {
+    margin-bottom: 14px;
 }
 
 a {
