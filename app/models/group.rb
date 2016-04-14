@@ -24,6 +24,16 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def lowest_paying_title
+    titles = titles_by_average_pay
+    [titles.first["title"], titles.first["avg"].to_i]
+  end
+
+  def highest_paying_title
+    titles = titles_by_average_pay
+    [titles.last["title"], titles.last["avg"].to_i]
+  end
+
   protected
   def sorted_salaries(key, desc = false)
     if desc
@@ -31,5 +41,15 @@ class Group < ActiveRecord::Base
     else
       salaries.order(key)
     end
+  end
+
+  def titles_by_average_pay
+    titles = Group.connection.select_all <<-SQL
+      SELECT title, AVG(annual_pay) AS avg
+      FROM salaries
+      WHERE group_id = #{id.to_i}
+      GROUP BY title
+      ORDER BY avg;
+    SQL
   end
 end
