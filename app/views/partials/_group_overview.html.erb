@@ -2,4 +2,24 @@
   <div class="section-heading">
     <h3>Group Overview</h3>
   </div>
+  <div class="double-spaced">
+    <p>On <b>average</b>, members of <em><%= @group.name %></em> make 
+    <b><%= dollar(@group.average_annual_pay) %></b> a year.</p>
+
+    <p>The <b>median</b> member, or the member making more than one half of
+    the group but less than the other half, makes 
+    <b><%= dollar(@group.median_annual_pay) %></b> a year.</p>
+
+    <% title, avg = @group.lowest_paying_title %>
+    <% diff = @group.average_annual_pay - avg %>
+    <p>Those holding the title of <em><%= title %></em> are the <b>least well paid.</b>
+    They made <b><%= dollar(avg) %></b> a year on average, 
+    <b><%= dollar(diff) %></b> less than the average across all titles.</p>
+
+    <% title, avg = @group.highest_paying_title %>
+    <% diff = avg - @group.average_annual_pay %>
+    <p>Those holding the title of <em><%= title %></em> are the <b>most well paid.</b>
+    They made <b><%= dollar(avg) %></b> a year on average, 
+    <b><%= dollar(diff) %></b> more than the average across all titles.</p>
+  </div>
 </div>
