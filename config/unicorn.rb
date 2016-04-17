@@ -1,7 +1,14 @@
 # Config file for Unicorn application server
 #
 # set path to application
-app_dir = File.expand_path("../..", __FILE__)
+if ENV["RAILS_ENV"] == "production"
+  app_dir = "/srv/www/app.paysymmetry.com/current"
+else
+  app_dir = File.expand_path("../..", __FILE__)
+end
+
+puts "app_dir is #{app_dir}"
+
 shared_dir = "#{app_dir}/shared"
 working_directory app_dir
 
