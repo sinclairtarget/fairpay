@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :groups, except: [:edit, :update] do
     member do
-      get 'invite'
       post 'invite', to: 'groups#send_invites'
       get 'join'
     end
