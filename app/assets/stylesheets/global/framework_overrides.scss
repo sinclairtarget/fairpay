@@ -85,15 +85,31 @@
 .btn-default {
     color: $p-color-ondark;
     background-color: $p-color-dark;
+    border: 1px solid transparent;
     padding: 8px;
+
+    a, p {
+        color: $p-color-ondark;
+        margin-bottom: 0px;
+        font-size: 14px;
+    }
 
     &:hover {
         color: $p-color-onlight;
         background-color: $p-color-medium;
+        border: 1px solid $p-color-highlight;
+
+        a, p {
+            color: $p-color-onlight;
+        }
     }
 }
 
 .btn-padded {
     padding: 12px;
     font-size: 16px;
+}
+
+.modal-content {
+    border-radius: 0px;
 }
