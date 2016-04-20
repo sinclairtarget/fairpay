@@ -17,7 +17,8 @@
       <h5>Equity</h5>
       <p>None</p>
     </div>
-    <a href="">Edit</a>
+    <%= content_tag :a, "Edit",
+          data: { toggle: "modal", target: "#edit-modal" } %>
   </div>
 </div>
 <div class="double-spaced">
@@ -36,5 +37,10 @@
     <% end %>
   </div>
 </div>
-<%= link_to "Invite New Members", new_group_path, 
-      class: ["btn", "btn-default", "double-spaced"] %>
+
+<%= content_tag :div, content_tag(:p, "Invite New Members"),
+      class: %w{ btn btn-default double-spaced },
+      data: { toggle: "modal", target: "#invite-modal" } %>
+<%= content_tag :div, content_tag(:p, "Leave Group"),
+      class: %w{ btn btn-default spaced },
+      data: { toggle: "modal", target: "#leave-modal" } %>

@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
   def send_invites
     if params[:emails]
       emails = params[:emails].split(',').map { |email| email.strip }
+      orig_count = emails.count
 
       existing_members = @group.users.where("email in (?)", emails)
                                      .pluck(:email)
@@ -40,7 +41,12 @@ class GroupsController < ApplicationController
         UserMailer.invite_email(@group, emails).deliver_later
       end
 
-      notice = "Invitations sent."
+      if orig_count == 1
+        notice = "#{orig_count} invitation sent."
+      else
+        notice = "#{orig_count} invitations sent."
+      end
+
       redirect_to group_path(@group), notice: notice
     else
       head 400

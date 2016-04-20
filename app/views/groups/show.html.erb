@@ -72,3 +72,29 @@
 <%= content_for :sidebar do %>
   <%= render "partials/group_sidebar" %>
 <% end %>
+
+<!--      Modal windows       -->
+<!-- Edit -->
+<%= render layout: "layouts/modal",
+    locals: { id: "edit-modal", title: "Edit Info", action: "Submit" } do %>
+<% end %>
+
+<!-- Invitations -->
+<%= render layout: "layouts/modal",
+    locals: { id: "invite-modal", title: "Invite New Members", action: "Invite" } do %>
+
+    <%= content_tag(:div, "", class: ["hidden", "modal-data"], 
+                    data: { post_url: invite_group_path(@group) }) %>
+    <p>Who would you like to invite to be a part of your group?</p>
+    <p>Enter their email addresses below:</p>
+
+    <%= text_area_tag :emails, "", size: "48x8" %>
+<% end %>
+
+<!-- Leaving Group -->
+<%= render layout: "layouts/modal",
+    locals: { id: "leave-modal", title: "Are you sure?", action: "Yes" } do %>
+      <p>Are you sure you want to leave this group?</p>
+      <p>Once you leave, you will not be able to rejoin the group unless another
+      group member invites you.</p>
+<% end %>
