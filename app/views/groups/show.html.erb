@@ -77,13 +77,15 @@
 <!-- Edit -->
 <%= render layout: "layouts/modal",
     locals: { id: "edit-modal", title: "Edit Info", action: "Save" } do %>
+    <%= content_tag(:div, "", class: ["hidden", "modal-data"], 
+                    data: { put_url: salary_path(@salary) }) %>
     <div>
       <h5>Title</h5>
-      <%= text_field_tag :title, @salary.title %>
+      <%= text_field_tag :"title-field", @salary.title %>
     </div>
     <div class="spaced">
       <h5>Annual Salary</h5>
-      <%= number_field_tag :salary, @salary.annual_pay %>
+      <%= number_field_tag :"salary-field", @salary.annual_pay, step: 1000 %>
     </div>
     <div class="spaced">
       <h5>Last Bonus</h5>

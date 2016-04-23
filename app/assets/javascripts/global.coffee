@@ -49,3 +49,28 @@ $("#leave-modal").ready ->
       .fail (data) ->
         msg = "Something went wrong. (Status code: #{data.status})"
         Util.show_alert $alert, msg
+
+
+$("#edit-modal").ready ->
+  $modal = $("#edit-modal")
+  $data = $modal.find(".modal-data").first()
+  $alert = $modal.find(".alert").first()
+
+  $modal.find(".modal-action").click ->
+    url = $data.data("put-url")
+    title = $modal.find("#title-field").val()
+    annual_pay = $modal.find("#salary-field").val()
+
+    $.ajax(
+      url: url,
+      method: "PUT",
+      data: { title: title, annual_pay: annual_pay }
+    )
+      .done (data, status, request) ->
+        $modal.on "hidden.bs.modal": ->
+          Turbolinks.visit(request.getResponseHeader("Location"))
+
+        $modal.modal("hide")
+      .fail (data) ->
+        msg = "Something went wrong. (Status code: #{data.status})"
+        Util.show_alert $alert, msg
