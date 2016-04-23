@@ -22,5 +22,16 @@ class SalariesController < ApplicationController
   end
 
   def destroy
+    salary = Salary.find(params[:id])
+
+    if salary.user != @user
+      head :forbidden
+      return
+    end
+
+    group_name = salary.group.name
+    salary.destroy
+
+    redirect_to groups_path, notice: "You left #{group_name}."
   end
 end
