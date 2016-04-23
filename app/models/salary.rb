@@ -12,6 +12,8 @@ class Salary < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
 
+  around_destroy :destroy_empty_group
+
   def initialize(**options)
     if options[:hourly_wage]
       hours_per_week = (options[:hours_per_week] || DEFAULT_HOURS_PER_WEEK)
@@ -30,10 +32,20 @@ class Salary < ActiveRecord::Base
     (annual_pay / 52.0) / hours_per_week.to_f
   end
 
-  private
+  protected
   def force_immutable
     if self.changed? and self.persisted?
       errors.add(:base, :immutable)
+    end
+  end
+
+  def destroy_empty_group
+    group = self.group
+    
+    yield # DELETES the row
+
+    if group.salaries.count == 0
+      group.destroy
     end
   end
 end

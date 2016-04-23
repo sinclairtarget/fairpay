@@ -90,4 +90,26 @@ class SalaryTest < ActiveSupport::TestCase
 
     end
   end
+
+  test "last salary destroyed in a group destroys the group" do
+    user = User.create!(
+      email: "test@test.com", 
+      password: "p@sswrd",
+      verified: true
+    )
+
+    group = Group.create!(name: "Test Group")
+    group_id = group.id
+
+    salary = Salary.create!(
+      title: "Manager",
+      annual_pay: 110000,
+      user: user,
+      group: group
+    )
+
+    salary.destroy!
+
+    assert_nil Group.find_by(id: group_id)
+  end
 end
