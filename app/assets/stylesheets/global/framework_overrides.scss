@@ -61,11 +61,42 @@
             }
         }
 
-        .dropdown-toggle {
+        .dropdown-toggle, .open > .dropdown-toggle {
             color: $p-color-onlight;
 
             .caret {
                 margin-left: 4px;
+            }
+
+            &:hover {
+                color: $p-color-highlight;
+            }
+        }
+
+        .open > .dropdown-toggle {
+            background-color: transparent !important;
+        }
+
+        .dropdown-menu {
+            li {
+                padding: 0px 6px;
+
+                a {
+                    line-height: 32px;
+                }
+
+                &:hover {
+                    background-color: $p-color-light;
+
+                    a {
+                        color: $p-color-highlight;
+                        background-color: transparent;
+                    }
+                }
+            }
+
+            hr {
+                margin: 6px 0px;
             }
         }
     }

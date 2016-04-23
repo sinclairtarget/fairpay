@@ -13,7 +13,7 @@
         }
 
         &:hover {
-            background-color: $p-color-light;
+            background-color: $p-color-light-green;
             border: 1px solid $p-color-medium;
         }
 
@@ -97,6 +97,6 @@
     }
 
     tr.even {
-        background-color: $p-color-light;
+        background-color: $p-color-light-green;
     }
 }
