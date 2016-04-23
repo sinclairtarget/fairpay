@@ -7,7 +7,7 @@ class Salary < ActiveRecord::Base
                                          greater_than_or_equal_to: 0 }
   validates :user_id, presence: true
   validates :group_id, presence: true
-  validate :force_immutable
+#  validate :force_immutable
 
   belongs_to :user
   belongs_to :group

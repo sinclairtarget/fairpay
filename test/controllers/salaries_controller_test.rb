@@ -53,6 +53,26 @@ class SalariesControllerTest < ActionController::TestCase
     assert_equal salaries_count_before + 1, @existing_group.salaries.count
   end
 
+  test "can update salary" do
+    salary = Salary.create!(
+      title: "Engineer",
+      annual_pay: 110000,
+      user_id: @user.id,
+      group_id: @empty_group.id
+    )
+
+    put :update, { id: salary.id, title: "Clown", annual_pay: 35000 }, 
+      { user_id: @user.id }
+
+    assert_response :redirect
+    assert_redirected_to group_path(@empty_group)
+
+    salary.reload
+
+    assert_equal "Clown", salary.title
+    assert_equal 35000, salary.annual_pay
+  end
+
   test "can destroy salary" do
     salary = Salary.create!(
       title: "Engineer",

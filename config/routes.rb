@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :salaries, only: [:new, :create, :destroy]
+  resources :salaries, only: [:new, :create, :update, :destroy]
 
   resources :users, only: [:new, :create] do
     member do
