@@ -21,6 +21,38 @@ class SalariesController < ApplicationController
     end
   end
 
+  def update
+    salary = Salary.find(params[:id])
+
+    if salary.user != @user
+      head :forbidden
+      return
+    end
+
+    if params[:title].present?
+      salary.title = params[:title]
+    end
+
+    if params[:annual_pay].present?
+      salary.annual_pay = params[:annual_pay]
+    end
+
+    salary.save!
+
+    redirect_to group_path(salary.group), notice: "Information updated."
+  end
+
   def destroy
+    salary = Salary.find(params[:id])
+
+    if salary.user != @user
+      head :forbidden
+      return
+    end
+
+    group_name = salary.group.name
+    salary.destroy
+
+    redirect_to groups_path, notice: "You left #{group_name}."
   end
 end

@@ -87,6 +87,7 @@ p {
 
 a {
     text-decoration: underline;
+    cursor: pointer;
 
     &:hover {
         color: $p-color-highlight;

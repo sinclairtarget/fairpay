@@ -72,3 +72,50 @@
 <%= content_for :sidebar do %>
   <%= render "partials/group_sidebar" %>
 <% end %>
+
+<!--      Modal windows       -->
+<!-- Edit -->
+<%= render layout: "layouts/modal",
+    locals: { id: "edit-modal", title: "Edit Info", action: "Save" } do %>
+    <%= content_tag(:div, "", class: ["hidden", "modal-data"], 
+                    data: { put_url: salary_path(@salary) }) %>
+    <div>
+      <h5>Title</h5>
+      <%= text_field_tag :"title-field", @salary.title %>
+    </div>
+    <div class="spaced">
+      <h5>Annual Salary</h5>
+      <%= number_field_tag :"salary-field", @salary.annual_pay, step: 1000 %>
+    </div>
+    <div class="spaced">
+      <h5>Last Bonus</h5>
+      <p><em>Coming Soon!</em></p>
+    </div>
+    <div class="spaced">
+      <h5>Equity</h5>
+      <p><em>Coming Soon!</em></p>
+    </div>
+<% end %>
+
+<!-- Invitations -->
+<%= render layout: "layouts/modal",
+    locals: { id: "invite-modal", title: "Invite New Members", action: "Invite" } do %>
+
+    <%= content_tag(:div, "", class: ["hidden", "modal-data"], 
+                    data: { post_url: invite_group_path(@group) }) %>
+    <p>Who would you like to invite to be a part of your group?</p>
+    <p>Enter their email addresses below, separated by commas:</p>
+
+    <%= text_area_tag :emails, "", size: "48x8" %>
+<% end %>
+
+<!-- Leaving Group -->
+<%= render layout: "layouts/modal",
+    locals: { id: "leave-modal", title: "Are you sure?", action: "Yes" } do %>
+
+    <%= content_tag(:div, "", class: ["hidden", "modal-data"], 
+                    data: { delete_url: salary_path(@salary) }) %>
+    <p>Are you sure you want to leave this group?</p>
+    <p>Once you leave, you will not be able to rejoin the group unless another
+    group member invites you.</p>
+<% end %>

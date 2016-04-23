@@ -1,0 +1,19 @@
+<div class="modal fade" id="<%= id %>" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= title %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger hidden" role="alert">
+          <p></p>
+        </div>
+        <%= yield %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default modal-action"><%= action %></button>
+      </div>
+    </div> 
+  </div>
+</div>

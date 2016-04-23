@@ -17,6 +17,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # $(document).ready works with turbolinks
 gem 'jquery-turbolinks' 
+# Redirect AJAX requests
+gem 'turbolinks-redirect'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

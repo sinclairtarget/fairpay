@@ -56,24 +56,24 @@ class SalaryTest < ActiveSupport::TestCase
     assert_in_delta salary.annual_pay, 110000, 0.1
   end
 
-  test "hours per week cannot be changed on a persisted salary" do
-    user = User.new(email: "test@gmail.com", password: "test")
-    group = Group.new(name: "test group")
-    user.save!
-    group.save!
+#  test "hours per week cannot be changed on a persisted salary" do
+#    user = User.new(email: "test@gmail.com", password: "test")
+#    group = Group.new(name: "test group")
+#    user.save!
+#    group.save!
+#
+#    salary = Salary.new(title: "Engineer", hourly_wage: 50)
+#    salary.user = user
+#    salary.group = group
+#
+#    salary.save!
+#    salary.hours_per_week = 45
+#
+#    assert salary.invalid?
+#    assert salary.errors[:base].any?
+#  end
 
-    salary = Salary.new(title: "Engineer", hourly_wage: 50)
-    salary.user = user
-    salary.group = group
-
-    salary.save!
-    salary.hours_per_week = 45
-
-    assert salary.invalid?
-    assert salary.errors[:base].any?
-  end
-
-  test "no group can have to salaries for the same user" do
+  test "no group can have two salaries for the same user" do
     user = User.create!(email: "test@gmail.com", password: "p@sswrd")
     group = Group.create!(name: "Test Group")
 
