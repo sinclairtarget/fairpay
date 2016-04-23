@@ -5,11 +5,11 @@ module ApplicationHelper
   MIN_GROUP_MEMBERS = 3
 
   def fudged_salary(salary, members)
-    return dollar(salary.annual_pay) if members > 3
+    return [false, dollar(salary.annual_pay)] if members > MIN_GROUP_MEMBERS
 
     salt = salary.updated_at.to_i
     min, max = Util.fudge(salary.annual_pay, members, salt)
-    dollar(min, short: true) + " – " + dollar(max, short: true)
+    [true, dollar(min, short: true) + " – " + dollar(max, short: true)]
   end
 
   def dollar(value, short: false)

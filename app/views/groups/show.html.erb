@@ -46,6 +46,7 @@
             <td><%= title %></td>
             <td>Average: <%= dollar(grouping.average_annual_pay, short: true) %></td>
           </tr>
+          <% any_fudged = false %>
           <% grouping.salaries.each_with_index do |salary, i| %>
             <% title_count = @salaries_by_title[salary.title].count %>
             <% if i % 2 == 0 %>
@@ -54,7 +55,13 @@
             <tr>
             <% end %>
               <td><%= title %></td>
-              <td><%= fudged_salary(salary, title_count) %></td>
+              <% is_fudged, fudged = fudged_salary(salary, title_count) %>
+              <% if is_fudged %>
+                <% any_fudged = true %>
+                <td><%= fudged %> <span class="highlight">*</span></td>
+              <% else %>
+                <td><%= fudged %></td>
+              <% end %>
             </tr>
           <% end %>
         <% end %>
@@ -62,6 +69,8 @@
       </table>
     </div>
     <div class="spaced">
+      <p class="note"><span class="highlight">* This salary has been fudged because
+          there are not enough people with the matching title.</span></p>
     </div>
     <hr/>
     <%= render partial: "partials/group_overview" %>
