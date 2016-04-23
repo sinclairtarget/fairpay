@@ -52,4 +52,43 @@ class SalariesControllerTest < ActionController::TestCase
     @existing_group.reload
     assert_equal salaries_count_before + 1, @existing_group.salaries.count
   end
+
+  test "can destroy salary" do
+    salary = Salary.create!(
+      title: "Engineer",
+      annual_pay: 110000,
+      user_id: @user.id,
+      group_id: @empty_group.id
+    )
+
+    @empty_group.reload
+    salaries_count_before = @empty_group.salaries.count
+
+    delete :destroy, { id: salary.id }, { user_id: @user.id }
+
+    assert_response :redirect
+    assert_redirected_to groups_path
+
+    @empty_group.reload
+    assert_equal salaries_count_before - 1, @empty_group.salaries.count
+  end
+
+  test "cannot destroy another user's salary" do
+    other_user = User.create!(
+      email: "other@test.com",
+      password: "p@sswrd",
+      verified: true
+    )
+
+    salary = Salary.create!(
+      title: "Engineer",
+      annual_pay: 110000,
+      user_id: other_user.id,
+      group_id: @empty_group.id
+    )
+
+    delete :destroy, { id: salary.id }, { user_id: @user.id }
+
+    assert_response :forbidden
+  end
 end
