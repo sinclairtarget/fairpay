@@ -94,6 +94,14 @@ a {
     }
 }
 
+p.note {
+    font-size: 12px;
+}
+
+.highlight {
+    color: $p-color-highlight;
+}
+
 .faded {
     color: $p-color-dark;
 }
