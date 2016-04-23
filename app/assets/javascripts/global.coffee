@@ -27,3 +27,25 @@ $("#invite-modal").ready ->
       .fail (data) ->
         msg = "Something went wrong. (Status code: #{data.status})"
         Util.show_alert $alert, msg
+
+
+$("#leave-modal").ready ->
+  $modal = $("#leave-modal")
+  $data = $modal.find(".modal-data").first()
+  $alert = $modal.find(".alert").first()
+
+  $modal.find(".modal-action").click ->
+    url = $data.data("delete-url")
+
+    $.ajax(
+      url: url,
+      method: "DELETE"
+    )
+      .done (data, status, request) ->
+        $modal.on "hidden.bs.modal": ->
+          Turbolinks.visit(request.getResponseHeader("Location"))
+
+        $modal.modal("hide")
+      .fail (data) ->
+        msg = "Something went wrong. (Status code: #{data.status})"
+        Util.show_alert $alert, msg
