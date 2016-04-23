@@ -104,7 +104,7 @@
     <%= content_tag(:div, "", class: ["hidden", "modal-data"], 
                     data: { post_url: invite_group_path(@group) }) %>
     <p>Who would you like to invite to be a part of your group?</p>
-    <p>Enter their email addresses below:</p>
+    <p>Enter their email addresses below, separated by commas:</p>
 
     <%= text_area_tag :emails, "", size: "48x8" %>
 <% end %>
