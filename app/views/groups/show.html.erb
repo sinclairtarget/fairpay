@@ -76,7 +76,23 @@
 <!--      Modal windows       -->
 <!-- Edit -->
 <%= render layout: "layouts/modal",
-    locals: { id: "edit-modal", title: "Edit Info", action: "Submit" } do %>
+    locals: { id: "edit-modal", title: "Edit Info", action: "Save" } do %>
+    <div>
+      <h5>Title</h5>
+      <%= text_field_tag :title, @salary.title %>
+    </div>
+    <div class="spaced">
+      <h5>Annual Salary</h5>
+      <%= number_field_tag :salary, @salary.annual_pay %>
+    </div>
+    <div class="spaced">
+      <h5>Last Bonus</h5>
+      <p><em>Coming Soon!</em></p>
+    </div>
+    <div class="spaced">
+      <h5>Equity</h5>
+      <p><em>Coming Soon!</em></p>
+    </div>
 <% end %>
 
 <!-- Invitations -->
