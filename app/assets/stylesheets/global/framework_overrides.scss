@@ -78,6 +78,8 @@
         }
 
         .dropdown-menu {
+            margin-top: 8px;
+
             li {
                 padding: 0px 6px;
 
@@ -97,6 +99,17 @@
 
             hr {
                 margin: 6px 0px;
+            }
+
+            ::before {
+                content: "";
+                position: absolute;
+                display: inline-block;
+                border: 8px solid transparent;
+                border-bottom-color: $p-color-lightest;
+                top: -16px;
+                right: 22px;
+                left: auto;
             }
         }
     }
