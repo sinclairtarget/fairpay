@@ -17,12 +17,12 @@
   </div>
 
   <div id="title-summary">
-    <h5>Existing Titles in <%= @group.name %></h5>
+    <h5>Existing Members in <%= @group.name %></h5>
     <ul>
       <% salaries_by_title = @group.salaries_by_title %>
       <% @group.titles.sort.each do |title| %>
         <% count = salaries_by_title[title].count %>
-        <li><%= "#{title} (#{count} existing members)" %></li>
+        <li><%= "#{title} (#{count} existing)" %></li>
       <% end %>
     </ul>
   </div>
