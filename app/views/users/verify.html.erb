@@ -2,16 +2,27 @@
   <h3>You're all set!</h3>
 
   <% if session[:group_to_join_id].present? %>
-    <p>We've verified your email address and you're ready 
-    to join <%= @group.name %>.</p>
-    <%= link_to "Enter your Salary", new_salary_path %>
+    <div class="spaced">
+      <p>We've verified your email address and you're ready 
+      to join <%= @group.name %>.</p>
+    </div>
+    <div class="double-spaced">
+      <%= link_to "Enter your Salary", new_salary_path, class: %w{ btn btn-default } %>
+    </div>
   <% else %>
-    <p>We've verified your email address and you're ready to create a group.</p>
-    <%= link_to "Create Group", new_group_path %>
+    <div class="spaced">
+      <p>We've verified your email address and you're ready to create a group.</p>
+    </div>
+    <div class="double-spaced">
+      <%= link_to "Create Group", new_group_path, class: %w{ btn btn-default } %>
+    </div>
   <% end %>
+  </div>
 <% else %>
   <h3>Ruh Roh</h3>
-  <p>If you're seeing this page you're tried to verify your email address with
-  the wrong code. Please check your inbox—we may have sent you an email more
-  recently.</p>
+  <div class="spaced">
+    <p>If you're seeing this page you're tried to verify your email address with
+    the wrong code. Please check your inbox—we may have sent you an email more
+    recently.</p>
+  </div>
 <% end %>
