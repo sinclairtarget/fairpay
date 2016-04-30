@@ -25,6 +25,9 @@ class GroupsController < ApplicationController
   end
 
   # invitations
+  def invite
+  end
+
   def send_invites
     if params[:emails]
       emails = params[:emails].split(',').map { |email| email.strip }

@@ -47,6 +47,18 @@ class GroupsControllerTest < ActionController::TestCase
     assert_equal Group.last.id, session[:group_to_join_id]
   end
 
+  test "can get invite" do
+    get :invite, { id: @group.id }, @session
+    assert_response :success
+  end
+
+  test "cannot get invite if not member" do
+    imposter = User.find_by(email: "imposter@test.com")
+    get :invite, { id: @group.id }, { user_id: imposter.id} 
+
+    assert_response :forbidden
+  end
+
   test "can send invites" do
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       post :send_invites, 
