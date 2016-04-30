@@ -89,19 +89,19 @@
     <%= content_tag(:div, "", class: ["hidden", "modal-data"], 
                     data: { put_url: salary_path(@salary) }) %>
     <div>
-      <h5>Title</h5>
+      <label for="title-field"><h5>Title</h5></label>
       <%= text_field_tag :"title-field", @salary.title %>
     </div>
     <div class="spaced">
-      <h5>Annual Salary</h5>
+      <label for="salary-field"><h5>Annual Salary</h5></label>
       <%= number_field_tag :"salary-field", @salary.annual_pay, step: 1000 %>
     </div>
     <div class="spaced">
-      <h5>Last Bonus</h5>
+      <label><h5>Last Bonus</h5></label>
       <p><em>Coming Soon!</em></p>
     </div>
     <div class="spaced">
-      <h5>Equity</h5>
+      <label><h5>Equity</h5></label>
       <p><em>Coming Soon!</em></p>
     </div>
 <% end %>
