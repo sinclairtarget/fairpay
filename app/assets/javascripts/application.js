@@ -17,6 +17,7 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require turbolinks
+//= require jquery-ui/autocomplete
 //= require_tree .
 
 NProgress.configure({

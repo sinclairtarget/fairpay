@@ -74,3 +74,16 @@ $("#edit-modal").ready ->
       .fail (data) ->
         msg = "Something went wrong. (Status code: #{data.status})"
         Util.show_alert $alert, msg
+
+$("#title-autocomplete").ready ->
+  $input = $("#title-autocomplete")
+  unless $input.length > 0
+    return
+
+  data_string = $input.data("titles")
+  autocomplete_titles = Util.parse_titles_data_string(data_string)
+  console.log autocomplete_titles
+  $input.autocomplete({
+    source: autocomplete_titles,
+    delay: 0
+  })

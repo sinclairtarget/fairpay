@@ -1,13 +1,29 @@
-<%= form_tag controller: "salaries", action: "create" do %>
-  <div>
-    <%= label_tag :title_label, "Title" %>
-    <%= text_field_tag :title %>
+<div id="salary-form-container">
+  <div id="salary-form">
+    <%= form_tag controller: "salaries", action: "create" do %>
+      <div>
+        <%= label_tag :title_label, "Title" %>
+        <%= text_field_tag :"title-autocomplete", "", 
+            data: { titles: titles_for_autocomplete(@group) } %>
+      </div>
+      <div class="spaced">
+        <%= label_tag :salary_label, "Annual Salary" %>
+        <%= number_field :salary, :annual_pay, step: 1000 %>
+      </div>
+      <div class="double-spaced">
+        <%= submit_tag "Save", class: %w{ btn btn-default } %>
+      </div>
+    <% end %>
   </div>
-  <div class="spaced">
-    <%= label_tag :salary_label, "Annual Salary" %>
-    <%= number_field :salary, :annual_pay, step: 1000 %>
+
+  <div id="title-summary">
+    <h5>Existing Members in <%= @group.name %></h5>
+    <ul>
+      <% salaries_by_title = @group.salaries_by_title %>
+      <% @group.titles.sort.each do |title| %>
+        <% count = salaries_by_title[title].count %>
+        <li><%= "#{title} (#{count} existing)" %></li>
+      <% end %>
+    </ul>
   </div>
-  <div class="double-spaced">
-    <%= submit_tag "Save", class: %w{ btn btn-default } %>
-  </div>
-<% end %>
+</div>
