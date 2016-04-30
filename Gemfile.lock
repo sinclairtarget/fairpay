@@ -106,6 +106,7 @@ GEM
     net-ssh (3.0.2)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
+    nprogress-rails (0.1.6.7)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -201,6 +202,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   mysql2 (~> 0.3.18)
+  nprogress-rails
   rails (= 4.2.4)
   rename
   sass-rails (~> 5.0)
@@ -213,4 +215,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
