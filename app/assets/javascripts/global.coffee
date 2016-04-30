@@ -84,5 +84,6 @@ $("#title-autocomplete").ready ->
   autocomplete_titles = Util.parse_titles_data_string(data_string)
   console.log autocomplete_titles
   $input.autocomplete({
-    source: autocomplete_titles
+    source: autocomplete_titles,
+    delay: 0
   })
