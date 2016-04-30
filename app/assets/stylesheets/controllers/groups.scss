@@ -13,8 +13,13 @@
         }
 
         &:hover {
-            background-color: $p-color-light-green;
+            background-color: $p-color-light;
             border: 1px solid $p-color-medium;
+            cursor: pointer;
+
+            .group-listing-header h3 {
+                color: $p-color-highlight;
+            }
         }
 
         .group-listing-header {
