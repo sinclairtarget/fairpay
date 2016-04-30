@@ -9,7 +9,7 @@ class SalariesControllerTest < ActionController::TestCase
   end
 
   test "can get new" do
-    get :new, nil, { user_id: @user.id }
+    get :new, nil, { user_id: @user.id, group_to_join_id: @empty_group.id }
     assert_response :success
   end
 
