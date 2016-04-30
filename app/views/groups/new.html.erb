@@ -1,5 +1,9 @@
 <%= form_tag controller: "groups", action: "create" do %>
   <%= label_tag :name_label, "Group Name" %>
   <%= text_field_tag :group_name %>
-  <%= submit_tag "Continue" %>
+  <p class="note">For example, <em>Acme Co. Employees</em></p>
+
+  <div class="double-spaced">
+    <%= submit_tag "Continue", class: %w{ btn btn-default } %>
+  </div>
 <% end %>
