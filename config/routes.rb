@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'verification'
       get 'resend_verification'
       get 'verify'
+      get 'settings'
     end
   end
 
