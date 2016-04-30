@@ -21,4 +21,15 @@ module ApplicationHelper
       number_to_currency(value, precision: 0)
     end
   end
+
+  def titles_for_autocomplete(group)
+    salaries_by_title = group.salaries_by_title
+
+    titles_string = ""
+    salaries_by_title.each do |title, salaries|
+      titles_string << "#{title},#{salaries.count};"
+    end
+
+    titles_string
+  end
 end

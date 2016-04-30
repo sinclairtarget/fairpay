@@ -1,5 +1,6 @@
 class SalariesController < ApplicationController
   def new
+    @group = Group.find(session[:group_to_join_id])
   end
 
   def create
