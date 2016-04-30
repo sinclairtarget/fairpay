@@ -1,9 +1,17 @@
 <%= form_tag controller: "users", action: "create" do %>
-  <%= label_tag :email_label, "Email" %>
-  <%= email_field_tag :email %>
-  <%= label_tag :password_label, "Password" %>
-  <%= password_field_tag :password %>
-  <%= label_tag :password_confirm_label, "Password Confirmation" %>
-  <%= password_field_tag :password_confirm %>
-  <%= submit_tag "Create Account" %>
+  <div>
+    <%= label_tag :email_label, "Email" %>
+    <%= email_field_tag :email %>
+  </div>
+  <div class="spaced">
+    <%= label_tag :password_label, "Password" %>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="spaced">
+    <%= label_tag :password_confirm_label, "Password Confirmation" %>
+    <%= password_field_tag :password_confirm %>
+  </div>
+  <div class="double-spaced">
+    <%= submit_tag "Create Account", class: %w{ btn btn-default btn-padded } %>
+  </div>
 <% end %>

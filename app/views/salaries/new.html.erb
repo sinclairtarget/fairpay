@@ -1,7 +1,13 @@
 <%= form_tag controller: "salaries", action: "create" do %>
-  <%= label_tag :title_label, "Title" %>
-  <%= text_field_tag :title %>
-  <%= label_tag :salary_label, "Annual Salary" %>
-  <%= number_field :salary, :annual_pay %>
-  <%= submit_tag "Submit" %> 
+  <div>
+    <%= label_tag :title_label, "Title" %>
+    <%= text_field_tag :title %>
+  </div>
+  <div class="spaced">
+    <%= label_tag :salary_label, "Annual Salary" %>
+    <%= number_field :salary, :annual_pay, step: 1000 %>
+  </div>
+  <div class="double-spaced">
+    <%= submit_tag "Save", class: %w{ btn btn-default } %>
+  </div>
 <% end %>

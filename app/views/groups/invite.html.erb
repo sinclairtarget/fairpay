@@ -1,0 +1,13 @@
+<h3>Invite Coworkers</h3>
+<div class="spaced">
+  <p>Who would you like to invite to be a part of your group?</p>
+  <p>Enter their email addresses below, separated by commas:</p>
+</div>
+
+<%= form_tag controller: "groups", action: "send_invites" do %>
+  <%= text_area_tag :emails, "", size: "48x8" %>
+  <div class="double-spaced">
+    <%= submit_tag "Invite", class: %w{ btn btn-default } %>
+    <%= link_to "Skip", group_path(@group), class: %w{ btn btn-default } %>
+  </div>
+<% end %>

@@ -95,6 +95,7 @@ a {
 }
 
 p.note {
+    margin-top: 6px;
     font-size: 12px;
 }
 
@@ -115,12 +116,19 @@ hr {
     text-align: center;
 }
 
+label {
+    display: block;
+    margin-bottom: 6px;
+}
+
 input {
-    padding: 12px;
+    padding: 6px;
     border: solid 1px $p-color-medium;
+    min-width: 200px;
 }
 
 .input-block {
+    padding: 12px;
     display: block;
     border-bottom: none;
     
@@ -128,3 +136,8 @@ input {
         border-bottom: solid 1px $p-color-medium;
     }
 }
+
+textarea {
+    resize: none;
+}
+
