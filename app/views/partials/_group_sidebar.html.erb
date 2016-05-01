@@ -21,22 +21,6 @@
           data: { toggle: "modal", target: "#edit-modal" } %>
   </div>
 </div>
-<div class="double-spaced">
-  <h3>Your Groups</h3>
-  <div class="delimited spaced">
-    <% @user.groups.each do |group| %>
-      <% if group == @group %>
-        <div class="half-spaced">
-          <%= link_to group.name, group_url(group) %>
-        </div>
-      <% else %>
-        <div class="half-spaced">
-        <%= link_to group.name, group_url(group), class: ["faded"] %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
 
 <%= content_tag :div, content_tag(:p, "Invite New Members"),
       class: %w{ btn btn-default double-spaced },

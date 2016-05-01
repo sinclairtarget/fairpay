@@ -12,13 +12,19 @@
               <%= @user.email %><span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
+            <% @user.groups.each do |group| %>
               <li>
-                <%= link_to "Groups", groups_url %>
+                <%= link_to group.name, group_path(group) %>
               </li>
+            <% end %>
+              <hr/>
+              <li>
+                <%= link_to "All Groups", groups_url %>
+              </li>
+              <hr/>
               <li>
                 <%= link_to "Settings", settings_user_path(@user) %>
               </li>
-              <hr/>
               <li>
                 <%= link_to "Log Out", logout_path, method: :delete %>
               </li>
