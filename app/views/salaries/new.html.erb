@@ -3,7 +3,7 @@
     <%= form_tag controller: "salaries", action: "create" do %>
       <div>
         <%= label_tag :title_label, "Title" %>
-        <%= text_field_tag :"title-autocomplete", "", 
+        <%= text_field_tag :title, "", 
             data: { titles: titles_for_autocomplete(@group) } %>
       </div>
       <div class="spaced">
