@@ -29,7 +29,7 @@
 
         li {
             height: 100%;
-            text-align: center;
+            text-align: left;
             padding: 0px 12px;
 
             u {
@@ -79,12 +79,15 @@
 
         .dropdown-menu {
             margin-top: 8px;
+            min-width: 200px;
 
             li {
-                padding: 0px 6px;
+                padding: 4px 16px;
 
                 a {
-                    line-height: 32px;
+                    padding: 0px;
+                    line-height: 24px;
+                    font-size: 14px;
                 }
 
                 &:hover {
