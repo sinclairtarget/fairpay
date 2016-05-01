@@ -75,8 +75,8 @@ $("#edit-modal").ready ->
         msg = "Something went wrong. (Status code: #{data.status})"
         Util.show_alert $alert, msg
 
-$("#title-autocomplete").ready ->
-  $input = $("#title-autocomplete")
+$("#title").ready ->
+  $input = $("#title")
   unless $input.length > 0
     return
 
