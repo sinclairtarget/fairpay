@@ -17,6 +17,10 @@ class TitleGrouping
     @salaries
   end
 
+  def can_show_average?
+    @salaries.count > 1
+  end
+
   protected
   def sorted_salaries(key, desc = false)
     if desc
