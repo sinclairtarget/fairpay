@@ -44,7 +44,11 @@
           <% grouping = @salaries_by_title[title] %>
           <tr class="grouping-header">
             <td><%= title %></td>
-            <td>Average: <%= dollar(grouping.average_annual_pay, short: true) %></td>
+            <% if grouping.can_show_average? %>
+              <td>Average: <%= dollar(grouping.average_annual_pay, short: true) %></td>
+            <% else %>
+              <td></td>
+            <% end %>
           </tr>
           <% any_fudged = false %>
           <% grouping.salaries.each_with_index do |salary, i| %>
@@ -69,7 +73,7 @@
       </table>
     </div>
     <p class="note"><span class="highlight">* This salary has been fudged because
-        there are not enough people with the matching title.</span></p>
+        there are not enough people with this title.</span></p>
     <hr/>
     <%= render partial: "partials/group_overview" %>
   </div>

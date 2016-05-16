@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize
 
+  def new
+    redirect_to groups_path if session[:user_id].present?
+  end
+
   def create
     email = params[:email]
     password = params[:password]

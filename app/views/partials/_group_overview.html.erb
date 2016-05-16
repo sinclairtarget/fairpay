@@ -13,13 +13,17 @@
     <% title, avg = @group.lowest_paying_title %>
     <% diff = @group.average_annual_pay - avg %>
     <p>Those holding the title of <em><%= title %></em> are the <b>least well paid.</b>
-    They made <b><%= dollar(avg) %></b> a year on average, 
-    <b><%= dollar(diff) %></b> less than the average across all titles.</p>
+    <% if @salaries_by_title[title].can_show_average? %>
+      They made <b><%= dollar(avg) %></b> a year on average, 
+      <b><%= dollar(diff) %></b> less than the average across all titles.</p>
+    <% end %>
 
     <% title, avg = @group.highest_paying_title %>
     <% diff = avg - @group.average_annual_pay %>
     <p>Those holding the title of <em><%= title %></em> are the <b>most well paid.</b>
-    They made <b><%= dollar(avg) %></b> a year on average, 
-    <b><%= dollar(diff) %></b> more than the average across all titles.</p>
+    <% if @salaries_by_title[title].can_show_average? %>
+      They made <b><%= dollar(avg) %></b> a year on average, 
+      <b><%= dollar(diff) %></b> more than the average across all titles.</p>
+    <% end %>
   </div>
 </div>

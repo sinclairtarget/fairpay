@@ -18,12 +18,16 @@
 
   <div id="title-summary">
     <h5>Existing Members in <%= @group.name %></h5>
-    <ul>
-      <% salaries_by_title = @group.salaries_by_title %>
-      <% @group.titles.sort.each do |title| %>
-        <% count = salaries_by_title[title].count %>
-        <li><%= "#{title} (#{count} existing)" %></li>
-      <% end %>
-    </ul>
+    <% if @group.salaries.count > 0 %>
+      <ul>
+        <% salaries_by_title = @group.salaries_by_title %>
+        <% @group.titles.sort.each do |title| %>
+          <% count = salaries_by_title[title].count %>
+          <li><%= "#{title} (#{count} existing)" %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>None</p>
+    <% end %>
   </div>
 </div>
