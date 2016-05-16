@@ -1,7 +1,7 @@
-<% if @user.verified %>
+<% if @verified %>
   <h3>You're all set!</h3>
 
-  <% if session[:group_to_join_id].present? %>
+  <% if @group.present? %>
     <div class="spaced">
       <p>We've verified your email address and you're ready 
       to join <%= @group.name %>.</p>
@@ -21,8 +21,9 @@
 <% else %>
   <h3>Ruh Roh</h3>
   <div class="spaced">
-    <p>If you're seeing this page you're tried to verify your email address with
-    the wrong code. Please check your inbox—we may have sent you an email more
-    recently.</p>
+    <p>If you're seeing this page, you've tried to verify your email address with
+    a code that isn't associated with the logged-in user. Please check 
+    your inbox—we may have sent you an email more recently.</p>
+    <p>Please also check that you are logged-in using the correct email address.</p>
   </div>
 <% end %>

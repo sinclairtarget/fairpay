@@ -50,12 +50,15 @@ class UsersController < ApplicationController
 
   def verify
     if params[:code] and params[:code] == @user.verification_code
+      @verified = true
       @user.verified = true
       @user.save!
 
       if session[:group_to_join_id].present?
         @group = Group.find(session[:group_to_join_id])
       end
+    else
+      @verified = false
     end
   end
 
