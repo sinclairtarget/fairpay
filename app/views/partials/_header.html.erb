@@ -1,0 +1,6 @@
+<header>
+  <h2 class="logo">PaySymmetry</h2>
+  <% if @user.present? %>
+    <h4 class="username"><%= @user.email %></h4>
+  <% end %>
+</header>

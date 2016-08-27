@@ -1,24 +1,20 @@
 // layout
-$nav-bar-height: 68px;
-$nav-bar-margin: 100px;
-$outside-bar-padding: 60px;
+$nav-bar-height: 54px;
 
 // colors
-$p-color-light-green: #f0f7f2;
-$p-color-green: #72996b;
-$p-color-lightest: white;
-$p-color-light: #F7F7F7;
-$p-color-medium: #bcbcbc;
-$p-color-dark: #8e8e8e;
-$p-color-darkest: #636363;
-$p-color-bold: #4A4A4A;
-$p-color-highlight: #d8822e;
-$p-color-onlight: $p-color-darkest;
-$p-color-ondark: $p-color-lightest;
+$background-color: #636363;
+$header-background-color: #72996b;
+$main-background-color: #f0f7f2;
+$button-background-color: #929292;
+$button-hover-background-color: #afafaf;
+
+$on-dark-color: white;
+$on-light-color: #636363;
+$border-color: #cacaca;
+$highlight-color: orange;
 
 // fonts
 $header-font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
     "Lucida Sans", Tahoma, sans-serif;
 $body-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic",
     Arial, sans-serif;
-$font-size: 16px;

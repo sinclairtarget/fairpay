@@ -1,0 +1,25 @@
+@import "partials/constants";
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $nav-bar-height;
+    background-color: $header-background-color;
+}
+
+header .logo {
+    position: absolute;
+    left: 20px;
+    line-height: $nav-bar-height;
+}
+
+header .username {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    font-weight: normal;
+    cursor: pointer;
+    line-height: 44px;
+}

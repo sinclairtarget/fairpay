@@ -1,0 +1,63 @@
+@import "partials/constants";
+
+.section {
+    margin-bottom: 20px;
+    padding: 14px;
+    border: 1px solid $border-color;
+    background-color: white;
+
+    &:last-of-type {
+        margin-bottom: 0px;
+    }
+}
+
+.sections-holder {
+    overflow: hidden;
+    padding-right: 20px;
+    margin-right: 240px;
+}
+
+.company-heading {
+    position: relative;
+
+    .member-count {
+        position: absolute;
+        right: 0px;
+    }
+
+    .title-select {
+        position: absolute;
+        right: 60px;
+        font-weight: normal;
+        font-size: 0.9em;
+        line-height: 1.11;
+    }
+}
+
+.stat-summary {
+    padding: 24px;
+    text-align: center;
+}
+
+.stat-item {
+    display: inline-block;
+    padding: 0 30px;
+}
+
+.stat-item h2 {
+    margin-bottom: 0.4em;
+    color: rgb(0, 119, 137);
+}
+
+.caption {
+    text-transform: uppercase;
+    font-size: 1.75em;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #909090;
+}
+
+.canvas-holder {
+    width: 90%;
+    margin: 0 auto 60px auto;
+}

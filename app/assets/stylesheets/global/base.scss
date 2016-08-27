@@ -1,0 +1,83 @@
+@import "partials/constants";
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $body-font-family;
+    font-size: 1.4rem;
+}
+
+html, body {
+    height: 100%;
+    min-width: 960px;
+    color: $on-dark-color;
+    background-color: $background-color;
+}
+
+main {
+    height: 100%;
+    padding-top: $nav-bar-height;
+    background-color: $main-background-color;
+}
+
+/* Fonts */
+h1, h2, h3, h4, h5, h6 {
+    font-family: $header-font-family;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.875rem;
+}
+
+h4 {
+    font-size: 1.562rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Layout */
+.content {
+    height: 100%;
+    color: $on-light-color;
+    padding: 20px;
+    overflow: auto;
+}
+
+.btn {
+    padding: 12px 8px;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.btn-solid {
+    text-align: center;
+    background-color: $button-background-color;
+    color: $on-dark-color;
+    
+    &:hover {
+        background-color: $button-hover-background-color;
+    }
+}
