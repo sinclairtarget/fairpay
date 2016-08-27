@@ -15,7 +15,8 @@
  */
 
 @import "partials/constants";
-@import "global/*";
+@import "global/reset";
+@import "global/global";
 
 $nprogress-color: $p-color-highlight;
 @import "nprogress";
