@@ -14,8 +14,6 @@
  *= require jquery-ui/autocomplete
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
 @import "global/*";
 
 @import "partials/constants";
@@ -23,4 +21,3 @@
 $nprogress-color: $p-color-highlight;
 
 @import "nprogress";
-@import "nprogress-bootstrap";
