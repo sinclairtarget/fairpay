@@ -14,10 +14,8 @@
  *= require jquery-ui/autocomplete
  */
 
+@import "partials/constants";
 @import "global/*";
 
-@import "partials/constants";
-
 $nprogress-color: $p-color-highlight;
-
 @import "nprogress";
