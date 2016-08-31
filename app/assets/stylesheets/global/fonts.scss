@@ -1,0 +1,44 @@
+@import "partials/constants";
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $body-font-family;
+    font-size: 1.4rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $header-font-family;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.875rem;
+}
+
+h4 {
+    font-size: 1.562rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+p a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+input {
+    font: inherit;
+}
+

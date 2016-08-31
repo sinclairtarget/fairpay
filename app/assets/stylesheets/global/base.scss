@@ -8,15 +8,6 @@ html {
     box-sizing: inherit;
 }
 
-html {
-    font-size: 62.5%;
-}
-
-body {
-    font-family: $body-font-family;
-    font-size: 1.4rem;
-}
-
 html, body {
     height: 100%;
     min-width: 960px;
@@ -24,55 +15,34 @@ html, body {
     background-color: $background-color;
 }
 
-main {
-    height: 100%;
-    padding-top: $nav-bar-height;
-    background-color: $main-background-color;
-}
-
-/* Fonts */
-h1, h2, h3, h4, h5, h6 {
-    font-family: $header-font-family;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: 3rem;
-}
-
-h2 {
-    font-size: 2.5rem;
-}
-
-h3 {
-    font-size: 1.875rem;
-}
-
-h4 {
-    font-size: 1.562rem;
-}
-
 a {
-    text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
 
-/* Layout */
+main {
+    height: 100%;
+    padding-top: $header-height;
+}
+
 .content {
     height: 100%;
-    color: $on-light-color;
     padding: 20px;
     overflow: auto;
+    color: $on-light-color;
+    background-color: $content-background-color;
 }
 
 .btn {
     padding: 12px 8px;
     cursor: pointer;
     margin-top: 16px;
+    border: none;
 }
 
 .btn-solid {
+    @extend .btn;
+
     text-align: center;
     background-color: $button-background-color;
     color: $on-dark-color;
@@ -80,4 +50,21 @@ a {
     &:hover {
         background-color: $button-hover-background-color;
     }
+}
+
+.box {
+    margin-bottom: 20px;
+    padding: 14px;
+    border: 1px solid $border-color;
+    background-color: $box-background-color;
+
+    &:last-of-type {
+        margin-bottom: 0px;
+    }
+}
+
+.input-block {
+    display: block;
+    padding: 12px 8px;
+    border: 1px solid $border-color;
 }

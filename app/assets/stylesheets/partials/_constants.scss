@@ -1,17 +1,22 @@
 // layout
-$nav-bar-height: 54px;
+$header-height: 54px;
 
 // colors
-$background-color: #636363;
-$header-background-color: #72996b;
-$main-background-color: #f0f7f2;
-$button-background-color: #929292;
-$button-hover-background-color: #afafaf;
-
-$on-dark-color: white;
-$on-light-color: #636363;
 $border-color: #cacaca;
 $highlight-color: orange;
+
+// background colors
+$background-color: #636363;
+$header-background-color: #72996b;
+$content-background-color: #f0f7f2;
+$box-background-color: white;
+$button-background-color: #4f696f;
+$button-hover-background-color: #6c858a;
+$field-background-color: #e5f1f3;
+
+// font colors
+$on-dark-color: white;
+$on-light-color: #636363;
 
 // fonts
 $header-font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",

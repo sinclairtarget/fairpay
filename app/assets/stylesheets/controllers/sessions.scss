@@ -1,0 +1,47 @@
+@import "partials/constants";
+
+.login-box {
+    position: relative;
+    top: 20%;
+    margin: auto;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+
+    div, input {
+        width: 480px;
+        margin: auto;
+    }
+
+    form {
+        padding: 20px 0;
+    }
+
+    p {
+        margin-bottom: 40px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+
+    input[type=email] {
+        margin-bottom: 0;
+    }
+
+    input[type=password] {
+        border-top: none;
+    }
+
+    .input-block {
+        background-color: white;
+    }
+}
+
+.btn-solid {
+    padding: 14px 8px;
+}

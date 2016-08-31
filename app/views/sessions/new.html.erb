@@ -1,17 +1,9 @@
-<div id="login-div">
-  <h1>Log In</h1>
-  <div class="double-spaced">
-    <%= form_tag controller: "sessions", action: "create" do %>
-      <div>
-        <%= email_field_tag :email, nil, class: "input-block", placeholder: "Email" %>
-        <%= password_field_tag :password, nil, class: "input-block", placeholder: "Password" %>
-      </div>
-      <div class="half-spaced">
-        <p>Don't have an account? <%= link_to "Sign up here.", new_user_path %></p>
-      </div>
-      <div class="double-spaced">
-        <%= submit_tag "Log In", class: "btn btn-default btn-padded" %>
-      </div>
-    <% end %>
-  </div>
+<div class="login-box box">
+  <%= form_tag controller: "sessions", action: "create" do %>
+    <p>Don't have an account? <%= link_to "Sign up here", new_user_path %></p>
+    <%= email_field_tag :email, nil, class: "input-block", placeholder: "Email" %>
+    <%= password_field_tag :password, nil, class: "input-block", placeholder: "Password" %>
+    <%= submit_tag "Log In", class: "btn-solid" %>
+    <p><a href="#">I forgot my password</a></p>
+  <% end %>
 </div>
