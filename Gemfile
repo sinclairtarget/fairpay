@@ -40,6 +40,9 @@ gem 'rename'
 # Use unicorn application server
 gem 'unicorn'
 
+# Font awesome font icons
+gem 'font-awesome-sass'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
