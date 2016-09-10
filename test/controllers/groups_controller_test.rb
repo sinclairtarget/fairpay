@@ -16,9 +16,9 @@ class GroupsControllerTest < ActionController::TestCase
                             annual_pay: 110000)
   end
 
-  test "can get index" do
+  test "index redirects to show" do
     get :index, nil, @session
-    assert_response :success
+    assert_redirected_to group_path(@group.id)
   end
 
   test "can get show" do
