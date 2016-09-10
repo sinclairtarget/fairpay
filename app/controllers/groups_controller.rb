@@ -6,6 +6,16 @@ class GroupsController < ApplicationController
                                            :join]
 
   def index
+    redirect_group = Group.joins(:salaries)
+                          .where(salaries: { user_id: @user.id })
+                          .order(:name)
+                          .first
+
+    if redirect_group.present?
+      redirect_to group_path(redirect_group.id)
+    else
+      redirect_to new_group_path
+    end
   end
   
   def show

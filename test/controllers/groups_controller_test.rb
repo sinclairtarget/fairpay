@@ -21,6 +21,17 @@ class GroupsControllerTest < ActionController::TestCase
     assert_redirected_to group_path(@group.id)
   end
 
+  test "index redirects to new group path if user does not have any groups" do
+    new_user = User.create!(email: "newuser@test.com",
+                            password: "p@sswrd",
+                            verified: true)
+
+    session = { user_id: new_user.id }
+
+    get :index, nil, session
+    assert_redirected_to new_group_path
+  end
+
   test "can get show" do
     get :show, { id: @group.id }, @session
     assert_response :success
