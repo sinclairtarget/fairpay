@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class GroupsControllerTest < ActionController::TestCase
   setup do
     @user = User.create!(email: "tester@test.com",

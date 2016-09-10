@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class SessionsControllerTest < ActionController::TestCase
   setup do
     user = User.find_by(email: "anne@test.com")

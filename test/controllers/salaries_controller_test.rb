@@ -1,3 +1,5 @@
+require 'test_helper' 
+
 class SalariesControllerTest < ActionController::TestCase
   setup do
     @user = User.create(email: "tester@test.com",
