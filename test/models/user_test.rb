@@ -1,6 +1,14 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  setup do
+    @user_data = {
+      email: "tester@test.com",
+      password: "p@sswrd",
+      verified: true
+    }
+  end
+
   test "user must have an email" do
     user = User.new
     assert user.invalid?
@@ -23,5 +31,10 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(password: "blargh", password_confirmation: "foo")
     assert user.invalid?
     assert user.errors[:password_confirmation].any?
+  end
+
+  test "username is user email without domain" do
+    user = User.new(@user_data)
+    assert_equal "tester", user.username
   end
 end
