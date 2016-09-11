@@ -14,4 +14,16 @@
   </div>
 <% end %>
 
-
+<aside class="info-sidebar box">
+  <h3 class="heading">You <i class="fa fa-pencil"></i></h3>
+  <ul class="info">
+    <li>Title</li>
+    <li><%= @salary.title %></li>
+    <li>Salary</li>
+    <li><%= dollar(@salary.annual_pay) %></li>
+  </ul>
+  <a href="#" class="btn-solid">Invite Members</a>
+  <a href="#" class="btn-solid">Leave Group</a>
+</aside>
+<div class="sections-holder">
+</div>

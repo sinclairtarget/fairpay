@@ -43,6 +43,7 @@ main {
 .btn-solid {
     @extend .btn;
 
+    display: block;
     text-align: center;
     background-color: $button-background-color;
     color: $on-dark-color;

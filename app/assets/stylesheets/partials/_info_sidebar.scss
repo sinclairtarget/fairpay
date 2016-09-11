@@ -1,0 +1,45 @@
+.info-sidebar {
+    position: fixed;
+    top: 74px;
+    right: 20px;
+    width: 240px;
+}
+
+.info-sidebar .heading {
+    position: relative;
+    line-height: 1.4;
+    border-bottom: 1px solid #cacaca;
+    padding-bottom: 6px;
+}
+
+.info-sidebar .fa-pencil {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    cursor: pointer;
+}
+
+.info-sidebar .fa-pencil:hover {
+    color: #6c858a;
+}
+
+.info-sidebar ul.info {
+    padding: 16px 0;
+    border-bottom: 1px solid #cacaca;
+}
+
+.info-sidebar ul.info li {
+    line-height: 1.4;
+}
+
+.info-sidebar ul.info li:nth-child(odd) {
+    font-weight: bold;
+}
+
+.info-sidebar ul.info li:nth-child(even) {
+    padding-bottom: 6px;
+}
+
+.info-sidebar ul.info li:last-child {
+    padding-bottom: 0;
+}
