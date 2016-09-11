@@ -25,5 +25,27 @@
   <a href="#" class="btn-solid">Invite Members</a>
   <a href="#" class="btn-solid">Leave Group</a>
 </aside>
+
 <div class="sections-holder">
+  <section class="company-section box">
+    <div class="company-title-row">
+      <h2 class="company-heading"><%= @group.name %></h2>
+      <h3 class="company-util">
+        <span class="title-select">All Titles <i class="fa fa-angle-down"></i></span>
+        <span><i class="fa fa-user"></i> <%= @group.salaries.count %></span>
+      </p>
+    </div>
+    <table class="stat-summary">
+      <tr class="stat-numbers">
+        <td>4</td>
+        <td class="emphasize">$87K</td>
+        <td>2</td>
+      </tr>
+      <tr class="stat-captions">
+        <td>Members<br>with Your Title</td>
+        <td>Median Salary<br>for Your Title</td>
+        <td>Your Rank<br>within Your Title</td>
+      </tr>
+    </table>
+  </section>
 </div>
