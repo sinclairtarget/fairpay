@@ -10,17 +10,21 @@
     margin-bottom: 10px;
 }
 
-.groups-list h4, .groups-list li, .groups-list div {
+.groups-list h4, .groups-list div, .groups-list a {
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 10px;
 }
 
-.groups-list li {
+.groups-list a {
+    display: block;
     padding-top: 10px;
     cursor: pointer;
-    color: #b9b9b9;
     line-height: 1.2;
+}
+
+.groups-list li {
+    color: #b9b9b9;
 }
 
 .groups-list li:hover {
@@ -30,8 +34,12 @@
 
 .groups-list li.selected {
     background-color: #4e4e4e;
-    border-left: 2px solid orange;
     color: white;
+    border-left: 2px solid orange;
+
+    a {
+        padding-left: 18px;
+    }
 }
 
 .create-group-btn {
