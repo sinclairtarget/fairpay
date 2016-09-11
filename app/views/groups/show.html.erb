@@ -1,3 +1,4 @@
+<!-- Groups Sidebar -->
 <%= content_for :groups_sidebar do %>
   <div class="groups-list">
     <h4>Groups</h4>
@@ -14,6 +15,7 @@
   </div>
 <% end %>
 
+<!-- Personal Info Sidebar -->
 <aside class="info-sidebar box">
   <h3 class="heading">You <i class="fa fa-pencil"></i></h3>
   <ul class="info">
@@ -26,6 +28,7 @@
   <a href="#" class="btn-solid">Leave Group</a>
 </aside>
 
+<!-- Main Content -->
 <div class="sections-holder">
   <section class="company-section box">
     <div class="company-title-row">
@@ -42,10 +45,13 @@
         <td><%= @salaries_by_title[@salary.title].rank_of(@salary) %></td>
       </tr>
       <tr class="stat-captions">
-        <td>Members<br>with Your Title</td>
-        <td>Median Salary<br>for Your Title</td>
-        <td>Your Rank<br>within Your Title</td>
+        <td class="caption">Members<br>with Your Title</td>
+        <td class="caption">Median Salary<br>for Your Title</td>
+        <td class="caption">Your Rank<br>within Your Title</td>
       </tr>
     </table>
   </section>
+
+  <%= render layout: 'layouts/section', locals: { caption: "Salaries" } do %>
+  <% end %>
 </div>

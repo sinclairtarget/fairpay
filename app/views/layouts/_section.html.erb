@@ -1,0 +1,6 @@
+<% classes ||= [] %>
+
+<section class="<%= (classes << "box").join(" ") %>">
+  <p class="caption"><%= caption %></p>
+  <%= yield %>
+</section>
