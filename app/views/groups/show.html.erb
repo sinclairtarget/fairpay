@@ -2,7 +2,7 @@
 <%= content_for :groups_sidebar do %>
   <div class="groups-list">
     <h4>Groups</h4>
-    <ul>
+    <ul class="multiple-select">
       <% @groups.each do |group| %>
         <%= content_tag :li, class: group_selected_class(@group == group) do %>
           <%= link_to truncate(group.name, length: 22), group_path(group) %>
