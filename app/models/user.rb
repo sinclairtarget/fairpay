@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates :email, presence: true, format: { with: /.+@.+/ }
+  validates :email, presence: true, format: { with: /\A[^@]+@[^@]+\z/ }
   has_many :salaries, dependent: :destroy
   has_many :groups, through: :salaries
   has_secure_password

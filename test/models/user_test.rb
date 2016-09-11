@@ -21,6 +21,12 @@ class UserTest < ActiveSupport::TestCase
     assert user.errors[:email].any?
   end
 
+  test "user must have an email with only one '@' in it" do
+    user = User.new(email: "sinclair@home@gmail.com")
+    assert user.invalid?
+    assert user.errors[:email].any?
+  end
+
   test "user must have a password" do
     user = User.new
     assert user.invalid?
