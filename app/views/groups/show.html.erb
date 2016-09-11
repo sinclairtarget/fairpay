@@ -37,9 +37,9 @@
     </div>
     <table class="stat-summary">
       <tr class="stat-numbers">
-        <td>4</td>
-        <td class="emphasize">$87K</td>
-        <td>2</td>
+        <td><%= @salaries_by_title[@salary.title].count %></td>
+        <td class="emphasize"><%= dollar(@salaries_by_title[@salary.title].median_annual_pay, short: true) %></td>
+        <td><%= @salaries_by_title[@salary.title].rank_of(@salary) %></td>
       </tr>
       <tr class="stat-captions">
         <td>Members<br>with Your Title</td>
