@@ -7,7 +7,7 @@
     <ul>
       <% @groups.each do |group| %>
         <%= content_tag :li, class: group_selected_class(@group == group) do %>
-          <%= link_to group.name, group_path(group) %>
+          <%= link_to truncate(group.name, length: 22), group_path(group) %>
         <% end %>
       <% end %>
     </ul>
