@@ -52,3 +52,51 @@
 .stat-captions td {
     padding: 6px;
 }
+
+.salary-table {
+    margin: 0 auto 20px auto;
+    width: 80%;
+    text-align: center;
+    table-layout: fixed;
+
+    th, td {
+        padding: 8px;
+    }
+
+    th:first-child, td:first-child {
+        padding-left: 90px;
+    }
+
+    th:last-child, td:last-child {
+        padding-right: 90px;
+    }
+
+    tbody {
+        tr:nth-of-type(odd) {
+            background-color: $table-row-odd-color;
+        }
+
+        tr:nth-of-type(even) {
+            background-color: $table-row-even-color;
+        }
+
+        tr:first-of-type {
+            border-top: 1px solid #cacaca;
+            border-bottom: 1px solid #cacaca;
+            text-align: left;
+            background-color: transparent;
+
+            td {
+                padding: 8px;
+            }
+
+            td:first-child {
+                text-align: left;
+            }
+
+            td:last-child {
+                text-align: right;
+            }
+        }
+    }
+}

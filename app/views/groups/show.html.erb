@@ -53,5 +53,28 @@
   </section>
 
   <%= render layout: 'layouts/section', locals: { caption: "Salaries" } do %>
+    <table class="salary-table">
+      <thead>
+        <tr>
+          <th class="caption">Title</th>
+          <th class="caption">Salary</th>
+        </tr>
+      </thead>
+      <% @salaries_by_title.keys.sort.each do |title| %>
+        <% grouping = @salaries_by_title[title] %>
+        <tbody>
+          <tr>
+            <td><i class="fa fa-angle-down"></i> <%= title %></td>
+            <td><i class="fa fa-user"></i> <%= grouping.salaries.count %>
+          </tr>
+          <% grouping.salaries.each do |salary| %>
+            <tr>
+              <td><%= salary.title %></td>
+              <td><%= dollar(salary.annual_pay) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
   <% end %>
 </div>
