@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require bootstrap/dropdown
 //= require jquery_ujs
 //= require nprogress
 //= require nprogress-turbolinks
