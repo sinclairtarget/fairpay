@@ -1,6 +1,6 @@
 <header>
-    <h2 class="logo">PaySymmetry</h2>
+  <h2 class="logo">PaySymmetry</h2>
   <% if @user.present? %>
-    <h4 class="username"><%= @user.email %></h4>
+    <h4 class="username"><%= @user.username %> <i class="fa fa-angle-down"></i></h4>
   <% end %>
 </header>
