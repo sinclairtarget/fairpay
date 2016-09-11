@@ -1,6 +1,3 @@
-<% title_avg = @salaries_by_title[@salary.title].average_annual_pay %>
-<% med_avg = @salaries_by_title[@salary.title].median_annual_pay %>
-
 <%= content_for :groups_sidebar do %>
   <div class="groups-list">
     <h4>Groups</h4>
@@ -17,81 +14,4 @@
   </div>
 <% end %>
 
-<% if @group.salaries.count < ApplicationHelper::MIN_GROUP_MEMBERS %>
-  <p>Salaries will not be displayed until there are at least
-  <%= ApplicationHelper::MIN_GROUP_MEMBERS %> members in this group.</p>
-<% else %>
-  <div class="group-header">
-    <div class="inline">
-      <h2><%= @group.name %></h2>
-    </div>
-    <div class="inline member-count">
-      <span class="glyphicon glyphicon-user"></span> <%= @group.users.count %>
-    </div>
-  </div>
-  <div class="group-body">
-    <div class="double-spaced">
-      <table id="summary-table">
-        <tr>
-          <th>People</br>with Your Title</th>
-          <th>Average Salary</br>for Your Title</th>
-          <th>Your Rank</br>for Your Title</th>
-        </tr>
-        <tr>
-          <td><%= @salaries_by_title[@salary.title].count %></td>
-          <td><%= dollar(title_avg, short: true) %></td>
-          <td><%= @salaries_by_title[@salary.title].rank_of(@salary) %></td>
-      </table>
-    </div>
-    <hr/>
-    <div class="spaced">
-      <div class="section-heading">
-        <h3>Salaries</h3>
-      </div>
-      <table id="salaries-table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Salary</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @salaries_by_title.keys.sort.each do |title| %>
-          <% grouping = @salaries_by_title[title] %>
-          <tr class="grouping-header">
-            <td><%= title %></td>
-            <% if grouping.can_show_average? %>
-              <td>Average: <%= dollar(grouping.average_annual_pay, short: true) %></td>
-            <% else %>
-              <td></td>
-            <% end %>
-          </tr>
-          <% any_fudged = false %>
-          <% grouping.salaries.each_with_index do |salary, i| %>
-            <% title_count = @salaries_by_title[salary.title].count %>
-            <% if i % 2 == 0 %>
-            <tr class="even">
-            <% else %>
-            <tr>
-            <% end %>
-              <td><%= title %></td>
-              <% is_fudged, fudged = fudged_salary(salary, title_count) %>
-              <% if is_fudged %>
-                <% any_fudged = true %>
-                <td><%= fudged %> <span class="highlight">*</span></td>
-              <% else %>
-                <td><%= fudged %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-    <p class="note"><span class="highlight">* This salary has been fudged because
-        there are not enough people with this title.</span></p>
-    <hr/>
-    <%= render partial: "partials/group_overview" %>
-  </div>
-<% end %>
-<hr/>
+
