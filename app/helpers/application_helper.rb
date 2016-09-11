@@ -4,6 +4,14 @@ module ApplicationHelper
   LANDING_URL = "http://paysymmetry.com".freeze
   MIN_GROUP_MEMBERS = 3
 
+  def group_selected_class(is_selected)
+    if is_selected
+      "selected"
+    else
+      ""
+    end
+  end
+
   def fudged_salary(salary, members)
     return [false, dollar(salary.annual_pay)] if members > MIN_GROUP_MEMBERS
 

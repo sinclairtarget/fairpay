@@ -1,0 +1,62 @@
+.groups-sidebar {
+    position: relative;
+    float: left;
+    width: 200px;
+    height: 100%;
+    padding: 36px 0;
+}
+
+.groups-list ul {
+    margin-bottom: 10px;
+}
+
+.groups-list h4, .groups-list li, .groups-list div {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.groups-list li {
+    padding-top: 10px;
+    cursor: pointer;
+    color: #b9b9b9;
+}
+
+.groups-list li:hover {
+    background-color: #777777;
+    color: white;
+}
+
+.groups-list li.selected {
+    background-color: #4e4e4e;
+    border-left: 2px solid orange;
+    color: white;
+}
+
+.create-group-btn {
+    padding-top: 10px;
+    cursor: pointer;
+    color: #929292;
+}
+
+.create-group-btn:hover {
+    color: white;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    text-align: center;
+}
+
+footer li {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #b9b9b9;
+}
+
+footer li:hover {
+    color: white;
+}

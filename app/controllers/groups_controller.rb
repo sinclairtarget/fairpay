@@ -19,8 +19,11 @@ class GroupsController < ApplicationController
   end
   
   def show
-    @salary = @group.salaries.where(user_id: @user.id).first
+    @groups = Group.joins(:salaries)
+                   .where(salaries: { user_id: @user.id })
+                   .order(:name)
 
+    @salary = @group.salaries.where(user_id: @user.id).first
     @salaries_by_title = @group.salaries_by_title
   end
 
