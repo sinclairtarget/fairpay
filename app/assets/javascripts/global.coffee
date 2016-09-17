@@ -1,11 +1,11 @@
-$(".salary-table").ready ->
-  $(".salary-table tbody > tr:first-child").click ->
-    $row = $(this)
-    $icon_span = $row.find(".fa").first()
-    Util.toggle_class $icon_span, "fa-angle-down", "fa-angle-right"
+$(document).on("click", ".salary-table tbody > tr:first-child", ->
+  $row = $(this)
+  $icon_span = $row.find(".fa").first()
+  Util.toggle_class $icon_span, "fa-angle-down", "fa-angle-right"
 
-    $tbody = $row.parent()
-    $tbody.children("tr:not(:first-child)").toggle()
+  $tbody = $row.parent()
+  $tbody.children("tr:not(:first-child)").toggle()
+)
 
 
 $("#invite-modal").ready ->
