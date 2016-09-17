@@ -19,3 +19,11 @@ Util.parse_titles_data_string = (data_string) ->
     final_array.push { label: "#{parts[0]} (#{parts[1]})", value: parts[0] }
 
   final_array
+
+Util.toggle_class = ($obj, class_a, class_b) ->
+  if $obj.hasClass(class_a)
+    $obj.removeClass(class_a)
+    $obj.addClass(class_b)
+  else if $obj.hasClass(class_b)
+    $obj.removeClass(class_b)
+    $obj.addClass(class_a)

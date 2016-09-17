@@ -1,8 +1,12 @@
-$(document).ready ->
-# Group listings take you to the group page when clicked
-  $(".group-listing").click ->
-    groupID = $(this).data("id")
-    Turbolinks.visit("groups/" + groupID)
+$(".salary-table").ready ->
+  $(".salary-table tbody > tr:first-child").click ->
+    $row = $(this)
+    $icon_span = $row.find(".fa").first()
+    Util.toggle_class $icon_span, "fa-angle-down", "fa-angle-right"
+
+    $tbody = $row.parent()
+    $tbody.children("tr:not(:first-child)").toggle()
+
 
 $("#invite-modal").ready ->
   $modal = $("#invite-modal")

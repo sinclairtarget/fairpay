@@ -80,11 +80,13 @@
             background-color: $table-row-even-color;
         }
 
+        // divider rows
         tr:first-of-type {
             border-top: 1px solid #cacaca;
             border-bottom: 1px solid #cacaca;
             text-align: left;
             background-color: transparent;
+            cursor: pointer;
 
             td {
                 padding: 8px;
