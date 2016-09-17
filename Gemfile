@@ -19,8 +19,6 @@ gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-# $(document).ready works with turbolinks
-gem 'jquery-turbolinks' 
 # Redirect AJAX requests
 gem 'turbolinks-redirect'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
