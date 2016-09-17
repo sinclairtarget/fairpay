@@ -11,14 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap/dropdown
-//= require jquery_ujs
 //= require nprogress
 //= require nprogress-turbolinks
-//= require turbolinks
 //= require jquery-ui/autocomplete
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
+//
+//= require turbolinks
 
 NProgress.configure({
     showSpinner: false

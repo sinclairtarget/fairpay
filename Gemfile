@@ -18,9 +18,11 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.5'
 # Redirect AJAX requests
 gem 'turbolinks-redirect'
+# ready turbolinks events
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -41,7 +43,11 @@ gem 'unicorn'
 # Font awesome font icons
 gem 'font-awesome-sass'
 
+# Twitter Bootstrap
 gem 'bootstrap-sass'
+
+# Graph library
+gem 'chartkick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
