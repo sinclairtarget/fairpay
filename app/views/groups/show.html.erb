@@ -77,4 +77,14 @@
       <% end %>
     </table>
   <% end %>
+
+  <%= render layout: 'layouts/section', 
+             locals: { caption: "Salary Distribution (All Titles)" } do %>
+    <div class="canvas-holder">
+      <%= column_chart(distribution_group_path, xtitle: "Salary Bucket",
+                       ytitle: "Count",
+                       colors: ["#cdd"],
+                      library: get_library()) %>
+    </div>
+  <% end %>
 </div>

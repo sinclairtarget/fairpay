@@ -1,4 +1,16 @@
 module Util
+  include ActionView::Helpers::NumberHelper
+
+  def dollar(value, short: false)
+    if value < 100
+      number_to_currency(value)
+    elsif short and value >= 1000
+      number_to_currency(value / 1000, precision: 0) + "K"
+    else
+      number_to_currency(value, precision: 0)
+    end
+  end
+
   def self.fudge(value, range_divisor, salt)
     range_divisor = 1 if range_divisor < 1
 

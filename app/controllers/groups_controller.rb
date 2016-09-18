@@ -1,4 +1,9 @@
+require_relative "../../lib/util/util"
+require_relative "../../lib/ext/numeric"
+
 class GroupsController < ApplicationController
+  include Util
+
   skip_before_action :authorize, only: [:join]
   before_action :authorize_group, except: [:index,
                                            :new,
@@ -73,6 +78,38 @@ class GroupsController < ApplicationController
     onboard_user_to_group params[:id]
   end
 
+  # --------------------------------------------------------------------------
+  # Graph endpoints
+  # --------------------------------------------------------------------------
+  def distribution
+    salaries = @group.salaries.order(:annual_pay)
+
+    min = salaries.first.annual_pay.rounddown(1000)
+    max = salaries.last.annual_pay.roundup(1000) + 1000
+    range = max - min
+
+    bucket_size = range / 10
+
+    buckets = {}
+    bucket_min = min
+    bucket_max = min + bucket_size
+    key = bucket_key(bucket_min, bucket_max)
+    buckets[key] ||= 0
+
+    salaries.each do |salary|
+      while salary.annual_pay >= bucket_max
+        bucket_min += bucket_size
+        bucket_max += bucket_size
+        key = bucket_key(bucket_min, bucket_max)
+        buckets[key] ||= 0
+      end
+
+      buckets[key] += 1
+    end
+
+    render json: buckets
+  end
+
   protected
   def authorize_group
     @group = Group.find(params[:id])
@@ -82,5 +119,11 @@ class GroupsController < ApplicationController
   def onboard_user_to_group(group_id)
     session[:group_to_join_id] = group_id
     redirect_to new_salary_path
+  end
+
+  def bucket_key(bucket_min, bucket_max)
+    min_str = dollar(bucket_min, short: true)
+    max_str = dollar(bucket_max, short: true)
+    "#{min_str} – <#{max_str}"
   end
 end
