@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post 'invite', to: 'groups#send_invites'
       get 'join'
       get 'distribution'
+      get 'scatter'
     end
   end
 

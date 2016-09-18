@@ -4,11 +4,11 @@ require_relative "../../lib/ext/numeric"
 class GroupsController < ApplicationController
   include Util
 
-  skip_before_action :authorize, only: [:join]
+  skip_before_action :authorize, only: [:join, :scatter]
   before_action :authorize_group, except: [:index,
                                            :new,
                                            :create,
-                                           :join]
+                                           :join, :scatter]
 
   def index
     redirect_group = Group.joins(:salaries)
@@ -108,6 +108,12 @@ class GroupsController < ApplicationController
     end
 
     render json: buckets
+  end
+
+  def scatter
+    @group ||= Group.find(params[:id])
+    salaries = @group.salaries.order(:annual_pay).pluck(:annual_pay)
+    render json: salaries.each_with_index.map { |s, i| [i + 1, s] }
   end
 
   protected
