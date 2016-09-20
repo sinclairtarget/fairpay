@@ -85,7 +85,7 @@ class GroupsController < ApplicationController
     salaries = @group.salaries.order(:annual_pay)
 
     min = salaries.first.annual_pay.rounddown(1000)
-    max = salaries.last.annual_pay.roundup(1000) + 1000
+    max = (salaries.last.annual_pay + 1).roundup(1000)
     range = max - min
 
     bucket_size = range / 10
