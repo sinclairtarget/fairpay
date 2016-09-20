@@ -1,10 +1,9 @@
-require_relative "../../lib/util/util.rb"
-
 module ApplicationHelper
   LANDING_URL = "http://paysymmetry.com".freeze
   MIN_GROUP_MEMBERS = 3
 
-  include Util
+  include Formatting::Money
+  include Anonymity::Fudging
 
   def group_selected_class(is_selected)
     if is_selected
@@ -18,7 +17,7 @@ module ApplicationHelper
     return [false, dollar(salary.annual_pay)] if members > MIN_GROUP_MEMBERS
 
     salt = salary.updated_at.to_i
-    min, max = Util.fudge(salary.annual_pay, members, salt)
+    min, max = fudge(salary.annual_pay, members, salt)
     [true, dollar(min, short: true) + " – " + dollar(max, short: true)]
   end
 

@@ -1,8 +1,7 @@
-require_relative "../../lib/util/util"
-require_relative "../../lib/ext/numeric"
+require_dependency "../../lib/core_ext/numeric"
 
 class GroupsController < ApplicationController
-  include Util
+  include Formatting::Money
 
   skip_before_action :authorize, only: [:join, :scatter]
   before_action :authorize_group, except: [:index,
