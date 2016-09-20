@@ -2,12 +2,21 @@ require 'test_helper'
 
 class SalariesControllerTest < ActionController::TestCase
   setup do
-    @user = User.create(email: "tester@test.com",
-                        password: "p@sswrd",
-                        verified: true)
+    @user = User.create!(email: "tester@test.com",
+                         password: "p@sswrd",
+                         verified: true)
 
-    @empty_group = Group.find_by(name: "Empty")
-    @existing_group = Group.find_by(name: "Existing")
+    @another_user = User.create!(email: "another_tester@test.com",
+                                 password: "p@sswrd",
+                                 verified: true)
+
+    @empty_group = Group.create!(name: "Empty")
+    @existing_group = Group.create!(name: "Existing")
+
+    Salary.create!(title: "Product Manager",
+                   annual_pay: 105000,
+                   user: @another_user,
+                   group: @existing_group)
   end
 
   test "can get new" do

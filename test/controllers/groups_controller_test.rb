@@ -2,18 +2,23 @@ require 'test_helper'
 
 class GroupsControllerTest < ActionController::TestCase
   setup do
+    @group = Group.create!(name: "Test Group")
     @user = User.create!(email: "tester@test.com",
                         password: "p@sswrd",
                         verified: true)
 
     @session = { user_id: @user.id }
 
-    @group = Group.find_by(name: "Existing")
-
     @salary = Salary.create!(user: @user,
                             group: @group,
                             title: "Engineer", 
                             annual_pay: 110000)
+
+    @imposter = User.create!(
+      email: "imposter@test.com",
+      password: "p@sswrd",
+      verified: true
+    )
   end
 
   test "index redirects to show" do
@@ -38,8 +43,7 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   test "cannot get show if not member" do
-    imposter = User.find_by(email: "imposter@test.com")
-    get :show, { id: @group.id }, { user_id: imposter.id }
+    get :show, { id: @group.id }, { user_id: @imposter.id }
 
     assert_response :forbidden
   end
@@ -66,8 +70,7 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   test "cannot get invite if not member" do
-    imposter = User.find_by(email: "imposter@test.com")
-    get :invite, { id: @group.id }, { user_id: imposter.id} 
+    get :invite, { id: @group.id }, { user_id: @imposter.id} 
 
     assert_response :forbidden
   end
@@ -85,9 +88,8 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   test "cannot send invites if not member" do
-    imposter = User.find_by(email: "imposter@test.com")
     post :send_invites, { id: @group.id, emails: "invitee@gmail.com" },
-      { user_id: imposter.id }
+      { user_id: @imposter.id }
 
     assert_response :forbidden
   end

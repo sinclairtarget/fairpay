@@ -2,11 +2,16 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
   setup do
-    user = User.find_by(email: "anne@test.com")
+    user = User.create!(
+      email: "tester@test.com",
+      password: "p@sswrd",
+      verified: true
+    )
+
     @session = { user_id: user.id }
 
     @login_data = {
-      email: "anne@test.com",
+      email: "tester@test.com",
       password: "p@sswrd"
     }
   end
