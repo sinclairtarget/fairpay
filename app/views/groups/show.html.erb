@@ -40,9 +40,10 @@
     </div>
     <table class="stat-summary">
       <tr class="stat-numbers">
-        <td><%= @salaries_by_title[@salary.title].count %></td>
-        <td class="emphasize"><%= dollar(@salaries_by_title[@salary.title].median_annual_pay, short: true) %></td>
-        <td><%= @salaries_by_title[@salary.title].rank_of(@salary) %></td>
+        <% title_stats = @salaries_by_title[@salary.title].statistics %>
+        <td><%= title_stats.count %></td>
+        <td class="emphasize"><%= dollar(title_stats.median_annual_pay, short: true) %></td>
+        <td><%= title_stats.rank_of(@salary) %></td>
       </tr>
       <tr class="stat-captions">
         <td class="caption">Members<br>with Your Title</td>

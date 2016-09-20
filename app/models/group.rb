@@ -1,9 +1,4 @@
-require_relative "../../lib/title_grouping.rb"
-require_relative "../../lib/salary_collection.rb"
-
 class Group < ActiveRecord::Base
-  include SalaryCollection
-
   validates :name, presence: true
   has_many :salaries, dependent: :destroy
   has_many :users, through: :salaries
@@ -20,7 +15,7 @@ class Group < ActiveRecord::Base
   def salaries_by_title
     groupings = salaries.group_by(&:title)
     groupings.merge!(groupings) do |title, salaries|
-      TitleGrouping.new(salaries)
+      Statistics::TitleGrouping.new(salaries)
     end
   end
 
@@ -32,6 +27,10 @@ class Group < ActiveRecord::Base
   def highest_paying_title
     titles = titles_by_average_pay
     [titles.last["title"], titles.last["avg"].to_i]
+  end
+
+  def statistics
+    Statistics::SalaryCollection.new(self)
   end
 
   protected

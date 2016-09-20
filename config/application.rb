@@ -25,5 +25,9 @@ module Paysymmetry
     
     # Schema dump using SQL over ruby
     config.active_record.schema_format = :sql
+
+    # autoload all constants (classes or modules) defined in files under
+    # lib/autoload
+    config.autoload_paths += Dir["#{config.root}/lib/autoload/**/"]
   end
 end

@@ -42,7 +42,7 @@ class GroupTest < ActiveSupport::TestCase
     populate_with_salaries
 
     expected_avg = 86666
-    avg = @group.average_annual_pay
+    avg = @group.statistics.average_annual_pay
     assert_equal expected_avg, avg
   end
 
@@ -50,7 +50,7 @@ class GroupTest < ActiveSupport::TestCase
     populate_with_salaries
 
     expected_median = 95000
-    median = @group.median_annual_pay
+    median = @group.statistics.median_annual_pay
     assert_equal expected_median, median
   end
 
@@ -63,7 +63,7 @@ class GroupTest < ActiveSupport::TestCase
                            annual_pay: 97000)
 
     expected_rank = 2
-    assert_equal expected_rank, @group.rank_of(salary)
+    assert_equal expected_rank, @group.statistics.rank_of(salary)
   end
 
   test "salaries_by_title returns correct hash" do
