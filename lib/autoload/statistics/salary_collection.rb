@@ -21,7 +21,7 @@ module Statistics
       if count % 2 == 1
         sorted[count / 2].annual_pay
       else
-        (sorted[count / 2].annual_pay + sorted[count / 2 + 1].annual_pay) / 2
+        (sorted[count / 2 - 1].annual_pay + sorted[count / 2].annual_pay) / 2
       end
     end
 
