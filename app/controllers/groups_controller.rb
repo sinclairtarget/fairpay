@@ -1,5 +1,3 @@
-require_dependency "../../lib/core_ext/numeric"
-
 class GroupsController < ApplicationController
   include Formatting::Money
 
