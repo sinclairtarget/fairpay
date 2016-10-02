@@ -98,4 +98,15 @@
                       library: get_library()) %>
     </div>
   <% end %>
+
+  <%= render layout: 'layouts/section', 
+             locals: { caption: "Median Salary By Title" } do %>
+    <div class="canvas-holder">
+      <%= bar_chart(title_medians_graph_path,
+                    xtitle: "Salary",
+                    ytitle: "Title",
+                    colors: ["#cdd"],
+                    library: get_library()) %>
+    </div>
+  <% end %>
 </div>
