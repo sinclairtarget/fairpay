@@ -36,6 +36,14 @@ class GraphsController < GroupAccessController
     render json: salaries.each_with_index.map { |s, i| [i + 1, s] }
   end
 
+  def title_medians
+    data = @group.salaries_by_title.map do |title, grouping|
+      [title, grouping.statistics.median_annual_pay]
+    end
+
+    render json: data
+  end
+
   protected
   def bucket_key(bucket_min, bucket_max)
     min_str = dollar(bucket_min, short: true)

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     controller :graphs do
       get ':id/distribution' => :distribution, as: 'distribution_graph'
       get ':id/scatter' => :scatter, as: 'scatter_graph'
+      get ':id/title-medians' => :title_medians, as: 'title_medians_graph'
     end
   end
 end

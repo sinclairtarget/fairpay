@@ -51,8 +51,8 @@ class GraphsControllerTest < ActionController::TestCase
     get :scatter, { id: @group.id }, @session
 
     assert_response :success
+    
     parsed_resp = JSON.parse(@response.body)
-
     assert_equal 4, parsed_resp.count
 
     expected = [
@@ -66,6 +66,21 @@ class GraphsControllerTest < ActionController::TestCase
       assert are_equal_tuples(salary_tuple, expected_tuple), 
         "Expected #{expected_tuple} but got #{salary_tuple}"
     end
+  end
+
+  test "title_medians returns correct data" do
+    get :title_medians, { id: @group.id }, @session
+
+    assert_response :success
+
+    parsed_resp = JSON.parse(@response.body)
+
+    expected = [
+      ["Engineer", 102000],
+      ["Associate", 65000]
+    ]
+
+    assert_equal expected, parsed_resp
   end
 
   private
