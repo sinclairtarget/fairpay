@@ -76,8 +76,8 @@ class GraphsControllerTest < ActionController::TestCase
     parsed_resp = JSON.parse(@response.body)
 
     expected = [
-      ["Engineer", 102000],
-      ["Associate", 65000]
+      ["Associate", 102000],
+      ["Engineer", 65000]
     ]
 
     assert_equal expected, parsed_resp

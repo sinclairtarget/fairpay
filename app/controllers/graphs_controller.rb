@@ -41,6 +41,8 @@ class GraphsController < GroupAccessController
       [title, grouping.statistics.median_annual_pay]
     end
 
+    data.sort_by! { |tuple| tuple[0] }
+
     render json: data
   end
 
