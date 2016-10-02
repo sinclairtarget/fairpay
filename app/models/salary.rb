@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: salaries
+#
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  group_id       :integer
+#  title          :string(255)
+#  annual_pay     :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  hours_per_week :integer
+#
+
 class Salary < ActiveRecord::Base
   DEFAULT_HOURS_PER_WEEK = 40
 

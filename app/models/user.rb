@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                :integer          not null, primary key
+#  email             :string(255)
+#  password_digest   :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  verified          :boolean          default(FALSE)
+#  verification_code :string(255)
+#
+
 class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: /\A[^@]+@[^@]+\z/ }
   has_many :salaries, dependent: :destroy
