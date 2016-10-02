@@ -15,7 +15,7 @@
 class Salary < ActiveRecord::Base
   DEFAULT_HOURS_PER_WEEK = 40
 
-  validates :title, presence: true
+  validates :title, presence: true, format: { with: /\A[a-z ]+\z/ }
   validates :annual_pay, presence: true, 
                          numericality: { only_integer: true,
                                          greater_than_or_equal_to: 0 }

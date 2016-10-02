@@ -13,7 +13,7 @@ class SalariesControllerTest < ActionController::TestCase
     @empty_group = Group.create!(name: "Empty")
     @existing_group = Group.create!(name: "Existing")
 
-    Salary.create!(title: "Product Manager",
+    Salary.create!(title: "product manager",
                    annual_pay: 105000,
                    user: @another_user,
                    group: @existing_group)
@@ -28,7 +28,7 @@ class SalariesControllerTest < ActionController::TestCase
     salaries_count_before = @empty_group.salaries.count
 
     create_params = {
-      title: "Engineer",
+      title: "engineer",
       salary: { annual_pay: 110000 },
       user_id: @user.id,
       group_id: @empty_group.id
@@ -48,7 +48,7 @@ class SalariesControllerTest < ActionController::TestCase
     salaries_count_before = @existing_group.salaries.count
 
     create_params = {
-      title: "Engineer",
+      title: "engineer",
       salary: { annual_pay: 110000 },
       user_id: @user.id,
       group_id: @existing_group.id
@@ -66,13 +66,13 @@ class SalariesControllerTest < ActionController::TestCase
 
   test "can update salary" do
     salary = Salary.create!(
-      title: "Engineer",
+      title: "engineer",
       annual_pay: 110000,
       user_id: @user.id,
       group_id: @empty_group.id
     )
 
-    put :update, { id: salary.id, title: "Clown", annual_pay: 35000 }, 
+    put :update, { id: salary.id, title: "clown", annual_pay: 35000 }, 
       { user_id: @user.id }
 
     assert_response :redirect
@@ -80,13 +80,13 @@ class SalariesControllerTest < ActionController::TestCase
 
     salary.reload
 
-    assert_equal "Clown", salary.title
+    assert_equal "clown", salary.title
     assert_equal 35000, salary.annual_pay
   end
 
   test "can destroy salary" do
     salary = Salary.create!(
-      title: "Engineer",
+      title: "engineer",
       annual_pay: 110000,
       user_id: @user.id,
       group_id: @existing_group.id
@@ -112,7 +112,7 @@ class SalariesControllerTest < ActionController::TestCase
     )
 
     salary = Salary.create!(
-      title: "Engineer",
+      title: "engineer",
       annual_pay: 110000,
       user_id: other_user.id,
       group_id: @empty_group.id

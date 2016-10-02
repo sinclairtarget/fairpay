@@ -7,6 +7,12 @@ class SalaryTest < ActiveSupport::TestCase
     assert salary.errors[:title].any?
   end
 
+  test "salary title must be lowercase" do
+    salary = Salary.new(title: "Managing Director")
+    assert salary.invalid?
+    assert salary.errors[:title].any?
+  end
+
   test "salary must have an annual pay" do
     salary = Salary.new
     assert salary.invalid?
@@ -43,14 +49,14 @@ class SalaryTest < ActiveSupport::TestCase
   end
 
   test "hourly wage must equal annual pay over hours per year" do
-    salary = Salary.new(title: "Engineer", 
+    salary = Salary.new(title: "engineer", 
                         annual_pay: 110000, 
                         hours_per_week: 40)
     assert_in_delta salary.hourly_wage, 52.885
   end
 
   test "salary must equal hourly wage times hours per year" do
-    salary = Salary.new(title: "Engineer",
+    salary = Salary.new(title: "engineer",
                         hourly_wage: 52.885,
                         hours_per_week: 40)
     assert_in_delta salary.annual_pay, 110000, 0.1
@@ -77,13 +83,13 @@ class SalaryTest < ActiveSupport::TestCase
     user = User.create!(email: "test@gmail.com", password: "p@sswrd")
     group = Group.create!(name: "Test Group")
 
-    salary = Salary.create!(title: "Engineer",
+    salary = Salary.create!(title: "engineer",
                            annual_pay: 110000,
                            user: user,
                            group: group)
 
     assert_raise ActiveRecord::RecordNotUnique do
-      salary2 = Salary.create!(title: "Manager",
+      salary2 = Salary.create!(title: "manager",
                                annual_pay: 110000,
                                user: user,
                                group: group)
@@ -102,7 +108,7 @@ class SalaryTest < ActiveSupport::TestCase
     group_id = group.id
 
     salary = Salary.create!(
-      title: "Manager",
+      title: "manager",
       annual_pay: 110000,
       user: user,
       group: group

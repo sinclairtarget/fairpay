@@ -18,7 +18,7 @@ class GraphsControllerTest < ActionController::TestCase
 
     salary_data = {
       group: @group,
-      title: "Engineer"
+      title: "engineer"
     }
 
     @salary = Salary.create!(
@@ -31,7 +31,7 @@ class GraphsControllerTest < ActionController::TestCase
       salary_data.merge(user: bob, annual_pay: 96000)
     )
     @cindy_sal = Salary.create!(
-      salary_data.merge(user: cindy, title: "Associate", annual_pay: 65000)
+      salary_data.merge(user: cindy, title: "associate", annual_pay: 65000)
     )
 
     @imposter = User.create!(
@@ -48,7 +48,7 @@ class GraphsControllerTest < ActionController::TestCase
   end
 
   test "distribution returns correct data for specific title" do
-    get :distribution, { group_id: @group.id, title: 'Associate' }, @session
+    get :distribution, { group_id: @group.id, title: 'associate' }, @session
 
     assert_response :success
   end
@@ -74,7 +74,7 @@ class GraphsControllerTest < ActionController::TestCase
   end
 
   test "scatter returns correct data for specific title" do
-    get :scatter, { group_id: @group.id, title: "Associate" }, @session
+    get :scatter, { group_id: @group.id, title: "associate" }, @session
 
     assert_response :success
 

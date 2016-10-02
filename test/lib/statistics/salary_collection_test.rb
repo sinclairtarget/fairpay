@@ -15,7 +15,7 @@ class SalaryCollectionTest < ActiveSupport::TestCase
 
     @sal_data = {
       group: @group,
-      title: "Engineer"
+      title: "engineer"
     }
 
   end

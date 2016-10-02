@@ -17,7 +17,7 @@ class GroupsControllerTest < ActionController::TestCase
 
     salary_data = {
       group: @group,
-      title: "Engineer"
+      title: "engineer"
     }
 
     Salary.create!(
@@ -30,7 +30,7 @@ class GroupsControllerTest < ActionController::TestCase
       salary_data.merge(user: bob, annual_pay: 96000)
     )
     Salary.create!(
-      salary_data.merge(user: cindy, title: "Associate", annual_pay: 65000)
+      salary_data.merge(user: cindy, title: "associate", annual_pay: 65000)
     )
 
     @imposter = User.create!(
@@ -67,7 +67,7 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   test "can get show with specific title" do
-    get :show, { id: @group.id, title: "Associate" }, @session
+    get :show, { id: @group.id, title: "associate" }, @session
     assert_response :success
   end
 
