@@ -30,8 +30,8 @@ Rails.application.routes.draw do
 
   scope '/graphs' do
     controller :graphs do
-      get ':group_id/distribution' => :distribution, as: 'distribution_graph'
-      get ':group_id/scatter' => :scatter, as: 'scatter_graph'
+      get ':group_id/distribution(/:title)' => :distribution, as: 'distribution_graph'
+      get ':group_id/scatter(/:title)' => :scatter, as: 'scatter_graph'
       get ':group_id/title-medians' => :title_medians, as: 'title_medians_graph'
     end
   end
