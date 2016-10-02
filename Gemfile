@@ -66,5 +66,7 @@ group :development do
   gem 'capistrano-rbenv-vars'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+
+  gem 'annotate'
 end
 
