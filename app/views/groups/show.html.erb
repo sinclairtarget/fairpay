@@ -20,7 +20,7 @@
   <h3 class="heading">You <i class="fa fa-pencil"></i></h3>
   <ul class="info">
     <li>Title</li>
-    <li><%= @salary.title %></li>
+    <li><%= cap(@salary.title) %></li>
     <li>Salary</li>
     <li><%= dollar(@salary.annual_pay) %></li>
   </ul>
@@ -66,12 +66,12 @@
         <% grouping = @salaries_by_title[title] %>
         <tbody>
           <tr>
-            <td><i class="fa fa-angle-down"></i> <%= title %></td>
+            <td><i class="fa fa-angle-down"></i> <%= cap(title) %></td>
             <td><i class="fa fa-user"></i> <%= grouping.salaries.count %>
           </tr>
           <% grouping.salaries.each do |salary| %>
             <tr>
-              <td><%= salary.title %></td>
+              <td><%= cap(salary.title) %></td>
               <td><%= dollar(salary.annual_pay) %></td>
             </tr>
           <% end %>

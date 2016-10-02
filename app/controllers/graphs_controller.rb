@@ -1,5 +1,6 @@
 class GraphsController < GroupAccessController
   include Formatting::Money
+  include Formatting::Titles
 
   def distribution
     if params[:title].present?
@@ -50,7 +51,7 @@ class GraphsController < GroupAccessController
 
   def title_medians
     data = @group.salaries_by_title.map do |title, grouping|
-      [title, grouping.statistics.median_annual_pay]
+      [cap(title), grouping.statistics.median_annual_pay]
     end
 
     data.sort_by! { |tuple| tuple[0] }

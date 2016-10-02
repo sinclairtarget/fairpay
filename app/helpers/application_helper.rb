@@ -3,6 +3,7 @@ module ApplicationHelper
   MIN_GROUP_MEMBERS = 3
 
   include Formatting::Money
+  include Formatting::Titles
   include Anonymity::Fudging
 
   def group_selected_class(is_selected)
@@ -14,7 +15,7 @@ module ApplicationHelper
   end
 
   def current_title
-    @title || "All Titles"
+    cap(@title || "All Titles")
   end
 
   def fudged_salary(salary, members)

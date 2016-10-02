@@ -28,11 +28,12 @@ dev = User.create(email: "dev@test.com",
                   verified: true)
 
 # salaries
-comp = "Compliance Officer"
-sales = "Sales Representative"
-manager = "Sales Manager"
-paralegal = "Paralegal"
-s_paralegal = "Senior Paralegal"
+comp = "compliance officer"
+sales = "sales representative"
+manager = "sales manager"
+paralegal = "paralegal"
+s_paralegal = "senior paralegal"
+developer = "developer"
 
 Salary.create(user: anne, group: acme, title: comp, annual_pay: 66000)
 Salary.create(user: bob, group: acme, title: sales, annual_pay: 45000)
@@ -46,6 +47,6 @@ Salary.create(user: heather, group: zeta, title: paralegal, annual_pay: 55000)
 Salary.create(user: ingrid, group: zeta, title: paralegal, annual_pay: 55000)
 Salary.create(user: john, group: zeta, title: s_paralegal, annual_pay: 64000)
 
-Salary.create(user: dev, group: acme, title: "Developer", annual_pay: 95000)
-Salary.create(user: dev, group: zeta, title: "Developer", annual_pay: 87000)
-Salary.create(user: dev, group: tiny, title: "Developer", annual_pay: 95000)
+Salary.create(user: dev, group: acme, title: developer, annual_pay: 95000)
+Salary.create(user: dev, group: zeta, title: developer, annual_pay: 87000)
+Salary.create(user: dev, group: tiny, title: developer, annual_pay: 95000)
