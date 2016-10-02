@@ -6,8 +6,6 @@ Rails.application.routes.draw do
       get 'invite'
       post 'invite', to: 'groups#send_invites'
       get 'join'
-      get 'distribution'
-      get 'scatter'
     end
   end
 
@@ -26,5 +24,12 @@ Rails.application.routes.draw do
     get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
+  end
+
+  scope '/graphs' do
+    controller :graphs do
+      get ':id/distribution' => :distribution, as: 'distribution_graph'
+      get ':id/scatter' => :scatter, as: 'scatter_graph'
+    end
   end
 end

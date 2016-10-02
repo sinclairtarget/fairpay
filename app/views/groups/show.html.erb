@@ -82,7 +82,7 @@
   <%= render layout: 'layouts/section', 
              locals: { caption: "Salary Distribution (All Titles)" } do %>
     <div class="canvas-holder">
-      <%= column_chart(distribution_group_path, xtitle: "Salary Bucket",
+      <%= column_chart(distribution_graph_path, xtitle: "Salary Bucket",
                        ytitle: "Count",
                        colors: ["#cdd"],
                       library: get_library()) %>
@@ -92,7 +92,7 @@
   <%= render layout: 'layouts/section', 
              locals: { caption: "Salary Scatter Plot (All Titles)" } do %>
     <div class="canvas-holder">
-      <%= scatter_chart(scatter_group_path, xtitle: "Salary Rank (Ascending)",
+      <%= scatter_chart(scatter_graph_path, xtitle: "Salary Rank (Ascending)",
                        ytitle: "Salary",
                        colors: ["#cdd"],
                       library: get_library()) %>

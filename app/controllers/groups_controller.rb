@@ -1,11 +1,8 @@
-class GroupsController < ApplicationController
-  include Formatting::Money
-
-  skip_before_action :authorize, only: [:join, :scatter]
-  before_action :authorize_group, except: [:index,
-                                           :new,
-                                           :create,
-                                           :join, :scatter]
+class GroupsController < GroupAccessController
+  skip_before_action :authorize_group, only: [:index,
+                                              :new,
+                                              :create,
+                                              :join]
 
   def index
     redirect_group = Group.joins(:salaries)
@@ -75,58 +72,9 @@ class GroupsController < ApplicationController
     onboard_user_to_group params[:id]
   end
 
-  # --------------------------------------------------------------------------
-  # Graph endpoints
-  # --------------------------------------------------------------------------
-  def distribution
-    salaries = @group.salaries.order(:annual_pay)
-
-    min = salaries.first.annual_pay.rounddown(1000)
-    max = (salaries.last.annual_pay + 1).roundup(1000)
-    range = max - min
-
-    bucket_size = range / 10
-
-    buckets = {}
-    bucket_min = min
-    bucket_max = min + bucket_size
-    key = bucket_key(bucket_min, bucket_max)
-    buckets[key] ||= 0
-
-    salaries.each do |salary|
-      while salary.annual_pay >= bucket_max
-        bucket_min += bucket_size
-        bucket_max += bucket_size
-        key = bucket_key(bucket_min, bucket_max)
-        buckets[key] ||= 0
-      end
-
-      buckets[key] += 1
-    end
-
-    render json: buckets
-  end
-
-  def scatter
-    @group ||= Group.find(params[:id])
-    salaries = @group.salaries.order(:annual_pay).pluck(:annual_pay)
-    render json: salaries.each_with_index.map { |s, i| [i + 1, s] }
-  end
-
   protected
-  def authorize_group
-    @group = Group.find(params[:id])
-    head :forbidden unless @group.salaries.where(user: @user).exists?
-  end
-
   def onboard_user_to_group(group_id)
     session[:group_to_join_id] = group_id
     redirect_to new_salary_path
-  end
-
-  def bucket_key(bucket_min, bucket_max)
-    min_str = dollar(bucket_min, short: true)
-    max_str = dollar(bucket_max, short: true)
-    "#{min_str} – <#{max_str}"
   end
 end
