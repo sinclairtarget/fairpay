@@ -82,27 +82,29 @@
   <%= render layout: 'layouts/section', 
              locals: { caption: "Salary Distribution (All Titles)" } do %>
     <div class="canvas-holder">
-      <%= column_chart(distribution_graph_path, xtitle: "Salary Bucket",
+      <%= column_chart(distribution_graph_path(group_id: @group.id),
+                       xtitle: "Salary Bucket",
                        ytitle: "Count",
                        colors: ["#cdd"],
-                      library: get_library()) %>
+                       library: get_library()) %>
     </div>
   <% end %>
 
   <%= render layout: 'layouts/section', 
              locals: { caption: "Salary Scatter Plot (All Titles)" } do %>
     <div class="canvas-holder">
-      <%= scatter_chart(scatter_graph_path, xtitle: "Salary Rank (Ascending)",
-                       ytitle: "Salary",
-                       colors: ["#cdd"],
-                      library: get_library()) %>
+      <%= scatter_chart(scatter_graph_path(group_id: @group.id), 
+                        xtitle: "Salary Rank (Ascending)",
+                        ytitle: "Salary",
+                        colors: ["#cdd"],
+                        library: get_library()) %>
     </div>
   <% end %>
 
   <%= render layout: 'layouts/section', 
              locals: { caption: "Median Salary By Title" } do %>
     <div class="canvas-holder">
-      <%= bar_chart(title_medians_graph_path,
+      <%= bar_chart(title_medians_graph_path(group_id: @group.id),
                     xtitle: "Salary",
                     ytitle: "Title",
                     colors: ["#cdd"],

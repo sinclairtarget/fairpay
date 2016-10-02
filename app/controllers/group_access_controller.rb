@@ -3,7 +3,8 @@ class GroupAccessController < ApplicationController
 
   protected
   def authorize_group
-    @group = Group.find(params[:id])
+    id = params[:id] || params[:group_id]
+    @group = Group.find(id)
     head :forbidden unless @group.salaries.where(user: @user).exists?
   end
 end

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root "groups#index"
 
   resources :groups, except: [:edit, :update] do
+    get ':title', to: 'groups#show'
+
     member do
       get 'invite'
       post 'invite', to: 'groups#send_invites'
@@ -28,9 +30,9 @@ Rails.application.routes.draw do
 
   scope '/graphs' do
     controller :graphs do
-      get ':id/distribution' => :distribution, as: 'distribution_graph'
-      get ':id/scatter' => :scatter, as: 'scatter_graph'
-      get ':id/title-medians' => :title_medians, as: 'title_medians_graph'
+      get ':group_id/distribution' => :distribution, as: 'distribution_graph'
+      get ':group_id/scatter' => :scatter, as: 'scatter_graph'
+      get ':group_id/title-medians' => :title_medians, as: 'title_medians_graph'
     end
   end
 end

@@ -42,13 +42,13 @@ class GraphsControllerTest < ActionController::TestCase
   end
 
   test "distribution returns correct data" do
-    get :distribution, { id: @group.id }, @session
+    get :distribution, { group_id: @group.id }, @session
 
     assert_response :success
   end
 
   test "scatter returns correct data" do
-    get :scatter, { id: @group.id }, @session
+    get :scatter, { group_id: @group.id }, @session
 
     assert_response :success
     
@@ -69,15 +69,15 @@ class GraphsControllerTest < ActionController::TestCase
   end
 
   test "title_medians returns correct data" do
-    get :title_medians, { id: @group.id }, @session
+    get :title_medians, { group_id: @group.id }, @session
 
     assert_response :success
 
     parsed_resp = JSON.parse(@response.body)
 
     expected = [
-      ["Associate", 102000],
-      ["Engineer", 65000]
+      ["Associate", 65000],
+      ["Engineer", 102000]
     ]
 
     assert_equal expected, parsed_resp
