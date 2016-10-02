@@ -47,13 +47,18 @@ class GraphsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "distribution returns correct data for specific title" do
+    get :distribution, { group_id: @group.id, title: 'Associate' }, @session
+
+    assert_response :success
+  end
+
   test "scatter returns correct data" do
     get :scatter, { group_id: @group.id }, @session
 
     assert_response :success
     
     parsed_resp = JSON.parse(@response.body)
-    assert_equal 4, parsed_resp.count
 
     expected = [
       [1, @cindy_sal.annual_pay],
@@ -66,6 +71,20 @@ class GraphsControllerTest < ActionController::TestCase
       assert are_equal_tuples(salary_tuple, expected_tuple), 
         "Expected #{expected_tuple} but got #{salary_tuple}"
     end
+  end
+
+  test "scatter returns correct data for specific title" do
+    get :scatter, { group_id: @group.id, title: "Associate" }, @session
+
+    assert_response :success
+
+    parsed_resp = JSON.parse(@response.body)
+
+    expected = [
+      [1, @cindy_sal.annual_pay]
+    ]
+
+    assert_equal expected, parsed_resp
   end
 
   test "title_medians returns correct data" do

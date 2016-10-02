@@ -2,7 +2,12 @@ class GraphsController < GroupAccessController
   include Formatting::Money
 
   def distribution
-    salaries = @group.salaries.order(:annual_pay)
+    if params[:title].present?
+      salaries = @group.salaries.where(title: params[:title])
+                                .order(:annual_pay)
+    else
+      salaries = @group.salaries.order(:annual_pay)
+    end
 
     min = salaries.first.annual_pay.rounddown(1000)
     max = (salaries.last.annual_pay + 1).roundup(1000)
@@ -31,8 +36,15 @@ class GraphsController < GroupAccessController
   end
 
   def scatter
-    @group ||= Group.find(params[:id])
-    salaries = @group.salaries.order(:annual_pay).pluck(:annual_pay)
+    if params[:title].present?
+      salaries = @group.salaries.where(title: params[:title])
+                                .order(:annual_pay)
+                                .pluck(:annual_pay)
+    else
+      salaries = @group.salaries.order(:annual_pay)
+                                .pluck(:annual_pay)
+    end
+
     render json: salaries.each_with_index.map { |s, i| [i + 1, s] }
   end
 
