@@ -24,6 +24,14 @@ class GroupsController < GroupAccessController
 
     @salary = @group.salaries.where(user_id: @user.id).first
     @salaries_by_title = @group.salaries_by_title
+
+    @title = params[:title] if params[:title].present?
+
+    if @title
+      @count = @salaries_by_title[@title].count
+    else
+      @count = @group.salaries.count
+    end
   end
 
   def new

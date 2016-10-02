@@ -34,8 +34,8 @@
     <div class="company-title-row">
       <h2 class="company-heading"><%= @group.name %></h2>
       <h3 class="company-util">
-        <span class="title-select">All Titles <i class="fa fa-angle-down"></i></span>
-        <span><i class="fa fa-user"></i> <%= @group.salaries.count %></span>
+        <span class="title-select"><%= current_title %> <i class="fa fa-angle-down"></i></span>
+        <span><i class="fa fa-user"></i> <%= @count %></span>
       </p>
     </div>
     <table class="stat-summary">
@@ -53,7 +53,7 @@
     </table>
   </section>
 
-  <%= render layout: 'layouts/section', locals: { caption: "Salaries (All Titles)" } do %>
+  <%= render layout: 'layouts/section', locals: { caption: "Salaries (#{current_title})" } do %>
     <table class="salary-table">
       <thead>
         <tr>
@@ -62,6 +62,7 @@
         </tr>
       </thead>
       <% @salaries_by_title.keys.sort.each do |title| %>
+        <% next if @title && title != @title %>
         <% grouping = @salaries_by_title[title] %>
         <tbody>
           <tr>
@@ -80,9 +81,9 @@
   <% end %>
 
   <%= render layout: 'layouts/section', 
-             locals: { caption: "Salary Distribution (All Titles)" } do %>
+             locals: { caption: "Salary Distribution (#{current_title})" } do %>
     <div class="canvas-holder">
-      <%= column_chart(distribution_graph_path(group_id: @group.id),
+      <%= column_chart(distribution_graph_path(group_id: @group.id, title: @title),
                        xtitle: "Salary Bucket",
                        ytitle: "Count",
                        colors: ["#cdd"],
@@ -91,9 +92,9 @@
   <% end %>
 
   <%= render layout: 'layouts/section', 
-             locals: { caption: "Salary Scatter Plot (All Titles)" } do %>
+             locals: { caption: "Salary Scatter Plot (#{current_title})" } do %>
     <div class="canvas-holder">
-      <%= scatter_chart(scatter_graph_path(group_id: @group.id), 
+      <%= scatter_chart(scatter_graph_path(group_id: @group.id, title: @title), 
                         xtitle: "Salary Rank (Ascending)",
                         ytitle: "Salary",
                         colors: ["#cdd"],
@@ -101,14 +102,16 @@
     </div>
   <% end %>
 
-  <%= render layout: 'layouts/section', 
-             locals: { caption: "Median Salary By Title" } do %>
-    <div class="canvas-holder">
-      <%= bar_chart(title_medians_graph_path(group_id: @group.id),
-                    xtitle: "Salary",
-                    ytitle: "Title",
-                    colors: ["#cdd"],
-                    library: get_library()) %>
-    </div>
+  <% unless @title %>
+    <%= render layout: 'layouts/section', 
+               locals: { caption: "Median Salary By Title" } do %>
+      <div class="canvas-holder">
+        <%= bar_chart(title_medians_graph_path(group_id: @group.id),
+                      xtitle: "Salary",
+                      ytitle: "Title",
+                      colors: ["#cdd"],
+                      library: get_library()) %>
+      </div>
+    <% end %>
   <% end %>
 </div>

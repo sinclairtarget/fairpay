@@ -63,8 +63,12 @@ class GroupsControllerTest < ActionController::TestCase
 
   test "cannot get show if not member" do
     get :show, { id: @group.id }, { user_id: @imposter.id }
-
     assert_response :forbidden
+  end
+
+  test "can get show with specific title" do
+    get :show, { id: @group.id, title: "Associate" }, @session
+    assert_response :success
   end
 
   test "can get new" do 

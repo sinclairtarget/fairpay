@@ -13,6 +13,10 @@ module ApplicationHelper
     end
   end
 
+  def current_title
+    @title || "All Titles"
+  end
+
   def fudged_salary(salary, members)
     return [false, dollar(salary.annual_pay)] if members > MIN_GROUP_MEMBERS
 
