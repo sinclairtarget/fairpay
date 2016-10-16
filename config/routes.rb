@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   root "groups#index"
 
   resources :groups, except: [:edit, :update] do
-    get ':title', to: 'groups#show', as: 'title'
-
     member do
       get 'invite'
       post 'invite', to: 'groups#send_invites'
