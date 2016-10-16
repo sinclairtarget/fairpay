@@ -33,10 +33,27 @@
   <section class="company-section box">
     <div class="company-title-row">
       <h2 class="company-heading"><%= @group.name %></h2>
-      <h3 class="company-util">
-        <span class="title-select"><%= current_title %> <i class="fa fa-angle-down"></i></span>
+      <div class="company-util dropdown">
+        <a href="#" class="title-select dropdown-toggle" data-toggle="dropdown">
+          <%= current_title %> <i class="fa fa-angle-down"></i>
+        </a>
         <span><i class="fa fa-user"></i> <%= @count %></span>
-      </p>
+        <div class="dropdown-menu dropdown-menu-right">
+          <ul class="multiple-select">
+            <li>
+              <% url = group_path(id: @group.id) %>
+              <a class="dropdown-item" href="<%= url %>">All Titles</a>
+            </li>
+            <div class="divider"></div>
+            <% @salaries_by_title.keys.sort.each do |title| %>
+              <li>
+                <% url = group_title_path(group_id: @group.id, title: title) %>
+                <a class="dropdown-item" href="<%= url %>"><%= cap(title) %></a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
     <table class="stat-summary">
       <tr class="stat-numbers">

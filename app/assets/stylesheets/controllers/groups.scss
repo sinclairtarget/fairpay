@@ -8,7 +8,6 @@
 }
 
 .company-title-row {
-    overflow: hidden;
     margin-bottom: 24px;
 
     .company-heading {
@@ -28,6 +27,11 @@
         &:hover {
             color: $button-hover-background-color;
         }
+    }
+
+    .dropdown-menu {
+        top: 30px;
+        right: 35px;
     }
 }
 

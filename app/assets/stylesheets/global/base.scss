@@ -87,21 +87,57 @@ main {
         display: block;
         padding: 10px 20px;
         line-height: 1.2;
-        color: $on-mid-color;
+    }
+}
 
-        &:hover {
-            background-color: #777777;
-            color: $on-dark-color;
+.dropdown-menu {
+    border-radius: 0;
+    border-color: $on-mid-color;
+
+    .divider {
+        margin: 5px 0;
+        background-color: $on-mid-color;
+    }
+
+    .multiple-select {
+        & > li > a {
+            &:hover {
+                background-color: #777777;
+                color: $on-dark-color;
+            }
+        }
+
+        & > li.selected {
+            border-left: 2px solid orange;
+
+            & > a {
+                padding-left: 18px;
+            }
         }
     }
 
-    & > li.selected {
-        border-left: 2px solid orange;
+    // dropdown pointer triangle (points UP)
+    // implementation lifted from github's dropdown
+    ::before, ::after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        left: auto;
+    }
 
-        & > a {
-            padding-left: 18px;
-            color: white;
-            background-color: #4e4e4e;
-        }
+    // background triangle (provides border)
+    ::before {
+        top: -16px;
+        right: 9px;
+        border: 8px solid transparent;
+        border-bottom-color: $on-mid-color;
+    }
+
+    // foreground trianlge (provides fill)
+    ::after {
+        top: -14px;
+        right: 10px;
+        border: 7px solid transparent;
+        border-bottom-color: $box-background-color;
     }
 }
