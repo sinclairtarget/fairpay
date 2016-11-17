@@ -1,10 +1,12 @@
+<% classes ||= [] %>
+
 <% if flash[:alert].present? %>
-  <div class="alert alert-danger" role="alert">
-    <p><%= flash[:alert] %></p>
+  <div class="<%= (classes + %w(alert alert-danger)).join(' ') %>" role="alert">
+    <p><%= flash[:alert] %> <i class="fa fa-close"></i></p>
   </div>
 <% end %>
 <% if flash[:notice].present? %>
-  <div class="alert alert-info" role="alert">
+  <div class="<%= (classes + %w(alert alert-info)).join(' ') %>" role="alert">
     <p><%= flash[:notice] %></p>
   </div>
 <% end %>

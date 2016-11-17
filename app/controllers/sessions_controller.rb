@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  INVALID_LOGIN_ALERT =
+    'The login information you provided was incorrect.'
+
   skip_before_action :authorize
 
   def new
@@ -13,7 +16,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to groups_path
     else
-      redirect_to login_path, alert: "Invalid Login"
+      redirect_to login_path, alert: INVALID_LOGIN_ALERT
     end
   end
 

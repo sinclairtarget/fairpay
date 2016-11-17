@@ -45,3 +45,9 @@
 .btn-solid {
     padding: 14px 8px;
 }
+
+.alert {
+    // flash messages don't push other elements down on page
+    position: absolute;
+    width: 100%;
+}

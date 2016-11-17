@@ -90,6 +90,32 @@ main {
     }
 }
 
+.alert {
+    padding: 12px;
+    margin: 0 -20px;
+    text-align: center;
+    border: 1px solid $border-color;
+
+    p {
+        position: relative;
+    }
+
+    .fa-close {
+        font-size: 1.8rem;
+        position: absolute;
+        top: -2px;
+        right: 30px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.alert-danger {
+    background-color: #f3dbdb;
+}
+
 .dropdown-menu {
     color: $on-light-color;
     border-radius: 0;

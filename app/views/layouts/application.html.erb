@@ -11,21 +11,22 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render "partials/header" %> 
+    <%= render 'partials/header' %> 
     <main>
       <% if content_for? :groups_sidebar %>
         <aside class="groups-sidebar">
           <%= yield :groups_sidebar %>
-        <footer>
-          <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-        </footer>
+          <footer>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </footer>
         </aside>
       <% end %>
       <div class="content">
+        <%= render partial: 'partials/flash_messages' %>
         <%= yield %>
       </div>
     </main>

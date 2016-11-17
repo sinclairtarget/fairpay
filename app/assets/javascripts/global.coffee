@@ -1,3 +1,4 @@
+# Handle expanding table categories
 $(document).on("click", ".salary-table tbody > tr:first-child", ->
   $row = $(this)
   $icon_span = $row.find(".fa").first()
@@ -5,6 +6,14 @@ $(document).on("click", ".salary-table tbody > tr:first-child", ->
 
   $tbody = $row.parent()
   $tbody.children("tr:not(:first-child)").toggle()
+)
+
+
+# Handle closing alerts
+$(document).on("click", ".alert .fa-close", ->
+  $button = $(this)
+  $alert = $button.closest(".alert")
+  $alert.remove()
 )
 
 
