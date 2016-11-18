@@ -38,6 +38,11 @@ main {
     cursor: pointer;
     margin-top: 16px;
     border: none;
+
+    // space icons properly
+    .fa-angle-right {
+        padding-left: 6px;
+    }
 }
 
 .btn-solid {
@@ -56,6 +61,7 @@ main {
 .box {
     margin-bottom: 20px;
     padding: 14px;
+    padding-bottom: 18px;
     border: 1px solid $border-color;
     background-color: $box-background-color;
 
@@ -65,6 +71,35 @@ main {
 
     & > .caption:first-child {
         margin-bottom: 20px;
+    }
+}
+
+.form-box {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40%;
+    position: relative;
+    top: 8%;
+
+    .input-group {
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
+    .input-group:last-of-type {
+        margin-bottom: 0;
+
+        .btn {
+            float: right;
+        }
+    }
+
+    .input-block {
+        width: 100%;
+        margin-top: 8px;
+        background-color: $field-background-color;
     }
 }
 
