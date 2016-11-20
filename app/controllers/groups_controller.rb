@@ -12,8 +12,6 @@ class GroupsController < GroupAccessController
 
     if redirect_group.present?
       redirect_to group_path(redirect_group.id)
-    else
-      redirect_to new_group_path
     end
   end
   

@@ -1,16 +1,12 @@
-<h2>Groups</h2>
-<div id="groups-list">
-  <% if @user.salaries.count > 0 %>
-    <% @user.salaries.each do |salary| %>
-      <%= render partial: "partials/group_listing", 
-            locals: { group: salary.group, salary: salary } %>
-    <% end %>
-  <% else %>
-    <p>You are in no groups.</p>
-  <% end %>
-</div>
-
-<% content_for :sidebar do %>
-  <%= link_to "Create Group", new_group_path, 
-        class: ["btn", "btn-default"] %>
+<!-- Groups Sidebar -->
+<%= content_for :groups_sidebar do %>
+  <%= render partial: 'partials/groups_sidebar' %>
 <% end %>
+
+<div class="center-div spaced-body">
+  <h3>You're not yet in any groups.</h3>
+  <p>If you've been invited to a group, accept the invitation <br/>by clicking on
+  the <i class="fa fa-envelope"></i> icon in the top right.</p>
+  <p>You can also create a new group by using the "Create New" <br/>button on the
+  left.</p>
+</div>

@@ -1,10 +1,12 @@
-<h3>Great! Your account is almost ready.</h3>
-<div class="spaced">
+<section class="box form-box spaced-body">
+  <p class="caption">Verify Your Email Address</p>
+  <h3>Great! Your account is almost ready.</h3>
   <p>We've sent an email to "<%= @user.email %>" with the link you need to verify
    your email address. Clicking on that link will take you to the next step.</p>
-</div>
-
-<div class="double-spaced">
-  <%= link_to "Resend Email", resend_verification_user_path(@user),
-      class: %w{ btn btn-default } %>
-</div>
+  <p>If you don't see an email from us, check your spam folder. You can also
+  resend the email below.</p>
+  <div class="input-group">
+    <%= link_to "Resend Email", resend_verification_user_path(@user),
+        class: %w{ btn btn-solid } %>
+  </div>
+</section>

@@ -1,29 +1,20 @@
-<% if @verified %>
-  <h3>You're all set!</h3>
-
-  <% if @group.present? %>
-    <div class="spaced">
-      <p>We've verified your email address and you're ready 
-      to join <%= @group.name %>.</p>
-    </div>
-    <div class="double-spaced">
-      <%= link_to "Enter your Salary", new_salary_path, class: %w{ btn btn-default } %>
+<section class="box form-box spaced-body">
+  <% if @verified %>
+    <p class="caption">Email Verification Success</p>
+    <h3>You're all set!</h3>
+    <p>We've verified your email address and you're ready to go.</p>
+    <div class="input-group">
+      <%= link_to "Get Started", groups_path(@user),
+          class: %w{ btn btn-solid } %>
     </div>
   <% else %>
-    <div class="spaced">
-      <p>We've verified your email address and you're ready to create a group.</p>
-    </div>
-    <div class="double-spaced">
-      <%= link_to "Create Group", new_group_path, class: %w{ btn btn-default } %>
-    </div>
-  <% end %>
-  </div>
-<% else %>
-  <h3>Ruh Roh</h3>
-  <div class="spaced">
+    <p class="caption">Email Verification Failure</p>
+    <h3>Uh Oh</h3>
     <p>If you're seeing this page, you've tried to verify your email address with
-    a code that isn't associated with the logged-in user. Please check 
-    your inbox—we may have sent you an email more recently.</p>
-    <p>Please also check that you are logged-in using the correct email address.</p>
-  </div>
-<% end %>
+    a code that we don't recognize. Please check 
+    your inbox. We may have sent you an email more recently.</p>
+    <p>Please also check that you are logged-in with the correct email address.
+    You are currently logged-in as:</p>
+    <h4><%= @user.email %></h4>
+  <% end %>
+</section>
